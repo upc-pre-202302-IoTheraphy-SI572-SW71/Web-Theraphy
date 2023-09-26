@@ -1,0 +1,50 @@
+section{
+  margin:40px 80px;
+}
+
+.icons{
+  display: flex;
+
+}
+/*.form{*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  flex-wrap: wrap;*/
+/*}*/
+
+.form__section1 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-right: 20px;
+}
+.form__section2{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.form__twosection{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.form__section3{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.form__section4{
+  display: flex;
+  flex-direction: column;
+}
+
+.form__button {
+  display: flex;
+  justify-content: center;
+}
+button{
+  width: 100%;
+  background-color: blueviolet;
+}

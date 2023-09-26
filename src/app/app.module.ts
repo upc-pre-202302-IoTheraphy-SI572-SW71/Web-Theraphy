@@ -9,11 +9,14 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from "@angular/material/divider";
+import {BookConsultationComponent} from "./appointments/pages/book-consultation/book-consultation.component";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhysiotherapistListComponent
+    PhysiotherapistListComponent,
+    BookConsultationComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import {MatDividerModule} from "@angular/material/divider";
     MatInputModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
