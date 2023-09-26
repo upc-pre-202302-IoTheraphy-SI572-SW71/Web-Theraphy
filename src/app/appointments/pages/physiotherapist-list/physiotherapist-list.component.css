@@ -11,6 +11,8 @@
   margin-right: 48px;
 }
 
+
+
 .example-form {
   display: flex;
   align-items: center;
@@ -35,6 +37,7 @@ h1, p, span {
 h1 {
   font-size: 36px;
   font-weight: 500;
+  color: #0C7075;
 }
 
 mat-card-subtitle {
@@ -83,4 +86,18 @@ mat-icon {
 
 .card-content{
   margin: 20px;
+}
+
+.search-icon:hover {
+  cursor: pointer;
+}
+
+.example-form mat-form-field {
+  border-color: #0C7075;
+  color: #0C7075;
+}
+
+.card-details mat-icon {
+  color: goldenrod;
+
 }
