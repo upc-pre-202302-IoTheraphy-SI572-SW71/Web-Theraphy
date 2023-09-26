@@ -20,6 +20,7 @@ export class BaseService<T> {
   constructor(private http: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
+    // @ts-ignore
     if (error.error instanceof ErrorEvent) {
       // Default error handling
       console.log(`An error occurred: ${error.error.message}`);
