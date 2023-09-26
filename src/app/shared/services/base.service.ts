@@ -75,4 +75,23 @@ export class BaseService<T> {
   getAll1(): Observable<any> {
     return this.http.get(`${this.basePath}`,this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
+
+  getItemByField(field: any, value: any): Observable<T>{
+    return this.http.get<T>(
+      `${this.basePath}/${field}=${value}`,
+      this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getItemByExternalId(field: any, value: any, external: any): Observable<T>{
+    return this.http.get<T>(
+      `https://springboot-app-theraphy-heroku.herokuapp.com/api/v1/${external}/${value}/${field}`,
+      this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
 }

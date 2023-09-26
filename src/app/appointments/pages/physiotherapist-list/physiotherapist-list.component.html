@@ -1,33 +1,51 @@
 <div class="page">
   <div class="contents">
-    <div><h1>Physiotherapists</h1>
+    <div>
+      <h1>Physiotherapists</h1>
       <p>Find your ideal physiotherapist</p>
 
       <form class="example-form">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Physiotherapist</mat-label>
-          <input type="search" #inputSearch matInput placeholder="Jhon Doe">
+          <input type="search" matInput placeholder="John Doe">
           <mat-icon color="primary" matSuffix>search</mat-icon>
+          <!-- Aquí establecemos clearable en false para ocultar el botón de limpieza -->
+
         </mat-form-field>
 
       </form>
+
+      <mat-divider></mat-divider>
       <mat-divider></mat-divider>
 
-
+      <div class="cards">
         <mat-card class="example-card">
-          <mat-card-title-group>
-            <mat-card-title><span>{{ "Dr. Luis Pineda Ugas" }}</span></mat-card-title>
-            <mat-card-subtitle><span>{{'Medical Consultancies: '+ }}</span></mat-card-subtitle>
-            <mat-card-subtitle><mat-icon>star</mat-icon> <span>{{physiotherapist.rating}}</span></mat-card-subtitle>
-            <img mat-card-md-image src="{{ physiotherapist.photoUrl}}" alt="{{ physiotherapist.firstName + ' ' + physiotherapist.paternalSurname }}">
-          </mat-card-title-group>
-          <mat-card-content>
-            <button mat-raised-button color="primary" class="viewProfile-btn" [routerLink]="['/professional-profile-patient',physiotherapist.id]"><span>View Profile</span></button>
-          </mat-card-content>
+          <div class="card-content">
+            <img mat-card-md-image src="
+            data:image/jpeg;base64,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
+" alt="Dr. Luis Pineda Ugas">
+            <div class="card-details">
+              <mat-card-title><span>Dr. Luis Pineda Ugas</span></mat-card-title>
+              <mat-card-subtitle><span> <strong>Specialization:</strong>  Pornhub</span></mat-card-subtitle>
+              <mat-card-subtitle>
+                <ng-container *ngFor="let _ of [1, 2, 3, 4]; let i = index">
+                  <mat-icon>star</mat-icon>
+                </ng-container>
+              </mat-card-subtitle>
+
+
+
+
+
+            </div>
+            <div class="card-button">
+              <button mat-raised-button color="primary" class="viewProfile-btn" [routerLink]="['/professional-profile-patient']">
+                <span>View Profile</span>
+              </button>
+            </div>
+          </div>
         </mat-card>
-
-
-
       </div>
+    </div>
   </div>
 </div>
