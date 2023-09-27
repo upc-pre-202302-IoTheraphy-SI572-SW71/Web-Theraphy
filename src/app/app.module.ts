@@ -11,11 +11,17 @@ import {MatDividerModule} from "@angular/material/divider";
 import {PhysiotherapistListComponent} from "./appointments/pages/physiotherapist-list/physiotherapist-list.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatLineModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
     AppComponent,
     PhysiotherapistListComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,11 @@ import {MatButtonModule} from "@angular/material/button";
     BrowserAnimationsModule,
     MatDividerModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTooltipModule,
+    MatLineModule
   ],
   providers: [],
   bootstrap: [AppComponent]
