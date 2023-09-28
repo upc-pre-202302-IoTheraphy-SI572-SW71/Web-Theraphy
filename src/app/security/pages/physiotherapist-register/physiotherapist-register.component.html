@@ -1,0 +1,53 @@
+<main id="signupContainer" class="signup-container">
+  <div class="signup-section mat-elevation-z10" id="signupForm">
+    <div class="signup-form-container" >
+
+      <div class="signup-logo">
+        <img src="https://raw.githubusercontent.com/DigitAlholics-3-0/Front-End-Theraphy/master/src/assets/logo-image.png" alt="Theraphy logo" class="logo-image">
+        <span class="logo-text">Theraphy</span>
+      </div>
+
+      <span class="signup-form-title">Welcome, you are registering as a physiotherapist</span>
+      <p>Please enter your personal information</p>
+
+      <form [formGroup]="registerForm" (submit)="submitPhysiotherapistForm()" class="signup-form">
+
+        <div class="signup-form-general-data">
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>DNI</mat-label>
+            <input type="text" matInput formControlName="dni" required [(ngModel)]="physiotherapist.dni">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Especializacion</mat-label>
+            <input type="text" matInput formControlName="specialization" required [(ngModel)]="physiotherapist.specialization">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Edad</mat-label>
+            <input type="text" matInput formControlName="age" required [(ngModel)]="physiotherapist.age">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input type="text" matInput formControlName="birthdayDate" required [(ngModel)]="physiotherapist.birthdayDate">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Localizacion</mat-label>
+            <input type="text" matInput formControlName="location" required [(ngModel)]="physiotherapist.location">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Fees</mat-label>
+            <input type="text" matInput formControlName="fees" required [(ngModel)]="physiotherapist.fees">
+          </mat-form-field>
+
+          <button [disabled]="!registerForm.valid" mat-raised-button color="primary" type="submit" class="signup-button">Create Account</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</main>
