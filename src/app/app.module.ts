@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhysiotherapistListComponent } from './therapy-coordination/pages/physiotherapist-list/physiotherapist-list.component';
@@ -14,12 +13,22 @@ import {BookConsultationComponent} from "./appointments/pages/book-consultation/
 import {MatButtonModule} from "@angular/material/button";
 
 import {PhysiotherapistListComponent} from "./appointments/pages/physiotherapist-list/physiotherapist-list.component";
+import { LoginComponent } from './security/pages/login-in/login.component';
+import { SignupComponent } from './security/pages/signup/signup.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {HttpClientModule} from "@angular/common/http";
+import {MatRadioModule} from "@angular/material/radio";
+import { PatientRegisterComponent } from './security/pages/patient-register/patient-register.component';
+import { PhysiotherapistRegisterComponent } from './security/pages/physiotherapist-register/physiotherapist-register.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PhysiotherapistListComponent,
+
     BookConsultationComponent
   ],
   imports: [
@@ -32,6 +41,12 @@ import {PhysiotherapistListComponent} from "./appointments/pages/physiotherapist
     BrowserAnimationsModule,
     MatDividerModule,
     MatButtonModule
+
+    LoginComponent,
+    SignupComponent,
+    PatientRegisterComponent,
+    PhysiotherapistRegisterComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]

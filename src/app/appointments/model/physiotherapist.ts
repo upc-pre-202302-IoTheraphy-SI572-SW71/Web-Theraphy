@@ -1,4 +1,4 @@
-import {User} from "../../shared/model/user";
+import {User} from "../../security/model/user";
 
 export interface Physiotherapist {
   id: number,

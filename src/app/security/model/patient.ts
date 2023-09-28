@@ -1,12 +1,24 @@
+
 export interface Patient {
   id: number,
-  userId: number,
-  firstName: string,
-  lastName: string,
+  dni: string,
   age: number,
-  birthdayDate: string,
-  email: string;
-  appointmentQuantity: number,
   photoUrl: string,
-  //createdAt: string,
+  birthdayDate: string,
+  appointmentQuantity: number,
+  location: string
 }
+
+export class Patient{
+  constructor(
+    public id: number,
+    public dni: string,
+    public age: number,
+    public photoUrl: string,
+    public birthdayDate: string,
+    public appointmentQuantity: number,
+    public location: string
+  ) {
+  }
+}
+

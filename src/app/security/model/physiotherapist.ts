@@ -1,15 +1,34 @@
+
 export interface Physiotherapist {
   id: number,
-  userId:number,
-  firstName: string,
-  paternalSurname: string,
-  maternalSurname: string,
+  dni: string,
   specialization: string,
   age: number,
   location: string,
+  photoUrl: string,
   birthdayDate: string,
-  email: string,
   rating: number,
-  consultationsQuantity: number,
-  photoUrl: string
+  consultationQuantity: number,
+  patientQuantity: number,
+  yearsExperience: number,
+  fees: number
 }
+
+export class Physiotherapist{
+  constructor(
+    public id: number,
+    public dni: string,
+    public specialization: string,
+    public age: number,
+    public location: string,
+    public photoUrl: string,
+    public birthdayDate: string,
+    public rating: number,
+    public consultationQuantity: number,
+    public patientQuantity: number,
+    public yearsExperience: number,
+    public fees: number
+  ) {
+  }
+}
+
