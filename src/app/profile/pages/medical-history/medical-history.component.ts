@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MedicalHistoriesService} from "../../services/medical-histories.service";
 import {Observable} from "rxjs";
-import {MedicalHistory} from "../../../../../../../../Ciclo 7/Soluciones_IoT/Web-Theraphy/src/app/profiles/model/medical-history";
+import {MedicalHistory} from "../../model/medical-history";
 
 @Component({
   selector: 'app-medical-history',

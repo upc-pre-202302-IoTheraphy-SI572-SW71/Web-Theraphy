@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PhysiotherapistListComponent } from './appointments/pages/physiotherapist-list/physiotherapist-list.component';
+import { PhysiotherapistListComponent } from './therapy-coordination/pages/physiotherapist-list/physiotherapist-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
-import {MedicalHistory} from "../../../../../../../Ciclo 7/Soluciones_IoT/Web-Theraphy/src/app/profiles/model/medical-history";
+import {MedicalHistory} from "../model/medical-history";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

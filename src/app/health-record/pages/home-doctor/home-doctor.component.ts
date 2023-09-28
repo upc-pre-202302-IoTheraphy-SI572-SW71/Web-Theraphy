@@ -5,8 +5,8 @@ import {Patient} from "../../../security/model/patient";
 import {PhysiotherapistsService} from "../../../security/services/physiotherapists.service";
 import {PatientsService} from "../../../security/services/patients.service";
 import {TreatmentsService} from "../../../treatments/services/treatments.service";
-import {Appointments} from "../../../appointments/model/appointments";
-import {AppointmentsService} from "../../../appointments/services/appointments.service";
+import {Appointments} from "../../../therapy-coordination/model/appointments";
+import {AppointmentsService} from "../../../therapy-coordination/services/appointments.service";
 
 @Component({
   selector: 'app-home-doctor',
