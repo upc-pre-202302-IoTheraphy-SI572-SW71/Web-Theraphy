@@ -5,9 +5,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {NgIf} from "@angular/common";
+import {ConsultationDetailsComponent} from "./appointments/pages/consultation-details/consultation-details.component";
 
 const routes: Routes = [
-  {path: 'physiotherapist-list', component: PhysiotherapistListComponent}
+  {path: 'physiotherapist-list', component: PhysiotherapistListComponent},
+  {path: 'consultation-details', component: ConsultationDetailsComponent},
+
 ];
 
 @NgModule({

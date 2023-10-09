@@ -9,11 +9,15 @@ import {MatIconModule} from "@angular/material/icon";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from "@angular/material/divider";
 import {PhysiotherapistListComponent} from "./appointments/pages/physiotherapist-list/physiotherapist-list.component";
+import {MatCardModule} from "@angular/material/card";
+import {ConsultationDetailsComponent} from "./appointments/pages/consultation-details/consultation-details.component";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhysiotherapistListComponent
+    PhysiotherapistListComponent,
+    ConsultationDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,9 @@ import {PhysiotherapistListComponent} from "./appointments/pages/physiotherapist
     MatInputModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
