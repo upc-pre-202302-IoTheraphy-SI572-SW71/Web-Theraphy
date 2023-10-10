@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="sidenav">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="contents">
+    <div>
+      <h1>Knees</h1>
+      <p>Physical therapy for knees involves targeted exercises to strengthen muscles, improve mobility, and alleviate pain. Techniques include stretching, manual therapy, and modalities like cryotherapy and ultrasound to reduce inflammation.</p>
+    </div>
+
+    <div class="carousel-container">
+      <button mat-icon-button (click)="prevDay()" [disabled]="currentIndex === 0">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <div class="carousel">
+        <ng-container *ngFor="let day of days.slice(currentIndex, currentIndex + 5); let i = index">
+          <div class="day" [ngClass]="{'active': i === 0}">{{ day }}</div>
+        </ng-container>
+      </div>
+      <button mat-icon-button (click)="nextDay()" [disabled]="currentIndex === days.length - 5">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
