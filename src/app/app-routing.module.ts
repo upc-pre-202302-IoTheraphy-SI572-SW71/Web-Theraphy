@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
   PhysiotherapistProfileComponent
-} from "./appointments/pages/physiotherapist-profile/physiotherapist-profile.component";
+} from "./consultations/pages/physiotherapist-profile/physiotherapist-profile.component";
 import {
   PhysiotherapistListComponent
-} from "./therapy-coordination/pages/physiotherapist-list/physiotherapist-list.component";
+} from "./consultations/pages/physiotherapist-list/physiotherapist-list.component";
 import {LoginComponent} from "./security/pages/login-in/login.component";
 import {SignupComponent} from "./security/pages/signup/signup.component";
 import {PatientRegisterComponent} from "./security/pages/patient-register/patient-register.component";
 import {
   PhysiotherapistRegisterComponent
 } from "./security/pages/physiotherapist-register/physiotherapist-register.component";
-import {BookConsultationComponent} from "./appointments/pages/book-consultation/book-consultation.component";
+import {BookConsultationComponent} from "./consultations/pages/book-consultation/book-consultation.component";
 import {AddReviewComponent} from "./social/pages/add-review/add-review.component";
-import {ConsultationDetailsComponent} from "./appointments/pages/consultation-details/consultation-details.component";
-import {MyTheraphyComponent} from "./therapies/pages/my-theraphy/my-theraphy.component";
+import {ConsultationDetailsComponent} from "./consultations/pages/consultation-details/consultation-details.component";
+import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},

@@ -8,15 +8,15 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from "@angular/material/divider";
-import { PhysiotherapistProfileComponent } from './appointments/pages/physiotherapist-profile/physiotherapist-profile.component';
+import { PhysiotherapistProfileComponent } from './consultations/pages/physiotherapist-profile/physiotherapist-profile.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {
   PhysiotherapistListComponent
-} from "./therapy-coordination/pages/physiotherapist-list/physiotherapist-list.component";
+} from "./consultations/pages/physiotherapist-list/physiotherapist-list.component";
 import {NgIf} from "@angular/common";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {BookConsultationComponent} from "./appointments/pages/book-consultation/book-consultation.component";
+import {BookConsultationComponent} from "./consultations/pages/book-consultation/book-consultation.component";
 import {AddReviewComponent} from "./social/pages/add-review/add-review.component";
 import {LoginComponent} from "./security/pages/login-in/login.component";
 import {SignupComponent} from "./security/pages/signup/signup.component";
@@ -27,12 +27,12 @@ import {
 import {MatSelectModule} from "@angular/material/select";
 import {HttpClientModule} from "@angular/common/http";
 import {MatRadioModule} from "@angular/material/radio";
-import {ConsultationDetailsComponent} from "./appointments/pages/consultation-details/consultation-details.component";
+import {ConsultationDetailsComponent} from "./consultations/pages/consultation-details/consultation-details.component";
 import {SidenavComponent} from "./shared/components/sidenav/sidenav.component";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatLegacyTooltipModule} from "@angular/material/legacy-tooltip";
-import {MyTheraphyComponent} from "./therapies/pages/my-theraphy/my-theraphy.component";
+import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
 
 @NgModule({
     declarations: [
