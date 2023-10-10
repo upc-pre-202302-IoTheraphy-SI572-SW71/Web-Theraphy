@@ -14,6 +14,7 @@ import {
 } from "./security/pages/physiotherapist-register/physiotherapist-register.component";
 import {BookConsultationComponent} from "./appointments/pages/book-consultation/book-consultation.component";
 import {AddReviewComponent} from "./social/pages/add-review/add-review.component";
+import {ConsultationDetailsComponent} from "./appointments/pages/consultation-details/consultation-details.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'physiotherapist-list', component: PhysiotherapistListComponent},
   {path: 'physiotherapist-profile/:id', component: PhysiotherapistProfileComponent},
   {path: 'book-consultation', component: BookConsultationComponent},
+  {path: 'consultation-details', component: ConsultationDetailsComponent},
   {path: 'add-review', component: AddReviewComponent}
 
 

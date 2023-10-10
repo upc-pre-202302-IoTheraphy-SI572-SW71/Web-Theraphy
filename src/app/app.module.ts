@@ -27,6 +27,7 @@ import {
 import {MatSelectModule} from "@angular/material/select";
 import {HttpClientModule} from "@angular/common/http";
 import {MatRadioModule} from "@angular/material/radio";
+import {ConsultationDetailsComponent} from "./appointments/pages/consultation-details/consultation-details.component";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatRadioModule} from "@angular/material/radio";
     LoginComponent,
     SignupComponent,
     PatientRegisterComponent,
-    PhysiotherapistRegisterComponent
+    PhysiotherapistRegisterComponent,
+    ConsultationDetailsComponent
   ],
   imports: [
     BrowserModule,
