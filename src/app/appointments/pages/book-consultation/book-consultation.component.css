@@ -1,10 +1,29 @@
 section{
   margin:40px 80px;
 }
-
-.icons{
+h1{
+  color: #014DBF;
+}
+.title{
   display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.profile{
+  display: flex;
+  align-items: center;
+  margin-bottom: 70px;
+}
+.profile img{
+  width: 120px;
+  height: 120px;
+  border-radius: 10%;
+  margin-right: 80px;
+}
 
+.name__profile{
+  display: flex;
+  flex-direction: column;
 }
 /*.form{*/
 /*  display: flex;*/
@@ -46,5 +65,35 @@ section{
 }
 button{
   width: 100%;
-  background-color: blueviolet;
+  background-color: #014DBF;
+
 }
+
+
+.icons{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  align-items: center;
+  /*justify-content: center;*/
+  /*width: 100%;*/
+}
+
+
+/* Estilos para el círculo */
+.circle {
+  width: 80px;
+  height: 80px;
+  background-color: #B0D0FF; /* Color de fondo del círculo */
+  border-radius: 50%; /* Hace que el elemento sea un círculo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; /* Espacio entre el círculo y el icono */
+}
+
+mat-form-field{
+  border-color: #B0D0FF; /* Código de color celeste */
+}
+
+
