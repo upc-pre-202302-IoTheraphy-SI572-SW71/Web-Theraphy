@@ -14,12 +14,31 @@ import {MatButtonModule} from "@angular/material/button";
 import {
   PhysiotherapistListComponent
 } from "./therapy-coordination/pages/physiotherapist-list/physiotherapist-list.component";
+import {NgIf} from "@angular/common";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {BookConsultationComponent} from "./appointments/pages/book-consultation/book-consultation.component";
+import {AddReviewComponent} from "./social/pages/add-review/add-review.component";
+import {LoginComponent} from "./security/pages/login-in/login.component";
+import {SignupComponent} from "./security/pages/signup/signup.component";
+import {PatientRegisterComponent} from "./security/pages/patient-register/patient-register.component";
+import {
+  PhysiotherapistRegisterComponent
+} from "./security/pages/physiotherapist-register/physiotherapist-register.component";
+import {MatSelectModule} from "@angular/material/select";
+import {HttpClientModule} from "@angular/common/http";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
     AppComponent,
     PhysiotherapistListComponent,
-    PhysiotherapistProfileComponent
+    PhysiotherapistProfileComponent,
+    BookConsultationComponent,
+    AddReviewComponent,
+    LoginComponent,
+    SignupComponent,
+    PatientRegisterComponent,
+    PhysiotherapistRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +50,14 @@ import {
     BrowserAnimationsModule,
     MatDividerModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    NgIf,
+    MatSelectModule,
+    HttpClientModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
