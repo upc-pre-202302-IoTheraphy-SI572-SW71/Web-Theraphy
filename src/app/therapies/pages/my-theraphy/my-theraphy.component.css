@@ -3,7 +3,7 @@
   flex-direction: row;
   height: 100%;
   width: 100%;
-  background-color: #D9E8FF;
+  background-color: #F5F5F8;
 }
 
 .sidenav {
@@ -20,7 +20,7 @@ h1, p, span {
 h1 {
   font-size: 36px;
   font-weight: 500;
-  color: #0C7075;
+  color: #014DBF;
 }
 
 .contents {
@@ -34,37 +34,109 @@ h1 {
 }
 
 .carousel-container {
+  width: 80%;
   display: flex;
-  flex-direction: row; /* Cambia la dirección del contenido del carrusel a columna */
-  align-items: center; /* Centra horizontalmente el carrusel */
-  margin-top: 20px; /* Ajusta la distancia desde el párrafo superior */
-  background-color: white;
-  border-radius: 20px; /* Redondea las esquinas del contenedor */
-}
-
-.carousel {
-  display: flex;
+  flex-direction: row;
   align-items: center;
-  flex-direction: row; /* Cambia la dirección del carrusel a columna */
+  margin-top: 20px;
+  background-color: white;
+  height: 80px;
+  border-radius: 20px;
+  overflow: hidden; /* Oculta el contenido que desborda el contenedor */
+  white-space: nowrap; /* Evita el ajuste de línea de los elementos */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombreado similar al de la tarjeta de video */
 }
 
-/* El resto del CSS se mantiene igual */
+/* Estilos para el carrusel */
+.carousel {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centra horizontalmente los días */
+  gap: 25px; /* Añade espacio entre los días */
+  transition: transform 0.3s ease;
+  /* Agrega una transición suave para el desplazamiento */
+}
 
+/* Estilos para los días */
 .day {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
   padding: 8px 16px;
-  margin: 0 4px;
-  background-color: #007bff;
+  background-color: #B0D0FF;
   color: white;
   border-radius: 16px;
   cursor: pointer;
+  height: 30px;
+  width: 60px;
 }
 
+
+
 .day.active {
-  background-color: #0056b3;
+  background-color: #007bff;
 }
+
 
 button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+/* Establece el ancho de la tarjeta igual al del carrusel */
+.video-card {
+  margin-top: 20px;
+  width: 80%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Estilos para el video dentro de la tarjeta */
+.video-card video {
+  width: 100%;
+  max-width: 560px; /* Limita el ancho del video al valor máximo */
+  height: auto;
+  margin: 0 auto; /* Centra el video horizontalmente */
+}
+
+/* Estilos para el contenido de la tarjeta */
+.video-card mat-card-content {
+  text-align: left;
+  padding: 16px;
+  /* Ajusta el ancho al 100% si es necesario */
+  /* max-width: 560px; Limita el ancho del contenido al valor máximo */
+}
+
+/* Estilos para el título */
+.video-card mat-card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.video-card iframe {
+  width: 100%;
+  height: 550px;
+  border-radius: 20px;
+}
+
+
+@media (max-width: 1500px) {
+  .carousel {
+    gap: 8px; /* Reduce el espacio entre los días */
+  }
+
+  .day {
+    width: 40px; /* Reduce el ancho de los días */
+  }
+
+  .video-card iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+  }
 }

@@ -13,13 +13,25 @@
         <mat-icon>keyboard_arrow_left</mat-icon>
       </button>
       <div class="carousel">
-        <ng-container *ngFor="let day of days.slice(currentIndex, currentIndex + 5); let i = index">
-          <div class="day" [ngClass]="{'active': i === 0}">{{ day }}</div>
+        <ng-container *ngFor="let day of visibleDays; let i = index">
+          <div class="day" [ngClass]="{'active': i === selectedDayIndex}" (click)="selectDay(i)">{{ day }}</div>
         </ng-container>
       </div>
-      <button mat-icon-button (click)="nextDay()" [disabled]="currentIndex === days.length - 5">
+      <button mat-icon-button (click)="nextDay()" [disabled]="currentIndex === days.length - visibleDays.length">
         <mat-icon>keyboard_arrow_right</mat-icon>
       </button>
     </div>
+
+
+    <mat-card class="video-card">
+      <iframe  src="https://www.youtube.com/embed/1FFwgNYDjl4?si=5PJlqnGox_wJyOkk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <mat-card-content>
+        <h2 mat-card-title>{{ videoName }}</h2>
+        <p mat-card-subtitle>{{ videoDescription }}</p>
+      </mat-card-content>
+    </mat-card>
+
+
+
   </div>
 </div>
