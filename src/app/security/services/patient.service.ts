@@ -3,17 +3,21 @@ import {BaseService} from "../../shared/services/base.service";
 import {Patient} from "../model/patient";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {User} from "../model/user";
 
 @Injectable({
   providedIn: 'root'
 })
-export class PatientService{
+export class PatientService extends BaseService<Patient>{
+  endPoint = '/registration-patient';
 
-  private apiUrl='http://localhost:8080/api/v1'
+  constructor(http: HttpClient) {
+    super(http);
+    this.basePath += this.endPoint;
+  }
 
-  constructor(private http: HttpClient) { }
   createPatient(patient: Patient): Observable<Patient> {
-    const createPatientUrl = `${this.apiUrl}/registration-patient`;
+    const createPatientUrl = `${this.basePath}`;
     const jwtToken = localStorage.getItem('jwtToken');
 
     if (!jwtToken) {

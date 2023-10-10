@@ -8,13 +8,17 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class PhysiotherapistService{
+export class PhysiotherapistService extends BaseService<Physiotherapist>{
 
-  private apiUrl='http://localhost:8080/api/v1'
+  endPoint = '/registration-physiotherapist';
 
-  constructor(private http: HttpClient) { }
+  constructor(http: HttpClient) {
+    super(http);
+    this.basePath += this.endPoint;
+  }
+
   createPhysiotherapist(physiotherapist: Physiotherapist): Observable<Patient> {
-    const createPatientUrl = `${this.apiUrl}/registration-physiotherapist`;
+    const createPatientUrl = `${this.basePath}`;
     const jwtToken = localStorage.getItem('jwtToken');
 
     if (!jwtToken) {
