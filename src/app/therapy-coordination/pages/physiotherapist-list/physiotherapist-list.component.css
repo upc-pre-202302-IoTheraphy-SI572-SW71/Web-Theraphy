@@ -3,7 +3,7 @@
   flex-direction: row;
   height: 100%;
   width: 100%;
-  background-color: #D9E8FF;
+  background-color: #F5F5F8;
 }
 
 .sidenav {
@@ -45,7 +45,7 @@ h1, p, span {
 h1 {
   font-size: 36px;
   font-weight: 500;
-  color: #0C7075;
+  color: #014DBF;
 }
 
 mat-card-subtitle {
@@ -80,7 +80,7 @@ mat-icon {
 }
 
 .card-button button {
-  background-color: #0C7075;
+  background-color: #014DBF;
 }
 
 .example-card mat-card-subtitle {
