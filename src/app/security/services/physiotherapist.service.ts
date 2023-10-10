@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 })
 export class PhysiotherapistService extends BaseService<Physiotherapist>{
 
-  endPoint = '/registration-physiotherapist';
+  endPoint = '/physiotherapists/registration-physiotherapist';
 
   constructor(http: HttpClient) {
     super(http);

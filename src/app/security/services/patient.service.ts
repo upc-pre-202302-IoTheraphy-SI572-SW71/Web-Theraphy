@@ -9,7 +9,7 @@ import {User} from "../model/user";
   providedIn: 'root'
 })
 export class PatientService extends BaseService<Patient>{
-  endPoint = '/registration-patient';
+  endPoint = '/patients/registration-patient';
 
   constructor(http: HttpClient) {
     super(http);
