@@ -1,0 +1,58 @@
+/* Estilos para el contenedor de contenido principal */
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 48px); /* Resta el alto del header (48px) */
+  overflow-y: auto; /* Agrega desplazamiento vertical si el contenido es demasiado largo */
+}
+
+/* Estilos para el contenedor de Log Out */
+.logout-container {
+  margin-top: auto; /* Coloca Log Out en la parte inferior */
+}
+
+/* Resto de estilos (los que ya tenías) */
+img {
+  width: 64px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.sidenav-item:hover {
+  border-left: solid 3px blue;
+}
+
+.active-link {
+  border-left: solid 3px blue;
+  background: #e3e3e3;
+}
+
+.logo-text {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.sidenav-item-text {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+

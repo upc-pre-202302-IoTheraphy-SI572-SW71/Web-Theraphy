@@ -9,6 +9,7 @@ describe('PhysiotherapistListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [PhysiotherapistListComponent]
+
     });
     fixture = TestBed.createComponent(PhysiotherapistListComponent);
     component = fixture.componentInstance;

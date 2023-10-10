@@ -1,0 +1,37 @@
+<div class="page">
+  <div class="sidenav">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="contents">
+    <div class="info">
+      <h1>Knees</h1>
+      <p>Physical therapy for knees involves targeted exercises to strengthen muscles, improve mobility, and alleviate pain. Techniques include stretching, manual therapy, and modalities like cryotherapy and ultrasound to reduce inflammation.</p>
+    </div>
+
+    <div class="carousel-container">
+      <button mat-icon-button (click)="prevDay()" [disabled]="currentIndex === 0">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <div class="carousel">
+        <ng-container *ngFor="let day of visibleDays; let i = index">
+          <div class="day" [ngClass]="{'active': i === selectedDayIndex}" (click)="selectDay(i)">{{ day }}</div>
+        </ng-container>
+      </div>
+      <button mat-icon-button (click)="nextDay()" [disabled]="currentIndex === days.length - visibleDays.length">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+
+
+    <mat-card class="video-card">
+      <iframe  src="https://www.youtube.com/embed/1FFwgNYDjl4?si=5PJlqnGox_wJyOkk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <mat-card-content>
+        <h2 mat-card-title>{{ videoName }}</h2>
+        <p mat-card-subtitle>{{ videoDescription }}</p>
+      </mat-card-content>
+    </mat-card>
+
+
+
+  </div>
+</div>

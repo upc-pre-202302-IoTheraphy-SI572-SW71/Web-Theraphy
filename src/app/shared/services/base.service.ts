@@ -33,9 +33,9 @@ export class BaseService<T> {
   }
 
   // Create Resource
-  create(item: any, route: any): Observable<T> {
+  create(item: any): Observable<T> {
     return this.http.post<T>(
-      `${this.basePath}/${route}`,
+      `${this.basePath}`,
       JSON.stringify(item),
       this.httpOptions)
       .pipe(
@@ -44,9 +44,9 @@ export class BaseService<T> {
   }
 
   // Get Resource by id
-  getById(route: any, id: any): Observable<T> {
+  getById(id: any): Observable<T> {
     return this.http.get<T>(
-      `${this.basePath}/${route}/${id}`,
+      `${this.basePath}/${id}`,
       this.httpOptions)
       .pipe(
         retry(2),
@@ -54,25 +54,44 @@ export class BaseService<T> {
   }
 
   // Get All Resources
-  getAll(route: any): Observable<T> {
-    return this.http.get<T>(`${this.basePath}/${route}`, this.httpOptions)
+  getAll(): Observable<T> {
+    return this.http.get<T>(`${this.basePath}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   // Delete Resource
   delete(route: any, id: any) {
-    return this.http.delete(`${this.basePath}/${route}/${id}`, this.httpOptions)
+    return this.http.delete(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   // Update Resource
-  update(route: any, id: any, item: any): Observable<T> {
-    return this.http.put<T>(`${this.basePath}/${route+id}`,
+  update( id: any, item: any): Observable<T> {
+    return this.http.put<T>(`${this.basePath}/${id}`,
       JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getAll1(route: any): Observable<any> {
-    return this.http.get(`${this.basePath}/${route}`,this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  getAll1(): Observable<any> {
+    return this.http.get(`${this.basePath}`,this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
+
+  getItemByField(field: any, value: any): Observable<T>{
+    return this.http.get<T>(
+      `${this.basePath}/${field}=${value}`,
+      this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getItemByExternalId(field: any, value: any, external: any): Observable<T>{
+    return this.http.get<T>(
+      `https://springboot-app-theraphy-heroku.herokuapp.com/api/v1/${external}/${value}/${field}`,
+      this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
 }
