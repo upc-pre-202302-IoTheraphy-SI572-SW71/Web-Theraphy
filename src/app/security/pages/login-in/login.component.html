@@ -1,0 +1,33 @@
+<main id="loginContainer" class="login-container">
+  <div class="login-section mat-elevation-z10">
+    <div class="login-form-container" >
+
+      <div class="login-logo">
+        <img src="https://raw.githubusercontent.com/DigitAlholics-3-0/Front-End-Theraphy/master/src/assets/logo-image.png" alt="Theraphy logo" class="logo-image">
+        <span class="logo-text">Theraphy</span>
+      </div>
+
+      <span class="login-form-title">Login</span>
+      <p>Log in with your data that you entered during your registration</p>
+      <form [formGroup]="loginForm" (submit)="login()" class="login-form">
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>E-mail</mat-label>
+          <input type="text" matInput formControlName="username" [(ngModel)]="username" name="username" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" [(ngModel)]="password" name="password" required>
+        </mat-form-field>
+
+        <button [disabled]="!loginForm.valid" mat-raised-button color="primary" type="submit" class="login-button">Get into</button>
+
+        <a routerLink="/change" href="#" id="forgotPassword"><strong>I forgot my password</strong></a>
+
+        <p id="signUp">You do not have an account?<a routerLink="/auth-registration" href="#"><strong> Sign-Up</strong></a></p>
+      </form>
+    </div>
+  </div>
+</main>
+
