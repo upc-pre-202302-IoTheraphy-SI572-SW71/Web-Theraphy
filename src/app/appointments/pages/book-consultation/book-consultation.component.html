@@ -1,14 +1,40 @@
 <section>
-  <h1>Book Appointment</h1>
+  <div class="title">
+    <mat-icon style="color: #014DBF;">arrow_back</mat-icon>
+    <h1>Book Appointment</h1>
+  </div>
 
-  <h1>Dr. Cristian Gomez</h1>
-  <h3>physioterapist</h3>
+  <div class="profile">
+    <img src="https://www.doctorsatbayside.com.au/wp-content/uploads/2021/05/1-scaled-e1620267965562-768x1024.jpg" alt="Descripción de la imagen">
+
+    <div class="name__profile">
+      <h2>Dr. Cristian Gomez <br> physioterapist</h2>
+<!--      <h3>physioterapist</h3>-->
+    </div>
+  </div>
+
 
   <div class="icons">
-    <div><mat-icon>account_circle</mat-icon></div>
-    <div><mat-icon>work</mat-icon></div>
-    <div><mat-icon>star</mat-icon></div>
-    <div><mat-icon> rate_review</mat-icon></div>
+    <div class="circle">
+      <mat-icon style="color: #014DBF;  transform: scale(1.5);">account_circle</mat-icon>
+    </div>
+    <h2>Patients</h2>
+
+    <div class="circle">
+      <mat-icon style="color: #014DBF; transform: scale(1.5);">work</mat-icon>
+    </div>
+    <h4>Experience</h4>
+
+    <div class="circle">
+     <mat-icon style="color: #014DBF; transform: scale(1.5);">star</mat-icon>
+    </div>
+    <h4>Rating</h4>
+
+
+    <div class="circle">
+      <mat-icon style="color: #014DBF; transform: scale(1.5);"> rate_review</mat-icon>
+    </div>
+    <h4>Reviews</h4>
 
   </div>
 
@@ -17,7 +43,7 @@
 
     <div class="form__twosection">
       <div class="form__section1">
-        <h2>Day</h2>
+        <p>Day</p>
         <mat-form-field appearance="outline">
 
           <input matInput placeholder="Placeholder">
@@ -27,7 +53,7 @@
       </div>
 
       <div class="form__section2">
-        <h2>Time</h2>
+        <p>Time</p>
         <mat-form-field appearance="outline">
 
           <input matInput placeholder="Placeholder">
@@ -39,7 +65,7 @@
 
 
     <div class="form__section3">
-      <h2>Location</h2>
+      <p>Location</p>
       <mat-form-field appearance="outline">
 
         <input matInput placeholder="Placeholder">
@@ -50,7 +76,7 @@
     </div>
 
     <div class="form__section4">
-      <h2>Topic</h2>
+      <p>Topic</p>
       <mat-form-field appearance="outline">
 
         <input matInput placeholder="Placeholder">
@@ -61,7 +87,7 @@
     </div>
 
     <div class="form__button">
-      <button mat-button>Basic</button>
+      <button mat-button style="color: white;">Make Appointment</button>
     </div>
 
 
