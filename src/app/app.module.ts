@@ -16,12 +16,14 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatLineModule} from "@angular/material/core";
+import { MyTheraphyComponent } from './therapies/pages/my-theraphy/my-theraphy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhysiotherapistListComponent,
     SidenavComponent,
+    MyTheraphyComponent,
   ],
   imports: [
     BrowserModule,
