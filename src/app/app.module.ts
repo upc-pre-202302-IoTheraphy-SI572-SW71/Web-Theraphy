@@ -28,20 +28,27 @@ import {MatSelectModule} from "@angular/material/select";
 import {HttpClientModule} from "@angular/common/http";
 import {MatRadioModule} from "@angular/material/radio";
 import {ConsultationDetailsComponent} from "./appointments/pages/consultation-details/consultation-details.component";
+import {SidenavComponent} from "./shared/components/sidenav/sidenav.component";
+import {MatListModule} from "@angular/material/list";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatLegacyTooltipModule} from "@angular/material/legacy-tooltip";
+import {MyTheraphyComponent} from "./therapies/pages/my-theraphy/my-theraphy.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PhysiotherapistListComponent,
-    PhysiotherapistProfileComponent,
-    BookConsultationComponent,
-    AddReviewComponent,
-    LoginComponent,
-    SignupComponent,
-    PatientRegisterComponent,
-    PhysiotherapistRegisterComponent,
-    ConsultationDetailsComponent
-  ],
+    declarations: [
+        AppComponent,
+        PhysiotherapistListComponent,
+        PhysiotherapistProfileComponent,
+        BookConsultationComponent,
+        AddReviewComponent,
+        LoginComponent,
+        SignupComponent,
+        PatientRegisterComponent,
+        PhysiotherapistRegisterComponent,
+        ConsultationDetailsComponent,
+        SidenavComponent,
+        MyTheraphyComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -59,9 +66,15 @@ import {ConsultationDetailsComponent} from "./appointments/pages/consultation-de
     MatSelectModule,
     HttpClientModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule,
+    MatSidenavModule,
+    MatLegacyTooltipModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    exports: [
+        SidenavComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
