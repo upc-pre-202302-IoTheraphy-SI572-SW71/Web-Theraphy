@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
 import {Physiotherapist} from "../model/physiotherapist";
@@ -10,7 +11,7 @@ import {Observable} from "rxjs";
 })
 export class PhysiotherapistService extends BaseService<Physiotherapist>{
 
-  endPoint = '/physiotherapists/registration-physiotherapist';
+  endPoint = '/physiotherapists';
 
   constructor(http: HttpClient) {
     super(http);
@@ -18,7 +19,7 @@ export class PhysiotherapistService extends BaseService<Physiotherapist>{
   }
 
   createPhysiotherapist(physiotherapist: Physiotherapist): Observable<Patient> {
-    const createPatientUrl = `${this.basePath}`;
+    const createPatientUrl = `${this.basePath}/registration-physiotherapist`;
     const jwtToken = localStorage.getItem('jwtToken');
 
     if (!jwtToken) {

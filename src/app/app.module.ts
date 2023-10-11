@@ -33,6 +33,8 @@ import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatLegacyTooltipModule} from "@angular/material/legacy-tooltip";
 import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
+import { NgModel } from '@angular/forms';
+
 
 @NgModule({
     declarations: [

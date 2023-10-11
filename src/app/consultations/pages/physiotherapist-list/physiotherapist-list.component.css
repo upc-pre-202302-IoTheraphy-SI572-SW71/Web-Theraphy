@@ -1,7 +1,8 @@
 .page {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   width: 100%;
   background-color: #F5F5F8;
 }
@@ -116,4 +117,18 @@ mat-icon {
 
 .contents {
   width: 100%;
+}
+
+.cards mat-card {
+  margin-bottom: 30px;
+}
+
+mat-icon {
+  color: goldenrod;
+  margin-right: 5px; /* Añade un margen a la izquierda para separar la estrella del puntaje */
+}
+
+mat-card-subtitle {
+  display: flex;
+  align-items: center;
 }
