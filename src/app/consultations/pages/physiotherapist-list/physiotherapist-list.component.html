@@ -11,7 +11,7 @@
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Physiotherapist</mat-label>
 
-          <input matInput #inputSearch placeholder="John Doe">
+          <input matInput #inputSearch placeholder="John Doe" (keyup.enter)="filterPhysiotherapists(inputSearch.value)">
           <mat-icon color="primary" matSuffix class="search-icon" (click)="filterPhysiotherapists(inputSearch.value)">search</mat-icon>
 
           <!-- Aquí establecemos clearable en false para ocultar el botón de limpieza -->
