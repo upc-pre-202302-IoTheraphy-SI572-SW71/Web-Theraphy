@@ -32,7 +32,7 @@
 
 
     <div class="circle">
-      <mat-icon style="color: #014DBF; transform: scale(1.5);"> rate_review</mat-icon>
+      <mat-icon style="color: #014DBF; transform: scale(1.5);"> rate_review </mat-icon>
     </div>
     <h4>Reviews</h4>
 
@@ -44,22 +44,41 @@
     <div class="form__twosection">
       <div class="form__section1">
         <p>Day</p>
-        <mat-form-field appearance="outline">
-
-          <input matInput placeholder="Placeholder">
-
-
+        <mat-form-field class="custom-form-field">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event.target.value)" class="custom-input" required>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
         </mat-form-field>
+
+
       </div>
 
       <div class="form__section2">
         <p>Time</p>
-        <mat-form-field appearance="outline">
+        <div class="form__section2__two">
+          <mat-form-field>
+            <mat-label>Selecciona la hora</mat-label>
+            <mat-select [(ngModel)]="selectedHour">
+              <mat-option *ngFor="let hour of hours" [value]="hour" required>{{ hour }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="selectedHour !== null && selectedMinute !== null">
+            Hora seleccionada: {{ selectedHour === 12 ? 12 : selectedHour % 12 }}:{{ selectedMinute < 10 ? '0' + selectedMinute : selectedMinute }}
+            {{ selectedHour < 12 ? "AM" : "PM" }}
+          </div>
+          <mat-form-field>
+            <mat-label>Selecciona los minutos</mat-label>
+            <mat-select [(ngModel)]="selectedMinute">
+              <mat-option *ngFor="let minute of minutes" [value]="minute" required>{{ minute }}</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-          <input matInput placeholder="Placeholder">
+
+        </div>
 
 
-        </mat-form-field>
       </div>
     </div>
 
@@ -68,7 +87,7 @@
       <p>Location</p>
       <mat-form-field appearance="outline">
 
-        <input matInput placeholder="Placeholder">
+        <input matInput placeholder="Location" required>
 
 
       </mat-form-field>
@@ -79,7 +98,7 @@
       <p>Topic</p>
       <mat-form-field appearance="outline">
 
-        <input matInput placeholder="Placeholder">
+        <input matInput placeholder="Topic" required>
 
 
       </mat-form-field>

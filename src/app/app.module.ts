@@ -13,6 +13,9 @@ import {BookConsultationComponent} from "./appointments/pages/book-consultation/
 import {MatButtonModule} from "@angular/material/button";
 
 import {PhysiotherapistListComponent} from "./appointments/pages/physiotherapist-list/physiotherapist-list.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import {PhysiotherapistListComponent} from "./appointments/pages/physiotherapist
     MatIconModule,
     BrowserAnimationsModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

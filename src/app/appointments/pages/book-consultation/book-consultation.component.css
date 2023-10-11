@@ -42,7 +42,14 @@ h1{
   flex-direction: column;
   width: 50%;
 }
+.form__section2__two{
+  display: flex;
+  justify-content: space-around;
+}
+mat-form-field{
+  border: 2px solid #014DBF;
 
+}
 .form__twosection{
     display: flex;
     justify-content: space-around;
@@ -62,9 +69,10 @@ h1{
 .form__button {
   display: flex;
   justify-content: center;
+
 }
 button{
-  width: 100%;
+  width: 20%;
   background-color: #014DBF;
 
 }
@@ -95,5 +103,4 @@ button{
 mat-form-field{
   border-color: #B0D0FF; /* Código de color celeste */
 }
-
 
