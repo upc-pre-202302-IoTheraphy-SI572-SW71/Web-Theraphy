@@ -83,7 +83,7 @@ img {
 }
 
 .bottom {
-  margin-top: 110px;
+  margin-top: calc(100vh - 550px);
 }
 
 .card-title {
