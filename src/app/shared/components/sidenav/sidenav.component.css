@@ -126,3 +126,5 @@ img {
   transition: transform 0.3s; /* Agrega una transición para suavizar la expansión y retracción */
   transform: translateX(-100%); /* Inicialmente oculto a la izquierda */
 }
+
+

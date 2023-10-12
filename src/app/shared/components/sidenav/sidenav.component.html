@@ -11,7 +11,7 @@
     <mat-nav-list class="sidenav-menu">
       <div class="block" *ngFor="let data of sidenavData">
         <mat-list-item class="sidenav-item" routerLinkActive="active-link" [routerLink]="[data.routeLink]">
-          <mat-icon color="primary" [matTooltip]="data.label" matTooltipPosition="right">{{data.icon}}</mat-icon>
+          <mat-icon color="primary" matTooltipPosition="right">{{data.icon}}</mat-icon>
           <span mat-line class="sidenav-item-text" *ngIf="isExpanded">{{ data.label }}</span>
         </mat-list-item>
       </div>
@@ -24,7 +24,7 @@
   <mat-nav-list>
   <div class="logout-container">
     <mat-list-item class="sidenav-item logout" routerLinkActive="false" [routerLink]="['/']">
-      <mat-icon color="primary" matTooltip="Log out" matTooltipPosition="right">logout</mat-icon>
+      <mat-icon color="primary"  matTooltipPosition="right">logout</mat-icon>
       <span mat-line class="sidenav-item-text" *ngIf="isExpanded">Log Out</span>
     </mat-list-item>
   </div>
