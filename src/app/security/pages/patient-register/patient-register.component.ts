@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {Patient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";
 import {Router} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-patient-register',
@@ -44,10 +44,23 @@ export class PatientRegisterComponent {
   }
   registerForm: FormGroup = this.formBuilder.group({
     dni: ['', {validators: [Validators.required,Validators.pattern(/^\d{8}$/)], updatedOn: 'change'}],
-    age: ['', {validators: [Validators.required], updatedOn: 'change'}],
-    birthdayDate: ['', {validators: [Validators.required], updatedOn: 'change'}],
+    age: ['', {validators: [Validators.required,Validators.min(18)], updatedOn: 'change'}],
+    birthdayDate: ['', {validators: [Validators.required,this.validateBirthday], updatedOn: 'change'}],
     location: ['', {validators: [Validators.required], updatedOn: 'change'}]
   })
+  validateBirthday(control: AbstractControl): { [key: string]: any } | null {
+    if (control.value) {
+      const birthday = new Date(control.value);
+      const today = new Date();
+      const age = today.getFullYear() - birthday.getFullYear();
+
+      if (age < 18) {
+        return { 'ageInvalid': true };
+      }
+    }
+
+    return null;
+  }
   formatDate(date: string): string {
     const dateObj = new Date(date);
     const year = dateObj.getFullYear();
