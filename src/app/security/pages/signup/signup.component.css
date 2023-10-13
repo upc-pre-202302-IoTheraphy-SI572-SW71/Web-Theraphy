@@ -45,3 +45,20 @@
 .signup-button {
   width: 100%;
 }
+
+.signup-form-general-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-column,
+.right-column,
+.centered-button {
+  width: 100%;
+}
+
+.centered-button {
+  text-align: center;
+  margin-top: 20px; /* Ajusta el margen superior según tus necesidades */
+}
