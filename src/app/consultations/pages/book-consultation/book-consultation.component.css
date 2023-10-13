@@ -42,7 +42,14 @@ h1{
   flex-direction: column;
   width: 50%;
 }
+.form__section2__two{
+  display: flex;
+  justify-content: space-around;
+}
+mat-form-field{
+  border: 2px solid #014DBF;
 
+}
 .form__twosection{
     display: flex;
     justify-content: space-around;
@@ -62,9 +69,10 @@ h1{
 .form__button {
   display: flex;
   justify-content: center;
+
 }
 button{
-  width: 100%;
+  width: 20%;
   background-color: #014DBF;
 
 }
@@ -80,20 +88,19 @@ button{
 }
 
 
-/* Estilos para el círculo */
+
 .circle {
   width: 80px;
   height: 80px;
-  background-color: #B0D0FF; /* Color de fondo del círculo */
-  border-radius: 50%; /* Hace que el elemento sea un círculo */
+  background-color: #B0D0FF;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px; /* Espacio entre el círculo y el icono */
+  margin-right: 10px;
 }
 
 mat-form-field{
-  border-color: #B0D0FF; /* Código de color celeste */
+  border-color: #B0D0FF;
 }
-
 
