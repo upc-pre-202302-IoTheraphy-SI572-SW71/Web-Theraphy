@@ -3,6 +3,7 @@ import {Patient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";;
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-patient-register',
@@ -12,7 +13,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class PatientRegisterComponent {
   patient: Patient = new Patient(
     0,
-    '',0,
+    '',
+    0,
     'dasd',
     '',
     0,
@@ -22,10 +24,12 @@ export class PatientRegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private patientService: PatientService,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ) {}
 
   submitPatientForm() {
+
     this.patientService.createPatient(this.patient).subscribe(
       () => {
         this.router.navigate(['/physiotherapist-list']);
@@ -40,8 +44,6 @@ export class PatientRegisterComponent {
     dni: ['', {validators: [Validators.required], updatedOn: 'change'}],
     age: ['', {validators: [Validators.required], updatedOn: 'change'}],
     birthdayDate: ['', {validators: [Validators.required], updatedOn: 'change'}],
-    appointmentQuantity: ['', {validators: [Validators.required], updatedOn: 'change'}],
-    location: ['', {validators: [Validators.required], updatedOn: 'change'}],
+    location: ['', {validators: [Validators.required], updatedOn: 'change'}]
   })
-
 }
