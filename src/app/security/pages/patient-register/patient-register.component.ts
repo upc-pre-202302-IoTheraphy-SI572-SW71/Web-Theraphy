@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Patient} from "../../model/patient";
-import {PatientService} from "../../services/patient.service";;
+import {PatientService} from "../../services/patient.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DatePipe} from "@angular/common";
