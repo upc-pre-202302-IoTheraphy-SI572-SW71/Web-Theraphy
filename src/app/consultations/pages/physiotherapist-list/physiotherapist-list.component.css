@@ -1,7 +1,9 @@
 .page {
+  position: fixed;
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   width: 100%;
   background-color: #F5F5F8;
 }
@@ -36,6 +38,8 @@
   margin-bottom: 24px;
   width: 100%;
   margin-top: 24px;
+  max-height: calc(90vh - 150px);; /* Establece una altura máxima para las tarjetas */
+  overflow-y: scroll;
 }
 
 h1, p, span {
@@ -116,4 +120,18 @@ mat-icon {
 
 .contents {
   width: 100%;
+}
+
+.cards mat-card {
+  margin-bottom: 30px;
+}
+
+mat-icon {
+  color: goldenrod;
+  margin-right: 5px; /* Añade un margen a la izquierda para separar la estrella del puntaje */
+}
+
+mat-card-subtitle {
+  display: flex;
+  align-items: center;
 }
