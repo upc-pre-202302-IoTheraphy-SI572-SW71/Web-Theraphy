@@ -8,13 +8,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from "@angular/material/divider";
-
-
 import {MatButtonModule} from "@angular/material/button";
-
-
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {PhysiotherapistListComponent} from "./consultations/pages/physiotherapist-list/physiotherapist-list.component";
 import {BookConsultationComponent} from "./consultations/pages/book-consultation/book-consultation.component";
@@ -30,7 +24,6 @@ import {
 } from "./security/pages/physiotherapist-register/physiotherapist-register.component";
 import {ConsultationDetailsComponent} from "./consultations/pages/consultation-details/consultation-details.component";
 import {SidenavComponent} from "./app-shell/sidenav/sidenav.component";
-import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {NgIf} from "@angular/common";
