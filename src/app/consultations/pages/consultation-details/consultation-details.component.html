@@ -12,9 +12,9 @@
     </div>
 
     <div class="flex-container">
-      <img src="https://avatars.githubusercontent.com/u/89089619?v=4" alt="Italian Trulli">
+      <img src="{{this.physiotherapist.photoUrl}}" alt="Italian Trulli">
       <div class="description">
-        <h3>Dr. Crishtian Gómez</h3>
+        <h3>Dr. {{this.physiotherapist.user.firstname}}</h3>
         <h4 class="text">Physiotherapist</h4>
       </div>
     </div>
@@ -23,21 +23,21 @@
       <div class="item">
         <div class="icon"><img src="../../../../assets/img/patient-icon.ico" alt=""></div>
         <div class="description">
-          <h4 class="text">23</h4>
+          <h4 class="text">{{this.physiotherapist.patientQuantity}}</h4>
           <h4 class="text">Patients</h4>
         </div>
       </div>
       <div class="item">
         <div class="icon"><img src="../../../../assets/img/experience-icon.ico" alt=""></div>
         <div class="description">
-          <h4 class="text">8 years</h4>
+          <h4 class="text">{{this.physiotherapist.yearsExperience}}</h4>
           <h4 class="text">Experience</h4>
         </div>
       </div>
       <div class="item">
         <div class="icon"><img src="../../../../assets/img/rating-icon.ico" alt=""></div>
         <div class="description">
-          <h4 class="text">4.5</h4>
+          <h4 class="text">{{this.physiotherapist.rating}}</h4>
           <h4 class="text">Rating</h4>
         </div>
       </div>
@@ -55,19 +55,19 @@
       <div class="hours-days">
         <div class="day">
           <h3>Date</h3>
-          <h4>25/12/2023</h4>
+          <h4><b>{{this.consultation.date}}</b></h4>
         </div>
         <div class="day">
           <h3>Time</h3>
-          <h4>4:00pm</h4>
+          <h4><b>{{this.consultation.hour}}</b></h4>
         </div>
         <div class="day">
           <h3>Location</h3>
-          <h4>Primavera, Av</h4>
+          <h4><b>{{this.consultation.place}}</b></h4>
         </div>
         <div class="day">
           <h3>Topic</h3>
-          <h4>Knees</h4>
+          <h4><b>{{this.consultation.topic}}</b></h4>
         </div>
         <div class="day">
           <h3>Total</h3>
