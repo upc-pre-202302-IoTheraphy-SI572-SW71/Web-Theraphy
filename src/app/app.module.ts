@@ -23,7 +23,7 @@ import {
   PhysiotherapistRegisterComponent
 } from "./security/pages/physiotherapist-register/physiotherapist-register.component";
 import {ConsultationDetailsComponent} from "./consultations/pages/consultation-details/consultation-details.component";
-import {SidenavComponent} from "./app-shell/sidenav/sidenav.component";
+import {SidenavComponent} from "./shared/components/sidenav/sidenav.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {NgIf} from "@angular/common";
@@ -35,6 +35,7 @@ import {MatLegacyTooltipModule} from "@angular/material/legacy-tooltip";
 import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+
 
 @NgModule({
   declarations: [
