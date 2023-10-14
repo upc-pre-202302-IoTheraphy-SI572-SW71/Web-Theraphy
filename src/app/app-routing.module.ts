@@ -26,8 +26,8 @@ const routes: Routes = [
 
   {path: 'physiotherapist-list', component: PhysiotherapistListComponent},
   {path: 'physiotherapist-profile/:id', component: PhysiotherapistProfileComponent},
-  {path: 'book-consultation', component: BookConsultationComponent},
-  {path: 'consultation-details', component: ConsultationDetailsComponent},
+  {path: 'book-consultation/:id', component: BookConsultationComponent},
+  {path: 'consultation-details/physiotherapist/:id', component: ConsultationDetailsComponent},
   {path: 'add-review', component: AddReviewComponent},
   {path: 'my-theraphy', component: MyTheraphyComponent}
 

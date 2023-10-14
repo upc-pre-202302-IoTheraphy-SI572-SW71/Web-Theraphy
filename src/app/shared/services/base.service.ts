@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
+import {Consultation} from "../../consultations/model/consultation";
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,16 @@ export class BaseService<T> {
         retry(2),
         catchError(this.handleError));
   }
+
+  getConsultationByPhysiotherapistId(id: number): Observable<T>{
+    return this.http.get<T>(
+      `${this.basePath}/consultationByPhysiotherapistId/${id}`,
+      this.httpOptions)
+      .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+
 
   // Get All Resources
   getAll(): Observable<T> {

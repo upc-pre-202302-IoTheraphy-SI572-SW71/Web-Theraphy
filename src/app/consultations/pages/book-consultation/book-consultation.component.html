@@ -5,117 +5,135 @@
   </div>
 
   <div class="profile">
-    <img src="https://www.doctorsatbayside.com.au/wp-content/uploads/2021/05/1-scaled-e1620267965562-768x1024.jpg" alt="Descripción de la imagen">
+    <img src="{{this.physiotherapist.photoUrl}}" alt="Descripción de la imagen">
 
     <div class="name__profile">
-      <h2>Dr. Cristian Gomez <br> Physioterapist</h2>
-<!--      <h3>physioterapist</h3>-->
+      <h2>Dr. {{this.physiotherapist.user.firstname}} {{this.physiotherapist.user.lastname}} <br> Physioterapist </h2>
     </div>
   </div>
 
 
-  <div class="icons">
-    <div class="circle">
-      <mat-icon style="color: #014DBF;  transform: scale(1.5);">account_circle</mat-icon>
-    </div>
-<!--    <h2>23</h2>-->
-    <h2>Patients</h2>
-
-    <div class="circle">
-      <mat-icon style="color: #014DBF; transform: scale(1.5);">work</mat-icon>
-    </div>
-<!--    <h2>8</h2>-->
-    <h4>Experience</h4>
-
-    <div class="circle">
-     <mat-icon style="color: #014DBF; transform: scale(1.5);">star</mat-icon>
-    </div>
-<!--    <h2>4.5</h2>-->
-    <h4>Rating</h4>
-
-
-    <div class="circle">
-      <mat-icon style="color: #014DBF; transform: scale(1.5);"> rate_review </mat-icon>
-    </div>
-<!--    <h2>10</h2>-->
-    <h4>Reviews</h4>
-
-  </div>
-
-
-  <div class="form">
-
-    <div class="form__twosection">
-      <div class="form__section1">
-        <p>Day</p>
-        <mat-form-field class="custom-form-field">
-          <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event.target.value)" class="custom-input" required>
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker ></mat-datepicker>
-        </mat-form-field>
-
-
+  <div class="icons icon-container">
+    <div class="icon-container__1">
+      <div class="circle">
+        <mat-icon style="color: #014DBF;  transform: scale(1.5);">account_circle</mat-icon>
       </div>
+      <h2>{{this.physiotherapist.patientQuantity}}</h2>
+      <!--    <h2>23</h2>-->
+      <h4>Patients</h4>
+    </div>
 
-      <div class="form__section2">
-        <p>Time</p>
-        <div class="form__section2__two">
-          <mat-form-field>
-            <mat-label>Selecciona la hora</mat-label>
-            <mat-select [(ngModel)]="selectedHour">
-              <mat-option *ngFor="let hour of hours" [value]="hour" required>{{ hour }}</mat-option>
-            </mat-select>
+    <div class="icon-container__2">
+      <div class="circle">
+        <mat-icon style="color: #014DBF; transform: scale(1.5);">work</mat-icon>
+      </div>
+      <h2>{{this.physiotherapist.yearsExperience}}</h2>
+      <h4>Experience</h4>
+    </div>
+
+    <div class="icon-container__3">
+      <div class="circle">
+        <mat-icon style="color: #014DBF; transform: scale(1.5);">star</mat-icon>
+      </div>
+      <h2>{{this.physiotherapist.rating}}</h2>
+      <h4>Rating</h4>
+
+    </div>
+
+    <div class="icon-container__4">
+      <div class="circle">
+        <mat-icon style="color: #014DBF; transform: scale(1.5);"> rate_review </mat-icon>
+      </div>
+<!--      <h2>{{this.physiotherapist.review}}</h2>-->
+      <h4>Reviews</h4>
+    </div>
+
+
+  </div>
+
+
+  <form [formGroup]="consultationForm" (ngSubmit)="onSubmit()">
+    <div class="form">
+      <div class="form__twosection">
+        <div class="form__section1">
+          <p>Day</p>
+          <mat-form-field class="custom-form-field">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event.target.value)" class="custom-input" formControlName="date" [(ngModel)]="consultation.date" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker ></mat-datepicker>
           </mat-form-field>
-          <div *ngIf="selectedHour !== null && selectedMinute !== null">
-            Hora seleccionada: {{ selectedHour === 12 ? 12 : selectedHour % 12 }}:{{ selectedMinute < 10 ? '0' + selectedMinute : selectedMinute }}
-            {{ selectedHour < 12 ? "AM" : "PM" }}
+          <div *ngIf="isSundaySelected" class="error-message">
+             can't select sunday day
           </div>
-          <mat-form-field>
-            <mat-label>Selecciona los minutos</mat-label>
-            <mat-select [(ngModel)]="selectedMinute">
-              <mat-option *ngFor="let minute of minutes" [value]="minute" required>{{ minute }}</mat-option>
-            </mat-select>
-          </mat-form-field>
 
 
         </div>
 
+        <div class="form__section2">
+          <p>Time</p>
+          <div class="form__section2__two">
+            <mat-form-field>
+              <mat-label>Selecciona la hora</mat-label>
+              <mat-select [(ngModel)]="selectedHour" formControlName="hour">
+                <mat-option *ngFor="let hour of hours" [value]="hour" required>{{ hour }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="selectedHour !== null && selectedMinute !== null">
+              Hora seleccionada: {{ selectedHour === 12 ? 12 : selectedHour % 12 }}:{{ selectedMinute < 10 ? '0' + selectedMinute : selectedMinute }}
+              {{ selectedHour < 12 ? "AM" : "PM" }}
+            </div>
+            <mat-form-field>
+              <mat-label>Selecciona los minutos</mat-label>
+               <mat-select [(ngModel)]="selectedMinute" formControlName="minute">
+                <mat-option *ngFor="let minute of minutes" [value]="minute" required>{{ minute }}</mat-option>
+                 </mat-select>
+                </mat-form-field>
+
+
+          </div>
+
+
+        </div>
+      </div>
+
+
+      <div class="form__section3">
+        <p>Location</p>
+        <mat-form-field appearance="outline">
+
+          <input matInput placeholder="Location" formControlName="place" [(ngModel)]="consultation.place" required>
+
+
+        </mat-form-field>
 
       </div>
+
+      <div class="form__section4">
+        <p>Topic</p>
+        <mat-form-field appearance="outline">
+
+          <input matInput placeholder="Topic" formControlName="topic" [(ngModel)]="consultation.topic" required>
+
+
+        </mat-form-field>
+
+      </div>
+
+      <div class="form__button">
+        <button type="submit" mat-button style="color: white;" [disabled]="isSundaySelected">Make Appointment</button>
+      </div>
     </div>
-
-
-    <div class="form__section3">
-      <p>Location</p>
-      <mat-form-field appearance="outline">
-
-        <input matInput placeholder="Location" required>
-
-
-      </mat-form-field>
-
-    </div>
-
-    <div class="form__section4">
-      <p>Topic</p>
-      <mat-form-field appearance="outline">
-
-        <input matInput placeholder="Topic" required>
-
-
-      </mat-form-field>
-
-    </div>
-
-    <div class="form__button">
-      <button mat-button style="color: white;">Make Appointment</button>
-    </div>
+  </form>
 
 
 
-  </div>
+
+
+
+
+
 
 
 </section>
