@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Consultation} from "../../model/consultation";
-import {Physiotherapist} from "../../../therapy/model/physiotherapist";
+import {Physiotherapist} from "../../../security/model/physiotherapist";
 import {ConsultationService} from "../../services/consultation.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {User} from "../../../security/model/user";
+import {User} from "../../../security/model/CreateUsers/user";
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
 
 

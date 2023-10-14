@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PatientService} from "../../services/patient.service";
 import {Router} from "@angular/router";
-import {Physiotherapist} from "../../model/physiotherapist";
+import {Physiotherapist} from "../../model/CreateUsers/physiotherapist";
 import {PhysiotherapistService} from "../../services/physiotherapist.service";
 
 @Component({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, tap, throwError} from "rxjs";
-import {User} from "../model/user";
+import {User} from "../model/CreateUsers/user";
 import {BaseService} from "../../shared/services/base.service";
 
 @Injectable({

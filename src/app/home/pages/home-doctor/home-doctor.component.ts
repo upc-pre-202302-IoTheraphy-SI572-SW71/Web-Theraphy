@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Physiotherapist} from "../../../security/model/physiotherapist";
+import {Physiotherapist} from "../../../security/model/CreateUsers/physiotherapist";
 import {Treatment} from "../../../treatments/model/treatment";
-import {Patient} from "../../../security/model/patient";
+import {Patient} from "../../../security/model/CreateUsers/patient";
 import {PhysiotherapistsService} from "../../../security/services/physiotherapists.service";
 import {PatientsService} from "../../../security/services/patients.service";
 import {TreatmentsService} from "../../../treatments/services/treatments.service";

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Physiotherapist} from "../../../security/model/physiotherapist";
+import {Physiotherapist} from "../../../security/model/CreateUsers/physiotherapist";
 import {Treatment} from "../../../treatments/model/treatment";
 import {TreatmentsByPatient} from "../../../treatments/model/treatments-by-patient";
 import {Appointments} from "../../../therapy/model/appointments";

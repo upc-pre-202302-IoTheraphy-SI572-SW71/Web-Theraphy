@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Patient} from "../../model/patient";
+import {Patient} from "../../model/CreateUsers/patient";
 import {PatientService} from "../../services/patient.service";
 import {Router} from "@angular/router";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
