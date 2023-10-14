@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Physiotherapist} from "../../../therapy/model/physiotherapist";
+import {Physiotherapist} from "../../../security/model/physiotherapist";
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
 import { NgModel } from '@angular/forms';
 import {Route, Router} from "@angular/router"; // Agrega esta importación

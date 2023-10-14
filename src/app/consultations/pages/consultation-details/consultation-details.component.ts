@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Physiotherapist} from "../../../therapy/model/physiotherapist";
+import {Physiotherapist} from "../../../security/model/physiotherapist";
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
 import {ConsultationService} from "../../services/consultation.service";
 import {Consultation} from "../../model/consultation";

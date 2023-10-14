@@ -1,9 +1,9 @@
 
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
-import {Physiotherapist} from "../model/physiotherapist";
+import {Physiotherapist} from "../model/CreateUsers/physiotherapist";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Patient} from "../model/patient";
+import {Patient} from "../model/CreateUsers/patient";
 import {Observable} from "rxjs";
 
 @Injectable({

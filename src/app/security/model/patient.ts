@@ -1,3 +1,5 @@
+import {User} from "./CreateUsers/user";
+
 export interface Patient {
   id: number,
   dni: string,
@@ -6,17 +8,5 @@ export interface Patient {
   birthdayDate: string,
   appointmentQuantity: number,
   location: string
-}
-
-export class Patient{
-  constructor(
-    public id: number,
-    public dni: string,
-    public age: number,
-    public photoUrl: string,
-    public birthdayDate: string,
-    public appointmentQuantity: number,
-    public location: string
-  ) {
-  }
+  user: User
 }
