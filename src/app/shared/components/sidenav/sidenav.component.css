@@ -45,7 +45,7 @@ img {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 10px;
+  margin: 8px;
   border-radius: 5px;
 }
 
@@ -66,19 +66,19 @@ img {
 
 .sidenav-item-text {
   font-size: 14px;
-  margin-left: 10px;
+  margin-left: 14px;
 }
 
 .black-divider {
   border-top: 1px solid  #0069D0; /* Color de línea negro */
-  margin: 10px;
+  margin: 5px;
   box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.12), 0px 9px 10px 0px rgba(0, 0, 0, 0.14), 0px 5px 5px 0px rgba(0, 0, 0, 0.20);
 }
 
 /*Bottom*/
 .logout-container {
   background-color: #B0D0FF;
-  margin: 10px;
+  margin: 5px;
   border-radius: 5px;
 }
 

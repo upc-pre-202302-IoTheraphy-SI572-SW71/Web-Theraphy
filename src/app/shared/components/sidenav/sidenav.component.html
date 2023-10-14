@@ -23,7 +23,7 @@
   <!-- Log Out en la parte inferior -->
   <mat-nav-list>
   <div class="logout-container">
-    <mat-list-item class="sidenav-item logout" routerLinkActive="false" [routerLink]="['/']">
+    <mat-list-item class="sidenav-item logout" routerLinkActive="false" [routerLink]="['/']" (click)="logout()">
       <mat-icon color="primary"  matTooltipPosition="right">logout</mat-icon>
       <span mat-line class="sidenav-item-text" *ngIf="isExpanded">Log Out</span>
     </mat-list-item>
