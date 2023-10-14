@@ -38,8 +38,8 @@
               </mat-card-subtitle><!-- Aquí solo una estrella -->
             </div>
             <div class="card-button">
-              <button mat-raised-button color="primary" class="viewProfile-btn" [routerLink]="['/professional-profile-patient']">
-                <span>View Profile</span>
+              <button mat-raised-button color="primary" class="viewProfile-btn"  (click)="viewDetailsById(physiotherapist.id)">
+                <span>Details</span>
               </button>
             </div>
           </div>

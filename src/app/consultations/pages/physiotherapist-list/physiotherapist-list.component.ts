@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Physiotherapist} from "../../../therapy/model/physiotherapist";
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
-import { NgModel } from '@angular/forms'; // Agrega esta importación
+import { NgModel } from '@angular/forms';
+import {Route, Router} from "@angular/router"; // Agrega esta importación
 
 
 @Component({
@@ -15,7 +16,7 @@ export class PhysiotherapistListComponent implements OnInit{
   physiotherapists: Physiotherapist[]=[];
   originals: Physiotherapist[]=[];
 
-  constructor(private physiotherapistsService: PhysiotherapistService) { }
+  constructor(private physiotherapistsService: PhysiotherapistService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllPhysiotherapists()
@@ -37,5 +38,11 @@ export class PhysiotherapistListComponent implements OnInit{
     });
 
   }
+
+  viewDetailsById(id: number){
+    this.router.navigate([`/book-consultation/${id}`]);
+  }
+
+
 
 }
