@@ -13,32 +13,33 @@
       <form [formGroup]="registerForm" (submit)="registerUser()" class="signup-form">
 
         <div class="signup-form-general-data">
+          <div class="left-column">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Name</mat-label>
+              <input type="text" matInput formControlName="firstname" required [(ngModel)]="user.firstname">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Email</mat-label>
+              <input type="text" matInput formControlName="username" required [(ngModel)]="user.username">
+            </mat-form-field>
+          </div>
+          <div class="right-column">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>LastName</mat-label>
+              <input type="text" matInput formControlName="lastname" required [(ngModel)]="user.lastname">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password" required [(ngModel)]="user.password">
+            </mat-form-field>
+          </div>
 
-          <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Nombre</mat-label>
-            <input type="text" matInput formControlName="firstname" required [(ngModel)]="user.firstname">
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Apellido</mat-label>
-            <input type="text" matInput formControlName="lastname" required [(ngModel)]="user.lastname">
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Correo</mat-label>
-            <input type="text" matInput formControlName="username" required [(ngModel)]="user.username">
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Contraseña</mat-label>
-            <input type="text" matInput formControlName="password" required [(ngModel)]="user.password">
-          </mat-form-field>
 
           <mat-form-field class="role-selection">
-            <mat-label>Selecciona tu rol:</mat-label>
+            <mat-label>Select your role:</mat-label>
             <mat-select formControlName="role" [(ngModel)]="user.role" name="role">
-              <mat-option value="PATIENT">Paciente</mat-option>
-              <mat-option value="PHYSIOTHERAPIST">Physioterapeuta</mat-option>
+              <mat-option value="PATIENT">Patient</mat-option>
+              <mat-option value="PHYSIOTHERAPIST">Physiotherapist</mat-option>
             </mat-select>
           </mat-form-field>
 

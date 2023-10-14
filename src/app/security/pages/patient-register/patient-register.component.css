@@ -1,3 +1,22 @@
+.signup-form-general-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+  max-width: 300px;
+}
+
+.signup-button {
+  grid-column: span 2;
+  justify-self: center;
+  margin-top: 1px;
+}
+
 .signup-container {
   height: 100vh;
   background-color: #007AF0;
@@ -11,7 +30,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 55%;
+  width: 45%;
   height: 100%;
 }
 .signup-form-container {

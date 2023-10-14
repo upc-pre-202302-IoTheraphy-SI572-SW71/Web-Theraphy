@@ -39,7 +39,9 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatLegacyTooltipModule} from "@angular/material/legacy-tooltip";
-
+import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
