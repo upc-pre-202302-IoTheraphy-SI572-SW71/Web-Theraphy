@@ -55,6 +55,7 @@ export class BookConsultationComponent implements OnInit{
 
 
 
+
   constructor(private consultationService: ConsultationService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private physiotherapistService: PhysiotherapistService) {
     this.consultationForm = this.fb.group({
       date: ['', Validators.required],
@@ -70,8 +71,9 @@ export class BookConsultationComponent implements OnInit{
     });
 
   }
-
-
+  goBack() {
+    window.history.back();
+  }
 //juntar el hour y el minute
 
   //el id lo recibo de la otra vista

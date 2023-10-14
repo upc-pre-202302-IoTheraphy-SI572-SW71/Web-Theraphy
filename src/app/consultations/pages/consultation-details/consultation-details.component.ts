@@ -32,6 +32,9 @@ export class ConsultationDetailsComponent implements OnInit{
     })
   }
 
+  goBack() {
+    window.history.back();
+  }
   // getConsultationByPhysiotherapistId(){
   //
   //
