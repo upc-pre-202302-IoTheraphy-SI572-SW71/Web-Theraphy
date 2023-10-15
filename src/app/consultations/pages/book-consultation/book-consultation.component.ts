@@ -30,6 +30,8 @@ export class BookConsultationComponent implements OnInit{
   selectedPeriod: string = "";
 
   isSundaySelected: boolean = false;
+  isBeforeDate: boolean = false;
+  // selectedDate: Date = new Date();
 
   consultation: Consultation = new Consultation(
     0,
@@ -65,8 +67,7 @@ export class BookConsultationComponent implements OnInit{
       topic: ['', Validators.required],
     });
     this.route.params.subscribe(params => {
-      this.physiotherapistId = +params['id']; // Convierte el valor a número si es necesario
-      // Utiliza el ID para cargar los detalles del fisioterapeuta con ese ID
+      this.physiotherapistId = +params['id'];
       this.consultationForm.patchValue({ physiotherapistId: this.physiotherapistId });
     });
 
@@ -74,9 +75,7 @@ export class BookConsultationComponent implements OnInit{
   goBack() {
     window.history.back();
   }
-//juntar el hour y el minute
 
-  //el id lo recibo de la otra vista
   onSubmit(){
     if(this.consultationForm.valid){
       this.consultation.date = this.schedule;
@@ -99,25 +98,77 @@ export class BookConsultationComponent implements OnInit{
 
     }
   }
-
+  isBeforeHour: boolean = false;
+  isBeforeMinute: boolean = false;
+  // currentData2!: Date;
   onDateChange(selectedDate: Date): void {
     console.log(selectedDate.getDate().toString());
     console.log((selectedDate.getMonth() + 1).toString());
     console.log(selectedDate.getFullYear().toString());
     this.schedule = selectedDate.getFullYear().toString() + "-" + (selectedDate.getMonth() + 1).toString() + "-" + selectedDate.getDate().toString();
-    // this.stringSchedule = this.consultationForm.get('date')?.setValue(this.schedule);
+
 
     console.log('la fecha que eligio su cita es: ' + this.schedule);
-    // Verifica si la fecha seleccionada es un domingo (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+
     if (selectedDate) {
       const dayOfWeek = selectedDate.getDay();
       this.isSundaySelected = dayOfWeek === 0;
+
+      const currentDate = new Date();
+      // currentDate.setHours(0, 0, 0, 0);
+      if (selectedDate < currentDate) {
+        this.isBeforeDate = true;
+      } else if(selectedDate == currentDate) {
+        this.isBeforeDate = true;
+        // const currentDate = new Date();
+        // console.log("la hora es: " + this.selectedHour);
+        // console.log("The hour: " + currentDate.getHours());
+        // if(this.selectedHour < currentDate.getHours()){
+        //   this.isBeforeHour = true;
+        //   console.log("el minuto es: " + this.selectedMinute);
+        //   console.log("The minute: " + currentDate.getMinutes());
+        //   if(this.selectedMinute < currentDate.getMinutes()){
+        //     this.isBeforeMinute = true;
+        //   }
+        //   else{
+        //     this.isBeforeMinute = false;
+        //   }
+        // }else{
+        //   this.isBeforeHour = false;
+        // }
+      }
+      else{
+        this.isBeforeDate = false;
+      }
+      console.log("Select date: " + selectedDate);
+      console.log("current date: " + currentDate);
     }
-  }
-
-  enviarDatos() {
 
   }
+
+
+  onHourChange(){
+    const currentDate = new Date();
+    console.log("la hora es: " + this.selectedHour);
+    console.log("The hour: " + currentDate.getHours());
+    if(this.selectedHour < currentDate.getHours()){
+      this.isBeforeHour = true;
+    }
+    // this.isBeforeHour = this.selectedHour < currentDate.getHours();
+
+  }
+
+  onHourMinute(){
+    const currentDate = new Date();
+    console.log("el minuto es: " + this.selectedMinute);
+    console.log("The minute: " + currentDate.getMinutes());
+    if(this.selectedMinute < currentDate.getMinutes()){
+      this.isBeforeMinute = true;
+    }
+    // this.isBeforeMinute = this.selectedMinute < currentDate.getMinutes();
+
+  }
+
 
   createConsultation(consultation: Consultation){
     this.consultationService.createConsultation(consultation).subscribe((response:any) => {
@@ -135,18 +186,8 @@ export class BookConsultationComponent implements OnInit{
 
   }
 
-  // getPhysiotherapistById(){
-  //   this.physiotherapistService.getById(this.physiotherapistId).subscribe((response: any)=>{
-  //     this.physiotherapist = response.content;
-  //   })
-  // }
 
 
-
-
-  setPeriod() {
-    this.selectedPeriod = this.selectedHour < 12 ? "AM" : "PM";
-  }
 
 
 

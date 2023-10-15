@@ -16,8 +16,7 @@ export class ConsultationDetailsComponent implements OnInit{
   consultation!: Consultation;
   constructor(private route: ActivatedRoute, private physiotherapistService: PhysiotherapistService, private consultationService: ConsultationService) {
     this.route.params.subscribe(params => {
-      this.physiotherapistId = +params['id']; // Convierte el valor a número si es necesario
-      // Utiliza el ID para cargar los detalles del fisioterapeuta con ese ID
+      this.physiotherapistId = +params['id'];
     });
   }
 
@@ -35,9 +34,6 @@ export class ConsultationDetailsComponent implements OnInit{
   goBack() {
     window.history.back();
   }
-  // getConsultationByPhysiotherapistId(){
-  //
-  //
-  // }
+
 
 }
