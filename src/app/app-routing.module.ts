@@ -16,9 +16,11 @@ import {BookConsultationComponent} from "./consultations/pages/book-consultation
 import {AddReviewComponent} from "./social/pages/add-review/add-review.component";
 import {ConsultationDetailsComponent} from "./consultations/pages/consultation-details/consultation-details.component";
 import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
+import {HomePatientComponent} from "./home/pages/home-patient/home-patient.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'home-patient' , component: HomePatientComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'auth-registration', component: SignupComponent},
   {path: 'registration-patient', component: PatientRegisterComponent},
