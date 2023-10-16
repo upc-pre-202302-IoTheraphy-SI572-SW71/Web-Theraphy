@@ -63,6 +63,14 @@ export class BaseService<T> {
       catchError(this.handleError));
   }
 
+  getReviewsByPhysiotherapistId(id: number): Observable<T>{
+    return this.http.get<T>(
+      `${this.basePath}/byPhysiotherapistId/${id}`,
+      this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
 
   // Get All Resources
   getAll(): Observable<T> {

@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Consultation} from "../../model/consultation";
 import {Physiotherapist} from "../../../security/model/physiotherapist";
-import {ConsultationService} from "../../services/consultation.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {User} from "../../../security/model/CreateUsers/user";
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
-
+import {SharedConsutationService} from "../../services/shared-consutation.service";
+import {ReviewService} from "../../../social/services/review.service";
 
 @Component({
   selector: 'app-book-consultation',
@@ -17,21 +15,15 @@ import {PhysiotherapistService} from "../../../security/services/physiotherapist
 export class BookConsultationComponent implements OnInit{
   hours: number[] = Array.from({ length: 13 }, (_, i) => i + 7); // Array de horas (0-23)
   minutes: number[] = [0, 15, 20, 30, 35, 45, 50]; // Array de minutos (0-59)
-
   selectedHour: number = 7;
   selectedMinute: number = 0;
-
   schedule: string = "";
-
-  selectedDate: Date | null = null;
-
-  // hourSelected: boolean = false;
-
-  selectedPeriod: string = "";
-
   isSundaySelected: boolean = false;
   isBeforeDate: boolean = false;
-  // selectedDate: Date = new Date();
+  consultationForm: FormGroup;
+  physiotherapist!: Physiotherapist;
+  physiotherapistId: number = 0;
+  reviewQuantity: number = 0 ;
 
   consultation: Consultation = new Consultation(
     0,
@@ -44,21 +36,8 @@ export class BookConsultationComponent implements OnInit{
     1
   );
 
-  // user!: User;
 
-  consultationForm: FormGroup;
-
-  physiotherapist!: Physiotherapist;
-  physiotherapistId: number = 0;
-
-
-
-
-
-
-
-
-  constructor(private consultationService: ConsultationService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private physiotherapistService: PhysiotherapistService) {
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private physiotherapistService: PhysiotherapistService, private sharedConsultationService: SharedConsutationService, private reviewService: ReviewService) {
     this.consultationForm = this.fb.group({
       date: ['', Validators.required],
       hour: ['', Validators.required],
@@ -72,6 +51,19 @@ export class BookConsultationComponent implements OnInit{
     });
 
   }
+
+  ngOnInit(): void {
+    this.physiotherapistService.getById(this.physiotherapistId).subscribe((response: any)=>{
+      this.physiotherapist = response;
+      console.log(response);
+    })
+    this.reviewService.getReviewsByPhysiotherapistId(this.physiotherapistId).subscribe((response:any) => {
+      this.reviewQuantity = response.content.length;
+    })
+  }
+
+
+
   goBack() {
     window.history.back();
   }
@@ -94,48 +86,28 @@ export class BookConsultationComponent implements OnInit{
       this.consultation.place = this.consultationForm.value.place;
       this.consultation.topic = this.consultationForm.value.topic;
 
-      this.createConsultation(this.consultation);
-
+      this.sharedConsultationService.setConsultation(this.consultation);
+      this.router.navigate([`/consultation-details/physiotherapist/${this.physiotherapist.id}`]);
     }
   }
   isBeforeHour: boolean = false;
   isBeforeMinute: boolean = false;
-  // currentData2!: Date;
   onDateChange(selectedDate: Date): void {
     console.log(selectedDate.getDate().toString());
     console.log((selectedDate.getMonth() + 1).toString());
     console.log(selectedDate.getFullYear().toString());
     this.schedule = selectedDate.getFullYear().toString() + "-" + (selectedDate.getMonth() + 1).toString() + "-" + selectedDate.getDate().toString();
-
-
     console.log('la fecha que eligio su cita es: ' + this.schedule);
-
     if (selectedDate) {
       const dayOfWeek = selectedDate.getDay();
       this.isSundaySelected = dayOfWeek === 0;
 
       const currentDate = new Date();
-      // currentDate.setHours(0, 0, 0, 0);
+
       if (selectedDate < currentDate) {
         this.isBeforeDate = true;
       } else if(selectedDate == currentDate) {
         this.isBeforeDate = true;
-        // const currentDate = new Date();
-        // console.log("la hora es: " + this.selectedHour);
-        // console.log("The hour: " + currentDate.getHours());
-        // if(this.selectedHour < currentDate.getHours()){
-        //   this.isBeforeHour = true;
-        //   console.log("el minuto es: " + this.selectedMinute);
-        //   console.log("The minute: " + currentDate.getMinutes());
-        //   if(this.selectedMinute < currentDate.getMinutes()){
-        //     this.isBeforeMinute = true;
-        //   }
-        //   else{
-        //     this.isBeforeMinute = false;
-        //   }
-        // }else{
-        //   this.isBeforeHour = false;
-        // }
       }
       else{
         this.isBeforeDate = false;
@@ -146,7 +118,6 @@ export class BookConsultationComponent implements OnInit{
 
   }
 
-
   onHourChange(){
     const currentDate = new Date();
     console.log("la hora es: " + this.selectedHour);
@@ -154,7 +125,6 @@ export class BookConsultationComponent implements OnInit{
     if(this.selectedHour < currentDate.getHours()){
       this.isBeforeHour = true;
     }
-    // this.isBeforeHour = this.selectedHour < currentDate.getHours();
 
   }
 
@@ -165,34 +135,7 @@ export class BookConsultationComponent implements OnInit{
     if(this.selectedMinute < currentDate.getMinutes()){
       this.isBeforeMinute = true;
     }
-    // this.isBeforeMinute = this.selectedMinute < currentDate.getMinutes();
 
   }
-
-
-  createConsultation(consultation: Consultation){
-    this.consultationService.createConsultation(consultation).subscribe((response:any) => {
-      console.log("Appointment created")
-    })
-    // this.sharedService.setPhysiotherapist(this.physiotherapist);
-    this.router.navigate([`/consultation-details/physiotherapist/${this.physiotherapist.id}`]);
-  }
-  ngOnInit(): void {
-    // this.getPhysiotherapistById(this.physiotherapistId);
-    this.physiotherapistService.getById(this.physiotherapistId).subscribe((response: any)=>{
-      this.physiotherapist = response;
-      console.log(response);
-    })
-
-  }
-
-
-
-
-
-
-
-
-
 
 }

@@ -7,7 +7,6 @@ export interface Consultation{
   hour: string;
   place: string;
   physiotherapistId: number;
-  // therapyId?: number;
 }
 
 export class Consultation {
@@ -20,7 +19,6 @@ export class Consultation {
     public hour: string,
     public place: string,
     public physiotherapistId: number,
-    // public therapyId?: number
   ) {
 
   }

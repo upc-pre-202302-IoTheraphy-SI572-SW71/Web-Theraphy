@@ -38,7 +38,7 @@
   margin-bottom: 24px;
   width: 100%;
   margin-top: 24px;
-  max-height: calc(90vh - 150px);; /* Establece una altura máxima para las tarjetas */
+  max-height: calc(90vh - 150px);
   overflow-y: scroll;
 }
 
@@ -128,7 +128,7 @@ mat-icon {
 
 mat-icon {
   color: goldenrod;
-  margin-right: 5px; /* Añade un margen a la izquierda para separar la estrella del puntaje */
+  margin-right: 5px;
 }
 
 mat-card-subtitle {

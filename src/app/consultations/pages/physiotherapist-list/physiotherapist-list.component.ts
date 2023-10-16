@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Physiotherapist} from "../../../security/model/physiotherapist";
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
-import { NgModel } from '@angular/forms';
-import {Route, Router} from "@angular/router"; // Agrega esta importación
+import {Route, Router} from "@angular/router";
 
 
 @Component({
@@ -32,7 +31,6 @@ export class PhysiotherapistListComponent implements OnInit{
   filterPhysiotherapists(searchName: string) {
     this.physiotherapists = this.originals;
     this.physiotherapists = this.physiotherapists.filter(physiotherapist => {
-      // Aquí comparamos el nombre del fisioterapeuta con el nombre de búsqueda
       return physiotherapist.user.firstname.toLowerCase().includes(searchName.toLowerCase()) ||
         physiotherapist.user.lastname.toLowerCase().includes(searchName.toLowerCase());
     });
