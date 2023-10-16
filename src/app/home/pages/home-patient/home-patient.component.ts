@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Physiotherapist} from "../../../security/model/CreateUsers/physiotherapist";
-import {Treatment} from "../../../treatments/model/treatment";
-import {TreatmentsByPatient} from "../../../treatments/model/treatments-by-patient";
-import {Appointments} from "../../../therapy/model/appointments";
-import {PhysiotherapistsService} from "../../../security/services/physiotherapists.service";
-import {TreatmentsService} from "../../../treatments/services/treatments.service";
-import {TreatmentsByPatientService} from "../../../treatments/services/treatments-by-patient.service";
-import {AppointmentsService} from "../../../therapy/services/appointments.service";
+
 
 @Component({
   selector: 'app-home-patient',
@@ -14,8 +7,15 @@ import {AppointmentsService} from "../../../therapy/services/appointments.servic
   styleUrls: ['./home-patient.component.css']
 })
 export class HomePatientComponent implements OnInit {
+  disabled = false;
+  max = 100;
+  min = 0;
+  showTicks = false;
+  step = 1;
+  thumbLabel = true;
+  value = 18;
 
-  physiotherapists: Physiotherapist[]=[];
+ /* physiotherapists: Physiotherapist[]=[];
   treatments: Treatment[]=[];
   myTreatments: TreatmentsByPatient[]=[];
   appointments: Appointments[]=[];
@@ -26,15 +26,15 @@ export class HomePatientComponent implements OnInit {
     this.currentUser = Number(sessionStorage.getItem("typeId"));
 
   }
-
+*/
   ngOnInit(): void {
-    this.getAllPhysiotherapists();
+    /*this.getAllPhysiotherapists();
     this.getAllTreatments();
     this.getAllMyTreatments();
-    this.getAllAppointments();
+    this.getAllAppointments();*/
   }
 
-  getAllAppointments(){
+  /*getAllAppointments(){
     this.appointmentsService.getAll().subscribe((response: any) => {
       this.appointments = response.content;
     })
@@ -56,5 +56,5 @@ export class HomePatientComponent implements OnInit {
     this.myTreatmentsService.getAll().subscribe((response: any)=>{
       this.myTreatments = response.content;
     })
-  }
+  }*/
 }
