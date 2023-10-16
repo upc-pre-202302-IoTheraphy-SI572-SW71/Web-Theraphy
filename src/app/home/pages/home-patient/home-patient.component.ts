@@ -14,6 +14,13 @@ import {AppointmentsService} from "../../../therapy/services/appointments.servic
   styleUrls: ['./home-patient.component.css']
 })
 export class HomePatientComponent implements OnInit {
+  disabled = false;
+  max = 100;
+  min = 0;
+  showTicks = false;
+  step = 1;
+  thumbLabel = true;
+  value = 18;
 
  /* physiotherapists: Physiotherapist[]=[];
   treatments: Treatment[]=[];
