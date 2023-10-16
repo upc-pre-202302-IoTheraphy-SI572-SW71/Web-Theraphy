@@ -35,6 +35,9 @@ import {MatLegacyTooltipModule} from "@angular/material/legacy-tooltip";
 import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {HomePatientComponent} from "./home/pages/home-patient/home-patient.component";
+import {MatLegacySliderModule} from "@angular/material/legacy-slider";
+import {MatSliderModule} from "@angular/material/slider";
 
 
 @NgModule({
@@ -50,7 +53,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     PhysiotherapistRegisterComponent,
     ConsultationDetailsComponent,
     SidenavComponent,
-    MyTheraphyComponent
+    MyTheraphyComponent,
+    HomePatientComponent
   ],
   imports: [
     BrowserModule,
@@ -72,9 +76,10 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatSelectModule,
     MatListModule,
     MatSidenavModule,
-    MatLegacyTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatLegacyTooltipModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

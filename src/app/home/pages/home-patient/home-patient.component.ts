@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-/*import {Physiotherapist} from "../../../security/model/physiotherapist";
-import {Treatment} from "../../../treatments/model/treatment";
-import {TreatmentsByPatient} from "../../../treatments/model/treatments-by-patient";
-import {Appointments} from "../../../therapy/model/appointments";
-import {PhysiotherapistsService} from "../../../security/services/physiotherapists.service";
-import {TreatmentsService} from "../../../treatments/services/treatments.service";
-import {TreatmentsByPatientService} from "../../../treatments/services/treatments-by-patient.service";
-import {AppointmentsService} from "../../../therapy/services/appointments.service";*/
+
 
 @Component({
   selector: 'app-home-patient',
