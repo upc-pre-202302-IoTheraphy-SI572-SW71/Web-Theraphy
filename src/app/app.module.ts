@@ -34,6 +34,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatLegacyTooltipModule} from "@angular/material/legacy-tooltip";
 import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
 import {HomePatientComponent} from "./home/pages/home-patient/home-patient.component";
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
     declarations: [
@@ -49,7 +50,7 @@ import {HomePatientComponent} from "./home/pages/home-patient/home-patient.compo
         ConsultationDetailsComponent,
         SidenavComponent,
         MyTheraphyComponent,
-        HomePatientComponent
+        HomePatientComponent,
     ],
   imports: [
     BrowserModule,
@@ -71,7 +72,8 @@ import {HomePatientComponent} from "./home/pages/home-patient/home-patient.compo
     MatSelectModule,
     MatListModule,
     MatSidenavModule,
-    MatLegacyTooltipModule
+    MatLegacyTooltipModule,
+    MatSliderModule
   ],
     providers: [],
     exports: [
