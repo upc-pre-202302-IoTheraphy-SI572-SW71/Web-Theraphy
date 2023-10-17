@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Consultation} from "../../model/consultation";
+import {createConsultation} from "../../model/createConsultation";
 import {Physiotherapist} from "../../../security/model/physiotherapist";
 import {ConsultationService} from "../../services/consultation.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -33,7 +33,7 @@ export class BookConsultationComponent implements OnInit{
   isBeforeDate: boolean = false;
   // selectedDate: Date = new Date();
 
-  consultation: Consultation = new Consultation(
+  consultation: createConsultation = new createConsultation(
     0,
     false,
     '',
@@ -170,7 +170,7 @@ export class BookConsultationComponent implements OnInit{
   }
 
 
-  createConsultation(consultation: Consultation){
+  createConsultation(consultation: createConsultation){
     this.consultationService.createConsultation(consultation).subscribe((response:any) => {
       console.log("Appointment created")
     })

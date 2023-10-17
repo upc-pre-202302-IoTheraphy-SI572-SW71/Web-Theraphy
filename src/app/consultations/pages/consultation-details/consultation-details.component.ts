@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Physiotherapist} from "../../../security/model/physiotherapist";
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
 import {ConsultationService} from "../../services/consultation.service";
-import {Consultation} from "../../model/consultation";
+import {createConsultation} from "../../model/createConsultation";
 
 @Component({
   selector: 'app-consultation-details',
@@ -13,7 +13,7 @@ import {Consultation} from "../../model/consultation";
 export class ConsultationDetailsComponent implements OnInit{
   physiotherapist!: Physiotherapist;
   physiotherapistId! : number;
-  consultation!: Consultation;
+  consultation!: createConsultation;
   constructor(private route: ActivatedRoute, private physiotherapistService: PhysiotherapistService, private consultationService: ConsultationService) {
     this.route.params.subscribe(params => {
       this.physiotherapistId = +params['id'];
