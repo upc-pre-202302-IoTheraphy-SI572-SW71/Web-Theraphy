@@ -1,4 +1,9 @@
 import {Component, HostListener} from '@angular/core';
+import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
+import {Router} from "@angular/router";
+import {TherapyService} from "../../services/therapy.service";
+import {Therapy} from "../../model/therapy";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-my-theraphy',
@@ -16,6 +21,13 @@ export class MyTheraphyComponent {
 
 
   selectedDayIndex: number = 0; // Inicializa el día seleccionado como el primer día
+
+  currentDate: Date;
+
+  currentTherapy!: Therapy;
+  constructor(private therapyService: TherapyService, private router: Router) {
+    this.currentDate = new Date(); // Inicializa la propiedad con la fecha actual
+  }
 
   // Otras funciones de tu componente
 
@@ -55,5 +67,16 @@ export class MyTheraphyComponent {
   ngOnInit() {
     // Llama a la función de ajuste inicial para configurar el valor inicial
     this.onResize(null);
+    //this.currentTherapy$ = this.therapyService.getActiveTherapyByPatientId();
+
+    // this.currentTherapy$.subscribe( (therapy) =>
+    //   console.log(therapy.therapyName)
+    // )
+
+    //
+    this.therapyService.getActiveTherapyByPatientId().subscribe(
+         (value) => this.currentTherapy = value
+     );
+
   }
 }

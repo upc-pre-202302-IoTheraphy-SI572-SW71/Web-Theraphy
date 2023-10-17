@@ -2,9 +2,9 @@
   <div class="sidenav">
     <app-sidenav></app-sidenav>
   </div>
-  <div class="contents">
+  <div class="contents"  >
     <div class="info">
-      <h1>Knees</h1>
+      <h1>Knees {{currentTherapy.therapyName}}</h1>
       <p>Physical therapy for knees involves targeted exercises to strengthen muscles, improve mobility, and alleviate pain. Techniques include stretching, manual therapy, and modalities like cryotherapy and ultrasound to reduce inflammation.</p>
     </div>
 
@@ -22,6 +22,10 @@
       </button>
     </div>
 
+
+    <div class="info2">
+      <h2>{{currentDate | date: 'yyyy/MM/dd'}}</h2>
+    </div>
 
     <mat-card class="video-card">
       <iframe  src="https://www.youtube.com/embed/1FFwgNYDjl4?si=5PJlqnGox_wJyOkk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

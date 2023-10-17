@@ -17,7 +17,7 @@
     font-family: 'IBM Plex Sans', "Helvetica Neue", sans-serif;
   }
 
-  h1 {
+  .info  h1 {
     font-size: 36px;
     font-weight: 500;
     color: #014DBF;
@@ -38,6 +38,12 @@
     width: 90%;
   }
 
+  .info2  h2 {
+    margin-top: 40px;
+    font-size: 25px;
+    font-weight: 500;
+    color: #014DBF;
+  }
   .carousel-container {
     width: 90%;
     display: flex;
