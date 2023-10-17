@@ -4,8 +4,8 @@
   </div>
   <div class="contents"  >
     <div class="info">
-      <h1>Knees {{currentTherapy.therapyName}}</h1>
-      <p>Physical therapy for knees involves targeted exercises to strengthen muscles, improve mobility, and alleviate pain. Techniques include stretching, manual therapy, and modalities like cryotherapy and ultrasound to reduce inflammation.</p>
+      <h1>{{currentTherapy.therapyName}}</h1>
+      <p>{{currentTherapy.description}}</p>
     </div>
 
     <div class="carousel-container">
@@ -24,7 +24,7 @@
 
 
     <div class="info2">
-      <h2>{{currentDate | date: 'yyyy/MM/dd'}}</h2>
+      <h2>{{this.currentDate.getTime() | date: 'yyyy/MM/dd'}}</h2>
     </div>
 
     <mat-card class="video-card">

@@ -11,7 +11,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./my-theraphy.component.css']
 })
 export class MyTheraphyComponent {
-  days: string[] = Array.from({ length: 50 }, (_, i) => `DAY ${i + 1}`);
+  days!: string[];
   currentIndex: number = 0;
   maxVisibleDays: number = 10; // Define el número máximo de días visibles
 
@@ -19,29 +19,71 @@ export class MyTheraphyComponent {
   videoName: string = 'knee flexion';
   videoDescription: string = 'Discover a comprehensive approach to boost knee flexion through a series of targeted therapeutic exercises and cutting-edge methods. Regain mobility and reduce discomfort with this effective rehabilitation program for healthier knees.';
 
+  //EN ESTE DIA TE ENCUENTRAS
+  daySelectedByUser: number = 0;
+
+  indexInitial: number = 0;
+
 
   selectedDayIndex: number = 0; // Inicializa el día seleccionado como el primer día
 
-  currentDate: Date;
+
+  currentDate!: Date;
+  initialDate!: Date;
 
   currentTherapy!: Therapy;
   constructor(private therapyService: TherapyService, private router: Router) {
-    this.currentDate = new Date(); // Inicializa la propiedad con la fecha actual
   }
 
   // Otras funciones de tu componente
 
   selectDay(index: number) {
+    console.log(this.initialDate);
+    console.log(this.currentDate);
     this.selectedDayIndex = index;
+    //this.currentDate.setDate(this.initialDate.getDate() + (- this.daySelectedByUser + this.indexInitial + index))
+    this.daySelectedByUser = this.indexInitial + index;
+
+    const newDate = new Date(this.initialDate);
+
+    // Suma la cantidad de días a la copia de la fecha
+    newDate.setDate(newDate.getDate() + this.daySelectedByUser);
+
+    // Establece la fecha actual en la copia actualizada
+    this.currentDate = newDate;
+    //this.currentDate.setDate(this.initialDate.getDate() +  this.daySelectedByUser);
+
+    console.log(this.initialDate);
+    console.log(this.currentDate);
+    console.log(this.daySelectedByUser);
   }
 
 
   prevDay() {
+    console.log(this.initialDate);
+    console.log(this.currentDate);
     this.currentIndex = (this.currentIndex - 1 + this.days.length) % this.days.length;
+    this.indexInitial -= 1;
+    this.daySelectedByUser -=1;
+    this.currentDate.setDate(this.currentDate.getDate() - 1)
+
+    console.log(this.initialDate);
+    console.log(this.currentDate);
+    console.log(this.daySelectedByUser);
+
   }
 
   nextDay() {
+    console.log(this.initialDate);
+    console.log(this.currentDate);
     this.currentIndex = (this.currentIndex + 1) % this.days.length;
+    this.indexInitial += 1;
+    this.daySelectedByUser +=1;
+    this.currentDate.setDate(this.currentDate.getDate() + 1)
+    console.log(this.initialDate);
+    console.log(this.currentDate);
+    console.log(this.daySelectedByUser);
+
   }
 
   moveCarousel(step: number) {
@@ -75,8 +117,36 @@ export class MyTheraphyComponent {
 
     //
     this.therapyService.getActiveTherapyByPatientId().subscribe(
-         (value) => this.currentTherapy = value
+
+         (value) => {
+
+           this.currentTherapy = value;
+
+           this.initialDate = new Date(this.currentTherapy.startAt);
+           this.currentDate = new Date(this.currentTherapy.startAt); // Inicializa la propiedad con la fecha actual
+
+           this.initialDate.setDate(this.initialDate.getDate() +1);
+           this.currentDate.setDate(this.currentDate.getDate() + 1);
+
+           console.log(this.initialDate);
+           console.log(this.currentDate);
+
+
+           let initialDate = new Date(this.currentTherapy.startAt);
+           let finishDate = new Date(this.currentTherapy.finishAt);
+
+           let timeDifference = finishDate.getTime() - initialDate.getTime();
+
+           let daysDifference = timeDifference / (1000 * 3600 * 24) + 1;
+
+           console.log("La diferencia en días es: " + daysDifference);
+
+           this.days = Array.from({ length: daysDifference }, (_, i) => `DAY ${i + 1}`)
+
+         }
+
      );
+
 
   }
 }
