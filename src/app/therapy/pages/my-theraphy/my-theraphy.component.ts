@@ -4,6 +4,10 @@ import {Router} from "@angular/router";
 import {TherapyService} from "../../services/therapy.service";
 import {Therapy} from "../../model/therapy";
 import {Observable} from "rxjs";
+import {Treatment} from "../../model/treatment";
+import {TreatmentService} from "../../services/treatment.service";
+import {DatePipe} from "@angular/common";
+import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-my-theraphy',
@@ -15,7 +19,7 @@ export class MyTheraphyComponent {
   currentIndex: number = 0;
   maxVisibleDays: number = 10; // Define el número máximo de días visibles
 
-  videoUrl: string = 'https://youtu.be/cPgK6btnzK0?si=EI_K_ZHiChsCFyTD';
+  videoUrl!: SafeResourceUrl;
   videoName: string = 'knee flexion';
   videoDescription: string = 'Discover a comprehensive approach to boost knee flexion through a series of targeted therapeutic exercises and cutting-edge methods. Regain mobility and reduce discomfort with this effective rehabilitation program for healthier knees.';
 
@@ -32,7 +36,13 @@ export class MyTheraphyComponent {
   initialDate!: Date;
 
   currentTherapy!: Therapy;
-  constructor(private therapyService: TherapyService, private router: Router) {
+
+  treatment!: Treatment;
+
+  isTreatment: boolean = false;
+  isAppointment: boolean = false;
+
+  constructor(private therapyService: TherapyService, private treatmentService: TreatmentService, private sanitizer: DomSanitizer ,private router: Router) {
   }
 
   // Otras funciones de tu componente
@@ -56,6 +66,33 @@ export class MyTheraphyComponent {
     console.log(this.initialDate);
     console.log(this.currentDate);
     console.log(this.daySelectedByUser);
+
+    const year = this.currentDate.getFullYear();
+    const month = this.currentDate.getMonth() + 1; // Meses en JavaScript se cuentan desde 0
+    const day = this.currentDate.getDate();
+
+    // Asegurarse de que el mes y el día tengan dos dígitos
+    const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+    const formattedDay = day < 10 ? `0${day}` : `${day}`;
+
+    const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+    console.log(formattedDate);
+    //leer treatment
+    if (formattedDate != null) {
+      this.treatmentService.getTreatmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+          (value) => {
+            this.treatment = value;
+            this.isTreatment = true;
+            this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
+
+          },
+          (error) => {
+            console.error('Error al obtener el tratamiento:', error);
+            this.isTreatment = false;
+          }
+      );
+    }
+
   }
 
 
@@ -71,6 +108,33 @@ export class MyTheraphyComponent {
     console.log(this.currentDate);
     console.log(this.daySelectedByUser);
 
+
+    const year = this.currentDate.getFullYear();
+    const month = this.currentDate.getMonth() + 1; // Meses en JavaScript se cuentan desde 0
+    const day = this.currentDate.getDate();
+
+    // Asegurarse de que el mes y el día tengan dos dígitos
+    const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+    const formattedDay = day < 10 ? `0${day}` : `${day}`;
+
+    const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+    console.log(formattedDate);
+    //leer treatment
+    if (formattedDate != null) {
+      this.treatmentService.getTreatmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+          (value) => {
+            this.treatment = value;
+            this.isTreatment = true;
+            this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
+
+          },
+          (error) => {
+            console.error('Error al obtener el tratamiento:', error);
+            this.isTreatment = false;
+          }
+      );
+    }
+
   }
 
   nextDay() {
@@ -83,6 +147,33 @@ export class MyTheraphyComponent {
     console.log(this.initialDate);
     console.log(this.currentDate);
     console.log(this.daySelectedByUser);
+
+
+    const year = this.currentDate.getFullYear();
+    const month = this.currentDate.getMonth() + 1; // Meses en JavaScript se cuentan desde 0
+    const day = this.currentDate.getDate();
+
+    // Asegurarse de que el mes y el día tengan dos dígitos
+    const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+    const formattedDay = day < 10 ? `0${day}` : `${day}`;
+
+    const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+    console.log(formattedDate);
+    //leer treatment
+    if (formattedDate != null) {
+      this.treatmentService.getTreatmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+          (value) => {
+            this.treatment = value;
+            this.isTreatment = true;
+            this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
+
+          },
+      (error) => {
+        console.error('Error al obtener el tratamiento:', error);
+        this.isTreatment = false;
+      }
+      );
+    }
 
   }
 
@@ -143,9 +234,38 @@ export class MyTheraphyComponent {
 
            this.days = Array.from({ length: daysDifference }, (_, i) => `DAY ${i + 1}`)
 
+
+           const year = this.currentDate.getFullYear();
+           const month = this.currentDate.getMonth() + 1; // Meses en JavaScript se cuentan desde 0
+           const day = this.currentDate.getDate();
+
+           // Asegurarse de que el mes y el día tengan dos dígitos
+           const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+           const formattedDay = day < 10 ? `0${day}` : `${day}`;
+
+           const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+           console.log(formattedDate);
+           //leer treatment
+           if (formattedDate != null) {
+             this.treatmentService.getTreatmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+                 (value) => {
+                   this.treatment = value;
+                   this.isTreatment = true;
+                   this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
+                 },
+                 (error) => {
+                   console.error('Error al obtener el tratamiento:', error);
+                   this.isTreatment = false;
+                 }
+             );
+           }
+
+
          }
 
      );
+
+
 
 
   }
