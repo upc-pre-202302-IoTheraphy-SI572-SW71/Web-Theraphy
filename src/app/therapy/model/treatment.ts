@@ -8,5 +8,6 @@ export interface Treatment {
   title: string,
   description: string,
   day: string,
-  viewed: boolean
+  viewed: boolean,
+  date: string
 }

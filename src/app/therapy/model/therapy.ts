@@ -10,6 +10,6 @@ export interface Therapy {
   finishAt: string,
   finished: boolean,
   patient: Patient,
-  physiotherapist: Physiotherapist,
+  physiotherapist: Physiotherapist
 
 }
