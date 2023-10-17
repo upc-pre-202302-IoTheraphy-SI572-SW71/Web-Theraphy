@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Patient} from "../../model/CreateUsers/patient";
+import {createPatient} from "../../model/CreateUsers/createPatient";
 import {PatientService} from "../../services/patient.service";
 import {Router} from "@angular/router";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -10,7 +10,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/form
   styleUrls: ['./patient-register.component.css']
 })
 export class PatientRegisterComponent {
-  patient: Patient = new Patient(
+  patient: createPatient = new createPatient(
     0,
     '',
     0,

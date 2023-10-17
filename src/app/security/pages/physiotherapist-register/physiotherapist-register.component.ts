@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PatientService} from "../../services/patient.service";
 import {Router} from "@angular/router";
-import {Physiotherapist} from "../../model/CreateUsers/physiotherapist";
+import {createPhysiotherapist} from "../../model/CreateUsers/createPhysiotherapist";
 import {PhysiotherapistService} from "../../services/physiotherapist.service";
 
 @Component({
@@ -12,7 +12,7 @@ import {PhysiotherapistService} from "../../services/physiotherapist.service";
 })
 export class PhysiotherapistRegisterComponent {
 
-  physiotherapist: Physiotherapist = new Physiotherapist(
+  physiotherapist: createPhysiotherapist = new createPhysiotherapist(
     0,
     '',
     '',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientsService} from "../../../security/services/patients.service";
-import {Patient} from "../../../security/model/CreateUsers/patient";
+import {createPatient} from "../../../security/model/CreateUsers/createPatient";
 import {Observable} from "rxjs";
 
 @Component({
@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 })
 export class ProfilePatientComponent implements OnInit {
 
-  patients: Patient[]=[];
+  patients: createPatient[]=[];
   currentUser: number;
   constructor(private patientsService: PatientsService) {
     this.currentUser = Number(sessionStorage.getItem("userId"));

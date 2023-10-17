@@ -4,6 +4,7 @@
     width: 100%;
     height: auto;
     background-color: #F5F5F8;
+    min-height: 100%;
   }
 
   .sidenav {
@@ -17,7 +18,7 @@
     font-family: 'IBM Plex Sans', "Helvetica Neue", sans-serif;
   }
 
-  h1 {
+  .info  h1 {
     font-size: 36px;
     font-weight: 500;
     color: #014DBF;
@@ -38,6 +39,12 @@
     width: 90%;
   }
 
+  .info2  h2 {
+    margin-top: 40px;
+    font-size: 25px;
+    font-weight: 500;
+    color: #014DBF;
+  }
   .carousel-container {
     width: 90%;
     display: flex;
@@ -107,11 +114,13 @@
 
   /* Estilos para el video dentro de la tarjeta */
   .video-card video {
+    padding-top: 20px;
     width: 100%;
-    max-width: 560px; /* Limita el ancho del video al valor máximo */
+    min-width: 1300px;
+    /* Limita el ancho del video al valor máximo */
     height: auto;
     margin: 0 auto;
-    /* Centra el video horizontalmente */
+    min-height: 400px;/* Centra el video horizontalmente */
   }
 
   /* Estilos para el contenido de la tarjeta */
@@ -127,6 +136,8 @@
   .video-card mat-card-title {
     font-size: 20px;
     font-weight: bold;
+    text-align: left; /* Alinea el título a la izquierda */
+    margin-left: 16px; /* Añade un margen izquierdo para alinear con el borde izquierdo */
   }
 
   .video-card iframe {
@@ -135,6 +146,9 @@
     border-radius: 20px 20px 0px 0px;
     margin-bottom: 30px;
   }
+
+
+
 
 
   @media (max-width: 1500px) {
@@ -154,3 +168,64 @@
       border-radius: 20px 20px 0px 0px;
     }
   }
+
+
+  .rest_day {
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    width: 90%;
+    align-items: center; /* Alineación verticalmente */
+  }
+
+  .free-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center; /* Alineación verticalmente */
+  }
+
+  .free-text {
+    flex: 1; /* El texto toma el espacio restante */
+    text-align: left; /* Alineación del texto a la izquierda */
+    padding-left: 90px; /* Espacio entre el texto y el borde del mat-card */
+  }
+
+  .free-image {
+    text-align: right; /* Alineación de la imagen a la derecha */
+    padding: 20px; /* Espacio entre la imagen y el borde del mat-card */
+  }
+
+  .free-text h2 {
+    color: #014DBF;
+  }
+
+  @media (max-width: 1600px) {
+
+
+    .video-card video {
+      width: 100%;
+      min-width: 900px;
+    }
+
+
+  }
+
+  @media (max-width: 1100px) {
+    .rest_day {
+      flex-direction: column;
+    }
+
+    .free-text {
+      padding-left: 20px;
+    }
+
+    .video-card video {
+      width: 100%;
+      min-width: 300px;
+    }
+
+
+  }
+
