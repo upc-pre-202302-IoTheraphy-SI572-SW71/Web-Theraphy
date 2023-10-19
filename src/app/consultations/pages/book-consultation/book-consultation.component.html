@@ -57,7 +57,7 @@
             <div class="form__twosection">
               <div class="form__section1">
                 <p>Day</p>
-                <mat-form-field class="custom-form-field">
+                <mat-form-field appearance="outline" class="custom-form-field">
                   <mat-label>Choose a date</mat-label>
                   <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event.target.value)" class="custom-outline" formControlName="date" [(ngModel)]="consultation.date" required >
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -75,18 +75,15 @@
               <div class="form__section2">
                 <p>Time</p>
                 <div class="form__section2__two">
-                  <mat-form-field >
+                  <mat-form-field appearance="outline"  >
                     <mat-label>Selecciona la hora</mat-label>
                     <mat-select [(ngModel)]="selectedHour" formControlName="hour"  (click)="onHourChange()">
                       <mat-option *ngFor="let hour of hours" [value]="hour" required>{{ hour }}</mat-option>
                     </mat-select>
                   </mat-form-field>
 
-                  <div *ngIf="selectedHour !== null && selectedMinute !== null">
-                    selected time: {{ selectedHour === 12 ? 12 : selectedHour % 12 }}:{{ selectedMinute < 10 ? '0' + selectedMinute : selectedMinute }}
-                    {{ selectedHour < 12 ? "AM" : "PM" }}
-                  </div>
-                  <mat-form-field>
+
+                  <mat-form-field appearance="outline" >
                     <mat-label>Selecciona los minutos</mat-label>
                      <mat-select [(ngModel)]="selectedMinute" formControlName="minute"  (click)="onHourMinute()">
                        <mat-option *ngFor="let minute of minutes" [value]="minute" required>{{ minute }}</mat-option>
