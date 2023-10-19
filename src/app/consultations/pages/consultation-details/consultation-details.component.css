@@ -164,6 +164,7 @@ img {
 .button-custom {
   display: flex;
   justify-content: center;
+
 }
 
 .button {
@@ -181,4 +182,7 @@ img {
   transform: scale(1.05); /* Escala ligeramente el botón para dar la impresión de un efecto de elevación */
 }
 
+app-payment{
+  width: 50%;
+}
 

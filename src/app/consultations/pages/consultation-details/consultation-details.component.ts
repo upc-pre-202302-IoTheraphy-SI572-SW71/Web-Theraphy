@@ -21,9 +21,10 @@ export class ConsultationDetailsComponent implements OnInit{
     this.route.params.subscribe(params => {
       this.physiotherapistId = +params['id'];
     });
+
   }
 
-
+  consultationBackup!: Consultation ;
   ngOnInit(): void {
     this.physiotherapistService.getById(this.physiotherapistId).subscribe((response: any)=>{
       this.physiotherapist = response;
@@ -31,8 +32,15 @@ export class ConsultationDetailsComponent implements OnInit{
     this.reviewService.getReviewsByPhysiotherapistId(this.physiotherapistId).subscribe((response:any) => {
       this.reviewQuantity = response.content.length;
     })
-    this.consultation = this.sharedConsultationService.getConsultation();
+
+    const storedData =  localStorage.getItem('consultationData');
+    if (storedData) {
+      this.consultation = JSON.parse(storedData);
+    }
+    // this.consultation = this.sharedConsultationService.getConsultation();
   }
+
+
 
   goBack() {
     window.history.back();
