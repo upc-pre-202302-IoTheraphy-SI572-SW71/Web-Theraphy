@@ -1,4 +1,4 @@
-export interface createPatient {
+export interface CreatePatient {
   id: number,
   dni: string,
   age: number,
@@ -8,7 +8,7 @@ export interface createPatient {
   location: string
 }
 
-export class createPatient {
+export class CreatePatient{
   constructor(
     public id: number,
     public dni: string,

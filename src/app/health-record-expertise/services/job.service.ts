@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
-import {CreatePatient} from "../model/CreateUsers/createPatient";
+import {Review} from "../../social/model/review";
+import {Job} from "../model/job";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {User} from "../model/CreateUsers/user";
+import {catchError, Observable, retry} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class PatientService extends BaseService<CreatePatient>{
-  endPoint = '/patients/registration-patient';
+export class JobService extends BaseService<Job>{
+
+  endPoint = '/jobs';
 
   constructor(http: HttpClient) {
     super(http);
     this.basePath += this.endPoint;
   }
 
-  createPatient(patient: CreatePatient): Observable<CreatePatient> {
-    const createPatientUrl = `${this.basePath}`;
+  getByPhysiotherapistId(physiotherapistId: number): Observable<Job> {
+    const getJobsByPhysiotherapistIdUrl = `${this.basePath}/byPhysiotherapistId/${physiotherapistId}`;
     const jwtToken = localStorage.getItem('jwtToken');
 
     if (!jwtToken) {
@@ -26,6 +27,10 @@ export class PatientService extends BaseService<CreatePatient>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${jwtToken}`
     });
-    return this.http.post<CreatePatient>(createPatientUrl, patient, { headers });
+
+    return this.http.get<Job>(getJobsByPhysiotherapistIdUrl, { headers })
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
   }
 }

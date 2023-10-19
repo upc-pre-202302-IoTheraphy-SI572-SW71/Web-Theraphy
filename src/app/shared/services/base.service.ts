@@ -17,7 +17,8 @@ export class BaseService<T> {
     })
   };
 
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient) {
+  }
 
   handleError(error: HttpErrorResponse) {
     // @ts-ignore

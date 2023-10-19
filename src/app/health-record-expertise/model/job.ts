@@ -1,11 +1,9 @@
 import {Physiotherapist} from "../../security/model/physiotherapist";
 import {Patient} from "../../security/model/patient";
 
-export interface Review {
+export interface Job {
   id: number;
-  content: string;
-  score: number;
+  position: string;
+  organization: string;
   physiotherapist: Physiotherapist;
-  patient: Patient;
-
 }

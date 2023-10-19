@@ -1,4 +1,4 @@
-export interface createPhysiotherapist {
+export interface CreatePhysiotherapist {
   id: number,
   dni: string,
   specialization: string,
@@ -13,7 +13,7 @@ export interface createPhysiotherapist {
   fees: number
 }
 
-export class createPhysiotherapist {
+export class CreatePhysiotherapist{
   constructor(
     public id: number,
     public dni: string,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {createPhysiotherapist} from "../../../security/model/CreateUsers/createPhysiotherapist";
+import {CreatePhysiotherapist} from "../../../security/model/CreateUsers/createPhysiotherapist";
 import {Treatment} from "../../../treatments/model/treatment";
-import {createPatient} from "../../../security/model/CreateUsers/createPatient";
+import {CreatePatient} from "../../../security/model/CreateUsers/createPatient";
 import {PhysiotherapistsService} from "../../../security/services/physiotherapists.service";
 import {PatientsService} from "../../../security/services/patients.service";
 import {TreatmentsService} from "../../../treatments/services/treatments.service";
@@ -15,11 +15,11 @@ import {AppointmentsService} from "../../../therapy/services/appointments.servic
 })
 export class HomeDoctorComponent implements OnInit {
 
-  physiotherapists: createPhysiotherapist[]=[];
+  physiotherapists: CreatePhysiotherapist[]=[];
   treatments: Treatment[]=[];
-  patients: createPatient[] = [];
+  patients: CreatePatient[] = [];
   appointments: Appointments[]=[];
-  myPatients: createPatient[]=[];
+  myPatients: CreatePatient[]=[];
   currentUser: number;
   aea:number = 0;
 
