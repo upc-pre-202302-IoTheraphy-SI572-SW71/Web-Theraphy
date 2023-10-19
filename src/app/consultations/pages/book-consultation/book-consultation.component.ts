@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Consultation} from "../../model/consultation";
 import {Physiotherapist} from "../../../security/model/physiotherapist";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
-import {SharedConsutationService} from "../../services/shared-consutation.service";
+import {SharedConsultationService} from "../../services/shared-consutation.service";
 import {ReviewService} from "../../../social/services/review.service";
+import {CreateConsultation} from "../../model/createConsultation";
 
 @Component({
   selector: 'app-book-consultation',
@@ -25,7 +25,7 @@ export class BookConsultationComponent implements OnInit{
   physiotherapistId: number = 0;
   reviewQuantity: number = 0 ;
 
-  consultation: Consultation = new Consultation(
+  consultation: CreateConsultation=  new CreateConsultation(
     0,
     false,
     '',
@@ -36,8 +36,7 @@ export class BookConsultationComponent implements OnInit{
     1
   );
 
-
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private physiotherapistService: PhysiotherapistService, private sharedConsultationService: SharedConsutationService, private reviewService: ReviewService) {
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private physiotherapistService: PhysiotherapistService, private sharedConsultationService: SharedConsultationService, private reviewService: ReviewService) {
     this.consultationForm = this.fb.group({
       date: ['', Validators.required],
       hour: ['', Validators.required],
@@ -79,7 +78,7 @@ export class BookConsultationComponent implements OnInit{
           this.consultation.hour += this.selectedMinute.toString();
         }
       }else if(this.selectedMinute<10) {
-          this.consultation.hour = this.selectedHour.toString() + ":" + "0" + this.selectedMinute.toString();
+        this.consultation.hour = this.selectedHour.toString() + ":" + "0" + this.selectedMinute.toString();
       }else{
         this.consultation.hour = this.selectedHour.toString() + ":" + this.selectedMinute.toString();
       }

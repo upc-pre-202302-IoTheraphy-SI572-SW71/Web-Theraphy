@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import {Consultation} from "../model/consultation";
+import {CreateConsultation} from "../model/createConsultation";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SharedConsutationService {
+export class SharedConsultationService {
 
-  consultation!: Consultation;
+  consultation!: CreateConsultation;
 
   constructor() { }
 
 
-  setConsultation(consultation: Consultation){
+  setConsultation(consultation: CreateConsultation){
     this.consultation = consultation;
   }
 

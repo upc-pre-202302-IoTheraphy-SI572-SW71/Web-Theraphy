@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
-import {createConsultation} from "../model/createConsultation";
+import {CreateConsultation} from "../model/createConsultation";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Consultation} from "../model/Consultation";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ConsultationService extends BaseService<createConsultation>{
+export class ConsultationService extends BaseService<Consultation>{
 
   endPoint = '/consultations';
 
@@ -17,7 +18,7 @@ export class ConsultationService extends BaseService<createConsultation>{
   }
 
 
-  createConsultation(consultation: createConsultation): Observable<createConsultation>{
+  createConsultation(consultation: CreateConsultation): Observable<CreateConsultation>{
     const createConsultationUrl = `${this.basePath}`;
     const jwtToken = localStorage.getItem('jwtToken');
 
@@ -30,7 +31,7 @@ export class ConsultationService extends BaseService<createConsultation>{
     });
 
 
-    return this.http.post<createConsultation>(createConsultationUrl,consultation, {headers} )
+    return this.http.post<CreateConsultation>(createConsultationUrl,consultation, {headers} )
 
   }
 

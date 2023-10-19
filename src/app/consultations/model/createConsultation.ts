@@ -1,4 +1,4 @@
-export interface createConsultation {
+export interface CreateConsultation {
   id: number;
   done: boolean;
   topic: string;
@@ -9,7 +9,7 @@ export interface createConsultation {
   physiotherapistId: number;
 }
 
-export class createConsultation {
+export class CreateConsultation {
   constructor(
     public id: number,
     public done: boolean,
