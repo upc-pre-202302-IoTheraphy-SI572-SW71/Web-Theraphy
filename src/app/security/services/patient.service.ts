@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
-import {Patient} from "../model/CreateUsers/patient";
+import {CreatePatient} from "../model/CreateUsers/createPatient";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../model/CreateUsers/user";
@@ -8,7 +8,7 @@ import {User} from "../model/CreateUsers/user";
 @Injectable({
   providedIn: 'root'
 })
-export class PatientService extends BaseService<Patient>{
+export class PatientService extends BaseService<CreatePatient>{
   endPoint = '/patients/registration-patient';
 
   constructor(http: HttpClient) {
@@ -16,7 +16,7 @@ export class PatientService extends BaseService<Patient>{
     this.basePath += this.endPoint;
   }
 
-  createPatient(patient: Patient): Observable<Patient> {
+  createPatient(patient: CreatePatient): Observable<CreatePatient> {
     const createPatientUrl = `${this.basePath}`;
     const jwtToken = localStorage.getItem('jwtToken');
 
@@ -26,6 +26,6 @@ export class PatientService extends BaseService<Patient>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${jwtToken}`
     });
-    return this.http.post<Patient>(createPatientUrl, patient, { headers });
+    return this.http.post<CreatePatient>(createPatientUrl, patient, { headers });
   }
 }

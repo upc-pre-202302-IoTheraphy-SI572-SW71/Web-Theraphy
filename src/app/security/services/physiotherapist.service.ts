@@ -1,10 +1,11 @@
 
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
-import {Physiotherapist} from "../model/CreateUsers/physiotherapist";
+import {CreatePhysiotherapist} from "../model/CreateUsers/createPhysiotherapist";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Patient} from "../model/CreateUsers/patient";
+import {CreatePatient} from "../model/CreateUsers/createPatient";
 import {Observable} from "rxjs";
+import {Physiotherapist} from "../model/physiotherapist";
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class PhysiotherapistService extends BaseService<Physiotherapist>{
     this.basePath += this.endPoint;
   }
 
-  createPhysiotherapist(physiotherapist: Physiotherapist): Observable<Patient> {
-    const createPatientUrl = `${this.basePath}/registration-physiotherapist`;
+  createPhysiotherapist(physiotherapist: CreatePhysiotherapist): Observable<CreatePhysiotherapist> {
+    const createPhysiotherapistUrl = `${this.basePath}/registration-physiotherapist`;
     const jwtToken = localStorage.getItem('jwtToken');
 
     if (!jwtToken) {
@@ -28,6 +29,6 @@ export class PhysiotherapistService extends BaseService<Physiotherapist>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${jwtToken}`
     });
-    return this.http.post<Patient>(createPatientUrl, physiotherapist, { headers });
+    return this.http.post<CreatePhysiotherapist>(createPhysiotherapistUrl, physiotherapist, { headers });
   }
 }
