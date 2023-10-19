@@ -38,7 +38,7 @@ export class PhysiotherapistListComponent implements OnInit{
   }
 
   viewDetailsById(id: number){
-    this.router.navigate([`/book-consultation/${id}`]);
+    this.router.navigate([`/physiotherapist-profile/${id}`]);
   }
 
 

@@ -24,6 +24,8 @@ export class BookConsultationComponent implements OnInit{
   physiotherapist!: Physiotherapist;
   physiotherapistId: number = 0;
   reviewQuantity: number = 0 ;
+  ratingRounded: number=0;
+
 
   consultation: CreateConsultation=  new CreateConsultation(
     0,
@@ -53,7 +55,8 @@ export class BookConsultationComponent implements OnInit{
 
   ngOnInit(): void {
     this.physiotherapistService.getById(this.physiotherapistId).subscribe((response: any)=>{
-      this.physiotherapist = response;
+      this.physiotherapist = response
+      this.ratingRounded = response.rating.toFixed(1);
       console.log(response);
     })
     this.reviewService.getReviewsByPhysiotherapistId(this.physiotherapistId).subscribe((response:any) => {

@@ -1,14 +1,15 @@
 .page {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: auto;
+  background-color: #F5F5F8;
 
 }
 .contents {
   width: 100%;
   height: auto;
-  margin-left: 48px;
-  margin-right: 48px;
+  margin-left:248px;
+  margin-right: 200px;
 
 }
 .sidenav {
@@ -148,12 +149,21 @@ img {
   justify-content: center;
 
 }
-button{
-  width: 20%;
-  background-color: #014DBF;
-  margin: 12px;
 
+.button {
+  height: 50px;
+  width:20%;
+  font-size: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
+
+.button:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+}
+
 .error-message {
   color: red;
   font-size: 14px;
