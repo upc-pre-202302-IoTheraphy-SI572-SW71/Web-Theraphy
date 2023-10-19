@@ -5,17 +5,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PaymentService} from "../../services/payment.service";
 import {Router} from "@angular/router";
 import {Payment} from "../../model/payment";
-import {
-  Stripe,
-  StripeCardElement,
-  StripeCardElementOptions,
-  StripeElement,
-  StripeElements,
-  StripeElementsOptions
-} from "@stripe/stripe-js";
-// import {StripeElement} from "@stripe/stripe-js";
-// import { StripeService, Elements, ElementsOptions, Element as StripeElement, Token } from "ngx-stripe";
-
+import { StripeCardElementOptions, StripeElementsOptions} from "@stripe/stripe-js";
+import {ConsultationService} from "../../../consultations/services/consultation.service";
+import {Consultation} from "../../../consultations/model/consultation";
 
 @Component({
   selector: 'app-payment',
@@ -47,29 +39,21 @@ export class PaymentComponent implements OnInit {
     }
   };
 
-
-  // @ts-ignore
-  // elements: Elements;
-
-  // card: StripeElement;
-
-  // elementsOptions: ElementsOptions = {
-  //   locale: 'es'
-  // };
   elementsOptions: StripeElementsOptions = {
     locale: 'es'
   };
 
 
   stripeForm!: FormGroup;
-
+  consultation!: Consultation;
   constructor(
     private stripeService: StripeService,
     private paymentService: PaymentService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private consultationService: ConsultationService
   ) {
-    // this.card = {} as StripeElement;
+
   }
 
 
@@ -77,78 +61,42 @@ export class PaymentComponent implements OnInit {
     this.stripeForm = this.fb.group({
       name: ['', [Validators.required]]
     });
-
-
-    // this.stripeService.elements()
-    //   .subscribe(elements => {
-    //     this.elements = elements;
-    //     // Only mount the element the first time
-    //     if (!this.card) {
-    //       this.card = this.elements.create('card', {
-    //         style: {
-    //           base: {
-    //             iconColor: '#666EE8',
-    //             color: '#31325F',
-    //             lineHeight: '40px',
-    //             fontWeight: 300,
-    //             fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-    //             fontSize: '18px',
-    //             '::placeholder': {
-    //               color: '#CFD7E0'
-    //             }
-    //           }
-    //         }
-    //       });
-    //       this.card.mount('#card-element');
-    //     }
-    //   });
+    const storedData =  localStorage.getItem('consultationData');
+    if (storedData) {
+      this.consultation = JSON.parse(storedData);
+    }
   }
-
-  // name: any = "";
-  // buy() {
-  //   const name = this.stripeForm.get('name')!.value as string;
-  //   this.stripeService
-  //     .createToken(this.card, { name })
-  //     .subscribe(result => {
-  //       if (result.token) {
-  //         const paymentIntentDto: Payment = {
-  //           token: result.token.id,
-  //           amount: this.price,
-  //           currency: 'EUR'
-  //         };
-  //         this.paymentService.payment(paymentIntentDto).subscribe(
-  //           data => {
-  //             this.router.navigate(['/physiotherapist-list']);
-  //           }
-  //         );
-  //         this.error = undefined;
-  //       } else if (result.error) {
-  //         this.error = result.error.message;
-  //       }
-  //     });
-  // }
 
   createToken(): void {
     const name = this.stripeForm.get('name')!.value;
+    console.log("name" + name);
     this.stripeService
       .createToken(this.card.element, {name})
       .subscribe((result) => {
         if (result.token) {
+
           const paymentIntentDto: Payment = {
             token: result.token.id,
             amount: this.price,
             currency: 'PEN'
           };
-          this.paymentService.payment(paymentIntentDto).subscribe((response: any) =>  {
-            console.log("pago realizado con exito" + response);
+
+            this.paymentService.payment(paymentIntentDto).subscribe((response: any) =>  {
+              console.log("pago realizado con exito" + response);
+              this.createConsultation();
               this.router.navigate(['/physiotherapist-list']);
-          });
-          this.error = undefined;
+            });
+            this.error = undefined;
         } else if (result.error) {
           this.error = result.error.message;
         }
       });
   }
+  createConsultation(){
+    this.consultationService.createConsultation(this.consultation).subscribe((response:any) => {
+      console.log("Consultation created")
+    })
 
+  }
 
 }

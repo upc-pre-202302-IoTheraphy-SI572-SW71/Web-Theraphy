@@ -30,7 +30,6 @@ const routes: Routes = [
   {path: 'physiotherapist-profile/:id', component: PhysiotherapistProfileComponent},
   {path: 'book-consultation/:id', component: BookConsultationComponent},
   {path: 'consultation-details/physiotherapist/:id', component: ConsultationDetailsComponent},
-  // {path: 'payment', component: ModalComponent},
   {path: 'add-review', component: AddReviewComponent},
   {path: 'my-theraphy', component: MyTheraphyComponent}
 
