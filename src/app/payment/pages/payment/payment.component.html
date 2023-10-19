@@ -1,0 +1,58 @@
+<!--<div>-->
+<!--  <form [formGroup]="stripeForm">-->
+<!--    <label for="name">Name:</label>-->
+<!--    <input type="text" id="name" formControlName="name" required>-->
+<!--  </form>-->
+
+<!--  <div id="card-element"></div>-->
+
+<!--  <button (click)="buy()">Buy Now</button>-->
+
+<!--  <div *ngIf="error" class="error-message">-->
+<!--    {{ error }}-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<h2>Create Token Example</h2>
+<ngx-stripe-card
+  [options]="cardOptions"
+  [elementsOptions]="elementsOptions"
+></ngx-stripe-card>
+<button type="submit" (click)="createToken()">
+  CREATE TOKEN
+</button>
+
+
+
+
+<!--<form novalidate (ngSubmit)="buy()" [formGroup]="stripeForm" #f="ngForm">-->
+<!--  <input class="form-control" type="text" formControlName="name" placeholder="tu nombre">-->
+<!--  <div id="card-element" class="field"></div>-->
+<!--  <div *ngIf="error" class="alert alert-danger">-->
+<!--    {{error}}-->
+<!--  </div>-->
+<!--  <button type="submit" class="btn btn-outline-success" [disabled]="!f.valid">-->
+<!--    Comprar-->
+<!--  </button>-->
+<!--</form>-->
+
+
+<!--<form (ngSubmit)="realizarPago()" #paymentForm="ngForm">-->
+<!--  <div class="form-group">-->
+<!--    <label for="cardNumber">Número de tarjeta</label>-->
+<!--    <input type="text" id="cardNumber" [(ngModel)]="cardNumber" name="cardNumber" required>-->
+<!--  </div>-->
+
+<!--  <div class="form-group">-->
+<!--    <label for="expDate">Fecha de vencimiento (MM/YY)</label>-->
+<!--    <input type="text" id="expDate" [(ngModel)]="expDate" name="expDate" required>-->
+<!--  </div>-->
+
+<!--  <div class="form-group">-->
+<!--    <label for="cvc">CVC</label>-->
+<!--    <input type="text" id="cvc" [(ngModel)]="cvc" name="cvc" required>-->
+<!--  </div>-->
+
+<!--  <button type="submit" [disabled]="!paymentForm.valid">Realizar Pago</button>-->
+<!--</form>-->
