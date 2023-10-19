@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
-
+import {Therapy} from "../model/therapy";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry} from "rxjs";
 import {Treatment} from "../model/treatment";
-import {Therapy} from "../model/therapy";
+import {Appointment} from "../model/appointment";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TreatmentService extends BaseService<Treatment> {
+export class AppointmentService extends BaseService<Appointment> {
 
-  endPoint = '/treatments';
+  endPoint = '/appointments';
 
   constructor(http: HttpClient) {
     super(http);
     this.basePath += this.endPoint;
   }
-  getTreatmentByDateAndTherapyId(therapyId: number, date: string): Observable<Treatment>{
+  getAppointmentByDateAndTherapyId(therapyId: number, date: string): Observable<Appointment>{
 
     const jwtToken = localStorage.getItem('jwtToken');
 
@@ -30,7 +30,7 @@ export class TreatmentService extends BaseService<Treatment> {
 
     //return this.http.post<createConsultation>(createConsultationUrl,consultation, {headers} )
 
-    return this.http.get<Treatment>(
+    return this.http.get<Appointment>(
         `${this.basePath}/byDate/${date}/TherapyId/${therapyId}`,
         {headers})
         .pipe(

@@ -8,6 +8,8 @@ import {Treatment} from "../../model/treatment";
 import {TreatmentService} from "../../services/treatment.service";
 import {DatePipe} from "@angular/common";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import {AppointmentService} from "../../services/appointment.service";
+import {Appointment} from "../../model/appointment";
 
 @Component({
   selector: 'app-my-theraphy',
@@ -38,11 +40,13 @@ export class MyTheraphyComponent {
   currentTherapy!: Therapy;
 
   treatment!: Treatment;
+  appointment!: Appointment;
 
   isTreatment: boolean = false;
   isAppointment: boolean = false;
 
-  constructor(private therapyService: TherapyService, private treatmentService: TreatmentService, private sanitizer: DomSanitizer ,private router: Router) {
+  constructor(private therapyService: TherapyService, private treatmentService: TreatmentService,
+              private appointmentService: AppointmentService,private sanitizer: DomSanitizer ,private router: Router) {
   }
 
   // Otras funciones de tu componente
@@ -91,6 +95,19 @@ export class MyTheraphyComponent {
             this.isTreatment = false;
           }
       );
+
+        if(!this.isTreatment){
+            this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+                (value) => {
+                    this.appointment = value;
+                    this.isAppointment = true;
+                },
+                (error) => {
+                    console.error('Error al obtener la cita:', error);
+                    this.isAppointment = false;
+                }
+            );
+        }
     }
 
   }
@@ -133,6 +150,18 @@ export class MyTheraphyComponent {
             this.isTreatment = false;
           }
       );
+        if(!this.isTreatment){
+            this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+                (value) => {
+                    this.appointment = value;
+                    this.isAppointment = true;
+                },
+                (error) => {
+                    console.error('Error al obtener la cita:', error);
+                    this.isAppointment = false;
+                }
+            );
+        }
     }
 
   }
@@ -173,6 +202,19 @@ export class MyTheraphyComponent {
         this.isTreatment = false;
       }
       );
+
+        if(!this.isTreatment){
+            this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+                (value) => {
+                    this.appointment = value;
+                    this.isAppointment = true;
+                },
+                (error) => {
+                    console.error('Error al obtener la cita:', error);
+                    this.isAppointment = false;
+                }
+            );
+        }
     }
 
   }
@@ -258,6 +300,20 @@ export class MyTheraphyComponent {
                    this.isTreatment = false;
                  }
              );
+
+             if(!this.isTreatment){
+                 this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+                     (value) => {
+                         this.appointment = value;
+                         this.isAppointment = true;
+                     },
+                 (error) => {
+                     console.error('Error al obtener la cita:', error);
+                     this.isAppointment = false;
+                 }
+                 );
+             }
+
            }
 
 
