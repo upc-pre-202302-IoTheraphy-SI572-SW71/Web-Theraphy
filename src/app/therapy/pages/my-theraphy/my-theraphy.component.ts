@@ -30,6 +30,7 @@ export class MyTheraphyComponent {
 
   indexInitial: number = 0;
 
+  showMessageAppointment: boolean = true;
 
   selectedDayIndex: number = 0; // Inicializa el día seleccionado como el primer día
 
@@ -57,6 +58,7 @@ export class MyTheraphyComponent {
     this.selectedDayIndex = index;
     //this.currentDate.setDate(this.initialDate.getDate() + (- this.daySelectedByUser + this.indexInitial + index))
     this.daySelectedByUser = this.indexInitial + index;
+
 
     const newDate = new Date(this.initialDate);
 
@@ -237,6 +239,12 @@ export class MyTheraphyComponent {
     } else {
       this.maxVisibleDays = 10; // Cambia de nuevo a 10 días visibles en pantallas más grandes
     }
+      if (window.innerWidth <= 1200) {
+        this.showMessageAppointment = false;
+      } else {
+          this.showMessageAppointment = true;
+      }
+
   }
 
   ngOnInit() {

@@ -147,6 +147,10 @@
     margin-bottom: 30px;
   }
 
+  .appointment-title {
+    color: #014DBF;
+  }
+
 
 
 
@@ -167,10 +171,19 @@
       height: 400px;
       border-radius: 20px 20px 0px 0px;
     }
+
   }
 
 
   .rest_day {
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    width: 90%;
+    align-items: center; /* Alineación verticalmente */
+  }
+
+  .appointment-card {
     display: flex;
     flex-direction: row;
     border-radius: 20px;
@@ -201,6 +214,21 @@
     color: #014DBF;
   }
 
+  .appointment-text {
+    width: 100%;
+  }
+
+  .subtitles-appointments {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+  }
+
+  .right-text {
+    margin-left: 200px;
+
+  }
+
   @media (max-width: 1600px) {
 
 
@@ -209,12 +237,19 @@
       min-width: 900px;
     }
 
-
   }
 
   @media (max-width: 1100px) {
     .rest_day {
       flex-direction: column;
+    }
+
+    .appointment-card {
+      flex-direction: column;
+    }
+
+    .appointment-text {
+      margin-left: 60px;
     }
 
     .free-text {
@@ -228,4 +263,5 @@
 
 
   }
+
 

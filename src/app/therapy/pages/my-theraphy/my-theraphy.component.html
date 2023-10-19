@@ -45,7 +45,51 @@
     <ng-template #appointmentView class="appointment">
       <ng-container *ngIf="isAppointment; else noTreatmentMessage">
         <mat-card class="appointment-card">
-          <h1>{{appointment.place}}</h1>
+          <div class="free-image" style="float: right;">
+            <img [src]="appointment.therapy.physiotherapist.photoUrl" alt="Physiotherapist Image">
+          </div>
+
+          <div class="appointment-text" style=" width: auto">
+
+            <mat-card-title><span class="appointment-title">You have a medical appointment!</span></mat-card-title>
+            <div class="subtitles-appointments">
+              <div class="left-text">
+                  <mat-card-subtitle><span> <strong> Physiotherapist: </strong> Dr. {{appointment.therapy.physiotherapist.user.firstname
+                  + " " + appointment.therapy.physiotherapist.user.lastname
+                    }} </span></mat-card-subtitle>
+                  <mat-card-subtitle><span> <strong> Topic:</strong>
+                    {{appointment.topic}}
+                   </span></mat-card-subtitle>
+                  <mat-card-subtitle><span> <strong> Place:</strong>
+                    {{appointment.place}}
+                    </span></mat-card-subtitle>
+                  <mat-card-subtitle><span> <strong> Time:</strong>
+                    {{appointment.hour}}
+                </span></mat-card-subtitle>
+              </div>
+
+
+              <div class="right-text" *ngIf="showMessageAppointment">
+                <mat-card-subtitle><span> <strong> Patient: </strong> {{appointment.therapy.patient.user.firstname
+                + " " + appointment.therapy.patient.user.lastname
+                  }} </span></mat-card-subtitle>
+                <mat-card-subtitle><span> <strong> DNI:</strong>
+                  {{appointment.therapy.patient.dni}}
+                   </span></mat-card-subtitle>
+                <mat-card-subtitle><span> <strong> Edad:</strong>
+                  {{appointment.therapy.patient.age}}
+                    </span></mat-card-subtitle>
+                <mat-card-subtitle><span> <strong> From:</strong>
+                  {{appointment.therapy.patient.location}}
+                </span></mat-card-subtitle>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
         </mat-card>
       </ng-container>
     </ng-template>
