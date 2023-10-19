@@ -13,6 +13,7 @@ export class SharedConsutationService {
 
   setConsultation(consultation: Consultation){
     this.consultation = consultation;
+    localStorage.setItem('consultationData', JSON.stringify(this.consultation));
   }
 
   getConsultation(){

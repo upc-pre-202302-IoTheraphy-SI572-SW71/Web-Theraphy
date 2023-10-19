@@ -71,14 +71,20 @@
         </div>
         <div class="day">
           <h3>Total</h3>
-          <h4>S/. 50.00</h4>
+          <h4><b>{{this.physiotherapist.fees}}</b></h4>
         </div>
 
       </div>
     </div>
 
     <div class="button-custom">
-      <button class="button" mat-flat-button style="background-color: #014DBF !important; color: white;" (click)="createConsultation()">Pay</button>
+
+    <app-payment
+      [price]="physiotherapist.fees"
+    ></app-payment>
+
+<!--            <button class="button" mat-flat-button style="background-color: #014DBF !important; color: white;" (click)="createConsultation()">Pay</button>-->
+
     </div>
 
     <br>

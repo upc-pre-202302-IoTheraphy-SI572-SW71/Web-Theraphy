@@ -36,8 +36,12 @@ import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.compo
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {HomePatientComponent} from "./home/pages/home-patient/home-patient.component";
-import {MatLegacySliderModule} from "@angular/material/legacy-slider";
+
 import {MatSliderModule} from "@angular/material/slider";
+import {ToastrModule} from "ngx-toastr";
+import { NgxStripeModule } from 'ngx-stripe';
+import {MatDialogModule} from "@angular/material/dialog";
+import { PaymentComponent } from './payment/pages/payment/payment.component';
 
 
 @NgModule({
@@ -54,7 +58,8 @@ import {MatSliderModule} from "@angular/material/slider";
     ConsultationDetailsComponent,
     SidenavComponent,
     MyTheraphyComponent,
-    HomePatientComponent
+    HomePatientComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +84,10 @@ import {MatSliderModule} from "@angular/material/slider";
     MatDatepickerModule,
     MatNativeDateModule,
     MatLegacyTooltipModule,
-    MatSliderModule
+    MatSliderModule,
+    ToastrModule.forRoot(),
+    NgxStripeModule.forRoot('pk_test_51O2RELCjW3JsFKOWismIZke5hD6PoJ5u2jaOx19m1AbSYgyw9pA3GLxl0Yb83MK0G3IVCiUp0UIzM2TOwMws1u2O00WNxCfi4U'),
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
