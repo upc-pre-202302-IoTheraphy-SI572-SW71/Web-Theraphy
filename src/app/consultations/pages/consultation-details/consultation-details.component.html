@@ -1,5 +1,7 @@
 <div class="page">
-  <div class="sidenav"></div>
+  <div class="sidenav">
+    <app-sidenav></app-sidenav>
+  </div>
   <div class="contents">
 
     <div class="profile-header">
@@ -15,7 +17,7 @@
       <img src="{{this.physiotherapist.photoUrl}}" alt="Italian Trulli">
       <div class="description">
         <h3>Dr. {{this.physiotherapist.user.firstname}} {{this.physiotherapist.user.lastname}}</h3>
-        <h4 class="text">Physiotherapist</h4>
+        <h4 class="text">{{physiotherapist.specialization}}</h4>
       </div>
     </div>
 
@@ -71,7 +73,7 @@
         </div>
         <div class="day">
           <h3>Total</h3>
-          <h4><b>{{this.physiotherapist.fees}}</b></h4>
+          <h4><b>S/. {{this.physiotherapist.fees}}</b></h4>
         </div>
 
       </div>

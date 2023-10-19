@@ -14,14 +14,20 @@
 <!--</div>-->
 
 
-<h2>Create Token Example</h2>
-<ngx-stripe-card
-  [options]="cardOptions"
-  [elementsOptions]="elementsOptions"
-></ngx-stripe-card>
-<button type="submit" (click)="createToken()">
-  CREATE TOKEN
-</button>
+<div class="paymentContent">
+  <h2>Enter your data</h2>
+  <ngx-stripe-card
+    [options]="cardOptions"
+    [elementsOptions]="elementsOptions"
+  ></ngx-stripe-card>
+  <div class="button">
+    <button type="submit" (click)="createToken()">
+      Pay my consultation
+    </button>
+  </div>
+</div>
+
+
 
 
 

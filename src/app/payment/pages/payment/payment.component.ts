@@ -80,7 +80,6 @@ export class PaymentComponent implements OnInit {
             amount: this.price,
             currency: 'PEN'
           };
-
             this.paymentService.payment(paymentIntentDto).subscribe((response: any) =>  {
               console.log("pago realizado con exito" + response);
               this.createConsultation();
