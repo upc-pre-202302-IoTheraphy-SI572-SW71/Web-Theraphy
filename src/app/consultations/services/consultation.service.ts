@@ -5,6 +5,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Consultation} from "../model/Consultation";
 
+
+
 @Injectable({
   providedIn: 'root'
 })

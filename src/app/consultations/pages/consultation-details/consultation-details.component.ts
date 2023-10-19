@@ -24,7 +24,7 @@ export class ConsultationDetailsComponent implements OnInit{
 
   }
 
-  consultationBackup!: Consultation ;
+  consultationBackup!: CreateConsultation ;
   ngOnInit(): void {
     this.physiotherapistService.getById(this.physiotherapistId).subscribe((response: any)=>{
       this.physiotherapist = response;
@@ -48,10 +48,6 @@ export class ConsultationDetailsComponent implements OnInit{
 
 
   createConsultation(){
-
-
-
-
     this.consultationService.createConsultation(this.consultation).subscribe((response:any) => {
       console.log("Consultation created")
     })

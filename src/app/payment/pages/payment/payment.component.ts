@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import {Payment} from "../../model/payment";
 import { StripeCardElementOptions, StripeElementsOptions} from "@stripe/stripe-js";
 import {ConsultationService} from "../../../consultations/services/consultation.service";
-import {Consultation} from "../../../consultations/model/consultation";
+import {CreateConsultation} from "../../../consultations/model/createConsultation";
 
 @Component({
   selector: 'app-payment',
@@ -45,7 +45,7 @@ export class PaymentComponent implements OnInit {
 
 
   stripeForm!: FormGroup;
-  consultation!: Consultation;
+  consultation!: CreateConsultation;
   constructor(
     private stripeService: StripeService,
     private paymentService: PaymentService,
