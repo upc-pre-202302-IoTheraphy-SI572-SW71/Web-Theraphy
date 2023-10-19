@@ -94,7 +94,7 @@
       <div class="section"  >
         <h2 class="section-title">Reviews</h2>
 
-        <div style="width: 100%" *ngIf=" 0 < reviews$.length">
+        <div style="width: 100%" *ngIf=" 0 < reviews$.length && 3 <= reviews$.length">
         <div  [ngClass]="{ 'reviews-cards-container-blur': !showMore, 'reviews-cards-container': showMore }" *ngFor="let review of reviews$; let i = index" >
           <div class="review-card" *ngIf="i < numberOfVisibleReviews">
             <div class="review-info" >
@@ -110,7 +110,7 @@
           </div>
         </div>
 
-        <div class=""  [ngClass]="{ 'load-more-button': !showMore, 'load-more-button-bottom': showMore }" (click)="toggleShowMore()">
+        <div [ngClass]="{ 'load-more-button': !showMore, 'load-more-button-bottom': showMore }" (click)="toggleShowMore()">
           <div class="button-content">
           <h4 *ngIf="!showMore" >Ver todas las reseñas</h4>
           <mat-icon class="arrow-icon">{{ showMore ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
@@ -119,9 +119,30 @@
 
         </div>
 
+        <div style="width: 100%" *ngIf=" 3> reviews$.length">
+        <div  class="reviews-cards-container" *ngFor="let review of reviews$; let i = index" >
+          <div class="review-card" *ngIf="i < numberOfVisibleReviews">
+            <div class="review-info" >
+              <div class="card-title">
+                <img src="{{review.patient.photoUrl}}" alt="Profile Photo">
+                <h3>{{review.patient.user.firstname}} {{review.patient.user.lastname}}</h3>
+              </div>
+              <h4 class="card-description">{{review.content}}</h4>
+            </div>
+            <div class="review-stars" >
+              <mat-icon class="icon">star</mat-icon> <span>{{review.score}}</span>
+            </div>
+          </div>
+        </div>
+        </div>
+
         <div class="not-found-div"  *ngIf=" 0>= reviews$.length">
           <p>No reviews found</p>
         </div>
+
+
+
+
       </div>
 
 
