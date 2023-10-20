@@ -15,9 +15,12 @@
 
     <div class="flex-container">
       <img src="{{this.physiotherapist.photoUrl}}" alt="Italian Trulli">
+      <div class="custom-box">
+        <p>S/. {{physiotherapist.fees}} <span class="consult-text">/consult.</span></p>
+      </div>
       <div class="description">
         <h3>Dr. {{this.physiotherapist.user.firstname}} {{this.physiotherapist.user.lastname}}</h3>
-        <h4 class="text">{{physiotherapist.specialization}}</h4>
+        <h4 class="text"><strong>Specialization:</strong> {{physiotherapist.specialization}}</h4>
       </div>
     </div>
 
@@ -33,7 +36,7 @@
         <div class="icon"><img src="../../../../assets/img/experience-icon.ico" alt=""></div>
         <div class="description">
           <h4 class="text">{{this.physiotherapist.yearsExperience}}</h4>
-          <h4 class="text">Experience</h4>
+          <h4 class="text">Years of experience</h4>
         </div>
       </div>
       <div class="item">
