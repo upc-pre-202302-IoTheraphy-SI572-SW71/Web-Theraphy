@@ -30,20 +30,33 @@
             <img mat-card-md-image [src]="physiotherapist.photoUrl" alt="{{physiotherapist.user.firstname}}">
             <div class="card-details">
               <mat-card-title><span>{{physiotherapist.user.firstname + " " + physiotherapist.user.lastname}}</span></mat-card-title>
-              <mat-card-subtitle><span><strong>Specialization:</strong> {{physiotherapist.specialization}}</span></mat-card-subtitle>
               <mat-card-subtitle>
-                <mat-icon>star</mat-icon>
-                <span><strong>{{physiotherapist.rating}}/5</strong></span>
-                <!-- La estrella ahora aparece al lado del puntaje -->
-              </mat-card-subtitle><!-- Aquí solo una estrella -->
+                <span><strong>Specialization:</strong> {{physiotherapist.specialization}}</span>
+              </mat-card-subtitle>
+              <mat-card-subtitle class="rating-section">
+                <mat-icon class="star-icon">star</mat-icon>
+                <span><strong>{{physiotherapist.rating.toFixed(1)}} /5</strong></span>
+              </mat-card-subtitle>
+              <br>
+              <mat-card-subtitle class="view-profile-section">
+                <span class="view-profile-text" (click)="viewDetailsById(physiotherapist.id)">
+                  <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
+                  <h2>View Profile</h2>
+                </span>
+              </mat-card-subtitle>
             </div>
             <div class="card-button">
-              <button mat-raised-button color="primary" class="viewProfile-btn"  (click)="viewDetailsById(physiotherapist.id)">
-                <span>Details</span>
+              <div class="price-section">
+                <h4>S/. {{physiotherapist.fees}}</h4>
+                <h5>/consult.</h5>
+              </div>
+              <button mat-raised-button color="primary" class="book-now-btn"  [routerLink]="['/book-consultation',physiotherapist.id]">
+                Book Now
               </button>
             </div>
           </div>
         </mat-card>
+
       </div>
 
     </div>

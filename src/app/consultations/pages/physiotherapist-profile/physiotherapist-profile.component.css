@@ -57,12 +57,13 @@ html{
 
 .custom-box {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0;
+  right: 0;
   background-color: #014DBF;
   color: #fff;
   padding: 5px 10px;
   border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   display: flex; /* Para alinear elementos verticalmente */
   align-items: flex-start; /* Para alinear elementos en la esquina superior */
   box-shadow: -5px 0 5px rgba(0, 0, 0, 0.2), 0 5px 5px rgba(0, 0, 0, 0.2);
@@ -79,11 +80,29 @@ html{
   font-weight: normal;
 }
 
+
+.text strong{
+  font-weight: 500;
+  color: gray;
+}
+
 .flex-container {
   position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 50px;
+  right:-5px;
+}
+
+
+.flex-container::after {
+  content: "";
+  height: 1px; /* Grosor del borde */
+  background-color: #014DBF; /* Color del borde */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 85%; /* Ancho del borde superior restante */
 }
 
 .flex-container2 {
@@ -91,7 +110,6 @@ html{
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
-
 
 }
 .flex-container2 .icon {
@@ -109,6 +127,7 @@ html{
 
 img {
   height: 111px;
+  width:111px;
   border-radius: 10px;
 }
 
@@ -223,11 +242,11 @@ width: 100%;
   flex-flow: row wrap;
   width: 100%;
   height: auto;
-  border-radius: 25px;
-  background: #D9D9D9;
+
+  background: #F5F5F8;
+  border-bottom: 1px solid #bbbbbb;
   justify-content: space-between;
   margin-bottom: 15px;
-  margin-left: 10px;
 }
 
 .load-more-button {
@@ -280,6 +299,10 @@ width: 100%;
   margin:15px;
 }
 
+.card-title h3{
+  font-weight: 450;
+}
+
 .card-title img{
   border-radius:100px;
   height: 60px;
@@ -288,7 +311,7 @@ width: 100%;
 
 .card-description{
   margin: 20px 20px 35px;
-  font-weight: normal;
+  font-weight: 50;
   font-size: 20px;
 }
 
@@ -329,12 +352,22 @@ width: 100%;
   border-bottom: 1px solid #014DBF;
 }
 
+.jobs h2{
+  font-weight: normal;
+}
+
 .jobs h3{
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .jobs h4{
   font-weight: 100;
+}
+
+.jobs-border{
+  width:100%;
+  border-bottom: 1px solid #bbbbbb ;
+  margin-bottom:10px
 }
 
 .button-container {
@@ -368,4 +401,10 @@ width: 100%;
 .not-found-div p{
   color: gray;
   margin-right: 50px;
+}
+
+.attribute{
+  font-size:15px;
+  font-weight: 500;
+  color: gray;
 }

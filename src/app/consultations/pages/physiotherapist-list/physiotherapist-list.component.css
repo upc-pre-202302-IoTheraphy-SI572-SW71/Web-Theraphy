@@ -64,14 +64,23 @@ mat-icon {
 .example-form .example-full-width input {
   width: 80%;
 }
-
 .example-card {
-  width: 100%;
+  width: 99%;
+  margin-bottom: 30px;
 }
 
 .card-content {
   display: flex;
   align-items: center;
+  margin: 20px;
+}
+
+.card-content img{
+  margin-left: 0.6%;
+  border-radius: 10px;
+  height:120px;
+  width: 120px
+
 }
 
 .card-details {
@@ -80,8 +89,86 @@ mat-icon {
 
 .card-button {
   margin-right: 16px;
+}
+
+.rating-section {
+  margin-top: 10px;
+}
+
+.view-profile-btn {
+  margin-top: 10px;
+}
+
+.view-profile-section {
+  display: flex;
+  align-items: center;
 
 }
+.view-profile-text {
+  display: flex;
+  flex-direction: row;
+  color: black; /* Color del texto por defecto */
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 7px;
+
+}
+
+.view-profile-text:hover {
+  color: #014DBF; /* Color del texto por defecto */
+
+}
+.view-profile-text:hover .arrow-icon{
+  color: #014DBF;
+}
+
+.view-profile-text h2{
+  font-size: 17px;
+  font-weight: bolder;
+
+}
+
+
+
+
+.arrow-icon {
+  color:black;
+  width:auto;
+  font-size: 18px;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 9px;
+  margin-right: 8px;
+}
+
+
+.price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+
+.price-section h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.price-section h5 {
+  font-size: 16px;
+  font-weight: normal;
+  color: #5b5b5b;
+  margin: 0;
+}
+
+.book-now-btn {
+  margin-top: 25px;
+  background-color: #014DBF;
+}
+
 
 .card-button button {
   background-color: #014DBF;
@@ -93,7 +180,7 @@ mat-icon {
 }
 
 .card-details {
-  margin-left: 5%;
+  margin-left: 2%;
 }
 
 .card-content{
@@ -109,10 +196,7 @@ mat-icon {
   color: #0C7075;
 }
 
-.card-details mat-icon {
-  color: goldenrod;
 
-}
 
 .card-content img {
   border-color: #0C7075;
@@ -126,7 +210,7 @@ mat-icon {
   margin-bottom: 30px;
 }
 
-mat-icon {
+.star-icon{
   color: goldenrod;
   margin-right: 5px;
 }

@@ -21,7 +21,7 @@
       </div>
       <div class="description">
         <h3>Dr. {{physiotherapist.user.firstname}} {{physiotherapist.user.lastname}}</h3>
-        <h4 class="text">{{physiotherapist.specialization}}</h4>
+        <h4 class="text"><strong>Specialization:</strong>  {{physiotherapist.specialization}}</h4>
       </div>
     </div>
 
@@ -37,7 +37,7 @@
         <div class="icon"><img src="../../../../assets/img/experience-icon.ico" alt=""></div>
         <div class="description">
           <h4 class="text">{{physiotherapist.yearsExperience}}</h4>
-          <h4 class="text">Experience</h4>
+          <h4 class="text" >Years of experience</h4>
         </div>
       </div>
       <div class="item">
@@ -154,14 +154,14 @@
 
       <div class="jobs">
 
-        <div *ngFor="let job of jobs$">
+        <div [ngClass]="{ 'jobs-border': 1<jobs$.length}" *ngFor="let job of jobs$">
           <h2>{{job.position}}</h2>
-          <h4>{{job.organization}}</h4>
+          <h4><strong class="attribute">Organization:</strong> {{job.organization}}</h4>
         </div>
       </div>
 
       </div>
-        <div class="not-found-div"  *ngIf=" 0 >= jobs$.length">
+        <div class="not-found-div" *ngIf=" 0 >= jobs$.length">
           <p>No jobs found</p>
         </div>
 
@@ -172,10 +172,10 @@
       <div style="width: 100%" *ngIf=" 0 < certifications$.length">
       <div class="jobs">
 
-        <div *ngFor="let certification of certifications$">
-          <h3>{{certification.year }}</h3>
+        <div [ngClass]="{ 'jobs-border': 1<certifications$.length}" *ngFor="let certification of certifications$">
+          <h3><strong class="attribute">Year:</strong> {{certification.year }}</h3>
           <h2>{{certification.title}}</h2>
-          <h4>{{certification.school}}</h4>
+          <h4><strong class="attribute">School:</strong> {{certification.school}}</h4>
         </div>
 
       </div>
@@ -190,7 +190,7 @@
 
 
     <div class="button-container">
-      <button class="button" mat-flat-button style="  background-color: #014DBF !important; color: white;" [routerLink]="['/book-consultation',physiotherapist.id]">Book Appointment</button>
+      <button class="button" mat-flat-button style="  background-color: #014DBF !important; color: white;" [routerLink]="['/book-consultation',physiotherapist.id]">Book Consultation</button>
 
     </div>
 
