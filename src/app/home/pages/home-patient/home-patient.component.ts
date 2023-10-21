@@ -6,6 +6,9 @@ import {Consultation} from "../../../consultations/model/Consultation";
 import {ConsultationService} from "../../../consultations/services/consultation.service";
 import {Diagnosis} from "../../model/diagnosis";
 import {DiagnosisService} from "../../services/diagnosis.service";
+import {Review} from "../../../social/model/review";
+import {Appointment} from "../../../therapy/model/appointment";
+import {AppointmentService} from "../../../therapy/services/appointment.service";
 
 
   @Component({
@@ -26,6 +29,9 @@ import {DiagnosisService} from "../../services/diagnosis.service";
     consultations: Consultation[]=[];
     lastConsultation!: Consultation | undefined
     lastDiagnosis$: Observable<Diagnosis> | undefined
+    appointments: Appointment[]=[];
+    /*firstAppointment!: Appointment | undefined*/
+    firstThreeAppointments$: Appointment []=[]
 
 
    /* physiotherapists: Physiotherapist[]=[];
@@ -34,7 +40,7 @@ import {DiagnosisService} from "../../services/diagnosis.service";
     appointments: Appointments[]=[];
     currentUser: number;
   */
-    constructor(private patientService: PatientService, private consultationService: ConsultationService, private diagnosisService: DiagnosisService) {
+    constructor(private patientService: PatientService, private consultationService: ConsultationService, private diagnosisService: DiagnosisService, private appointmentService: AppointmentService) {
 
     }
 
@@ -46,6 +52,8 @@ import {DiagnosisService} from "../../services/diagnosis.service";
 
         this.patientLoggedId=response.id
         console.log(this.patientLoggedId)
+        this.getFirstThreeAppointments(this.patientLoggedId)
+
         this.getLastConsultation(this.patientLoggedId)
       })
 
@@ -68,6 +76,19 @@ import {DiagnosisService} from "../../services/diagnosis.service";
         if(this.consultations.length > 0) {
           this.lastConsultation = this.consultations.pop();
         }
+      })
+    }
+
+    getFirstThreeAppointments(patientId: number){
+      this.appointmentService.getUpcomingAppointments(patientId).subscribe((response:any)=>{
+        this.appointments = response.content;
+
+        if(this.appointments.length > 0) {
+          this.firstThreeAppointments$ = this.appointments.splice(0,3);
+          // this.firstAppointment = this.appointments.pop();
+        }
+
+
       })
     }
 
@@ -100,4 +121,5 @@ import {DiagnosisService} from "../../services/diagnosis.service";
         this.myTreatments = response.content;
       })
     }*/
+    protected readonly frameElement = frameElement;
   }
