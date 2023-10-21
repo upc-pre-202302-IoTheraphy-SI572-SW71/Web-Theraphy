@@ -1,12 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {CreatePhysiotherapist} from "../../../security/model/CreateUsers/createPhysiotherapist";
-import {Treatment} from "../../../treatments/model/treatment";
-import {CreatePatient} from "../../../security/model/CreateUsers/createPatient";
-import {PhysiotherapistsService} from "../../../security/services/physiotherapists.service";
-import {PatientsService} from "../../../security/services/patients.service";
-import {TreatmentsService} from "../../../treatments/services/treatments.service";
-import {Appointments} from "../../../therapy/model/appointments";
-import {AppointmentsService} from "../../../therapy/services/appointments.service";
 
 @Component({
   selector: 'app-home-doctor',
@@ -15,70 +7,13 @@ import {AppointmentsService} from "../../../therapy/services/appointments.servic
 })
 export class HomeDoctorComponent implements OnInit {
 
-  physiotherapists: CreatePhysiotherapist[]=[];
-  treatments: Treatment[]=[];
-  patients: CreatePatient[] = [];
-  appointments: Appointments[]=[];
-  myPatients: CreatePatient[]=[];
-  currentUser: number;
-  aea:number = 0;
+  constructor() {
 
-  constructor(private physiotherapistsService: PhysiotherapistsService, private treatmentsService: TreatmentsService,
-              private patientsService: PatientsService, private appointmentsService: AppointmentsService) {
-    this.currentUser = Number(sessionStorage.getItem("userId"));
     //this.currentUser = 1;
   }
 
   ngOnInit(): void {
-    this.getAllPhysiotherapists();
-    this.getAllTreatments();
-    this.getAllPatients();
-    this.getAllAppointments();
-  }
-
-  getAllPhysiotherapists(){
-    this.physiotherapistsService.getAll().subscribe((response: any) =>{
-      this.physiotherapists = response.content;
-      for(let i = 0; i<this.physiotherapists.length;i++){
-        if(this.physiotherapists[i].userId == this.currentUser) {
-          this.currentUser = this.physiotherapists[i].id;
-        }
-      }
-    })
-  }
-
-  getAllTreatments(){
-    this.treatmentsService.getAll().subscribe((response:any)=>{
-      this.treatments = response.content;
-    })
-
 
   }
 
-  getAllPatients(){
-    this.patientsService.getAll().subscribe((response: any)=>{
-      this.patients=response.content;
-    })
-  }
-
-  getAllAppointments() {
-    this.appointmentsService.getAll().subscribe((response: any)=>{
-      this.appointments=response.content;
-      this.getMyPatients();
-    })
-
-  }
-
-  getMyPatients() {
-    this.appointments.forEach(element => {
-      if(this.currentUser == element.physiotherapist.id) {
-        this.patients.forEach(element2 => {
-          if(element2.id == element.patient.id) {
-            this.myPatients.push(element2);
-          }
-        })
-      }
-    })
-
-  }
 }

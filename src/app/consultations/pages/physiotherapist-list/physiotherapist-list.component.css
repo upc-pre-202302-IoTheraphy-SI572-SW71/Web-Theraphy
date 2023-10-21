@@ -85,6 +85,7 @@ mat-icon {
 
 .card-details {
   flex-grow: 1;
+  margin-top: 10px;
 }
 
 .card-button {

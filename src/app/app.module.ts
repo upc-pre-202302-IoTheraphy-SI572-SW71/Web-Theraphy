@@ -44,6 +44,9 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { PaymentComponent } from './payment/pages/payment/payment.component';
 import { ConsultationsListComponent } from './consultations/pages/consultations-list/consultations-list.component';
 import { DiagnosisDialogComponent } from './shared/components/diagnosis-dialog/diagnosis-dialog.component';
+import { LogOutDialogComponent } from './shared/components/log-out-dialog/log-out-dialog.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.component";
 
 
 @NgModule({
@@ -61,9 +64,12 @@ import { DiagnosisDialogComponent } from './shared/components/diagnosis-dialog/d
     SidenavComponent,
     MyTheraphyComponent,
     HomePatientComponent,
+    HomeDoctorComponent,
     PaymentComponent,
     ConsultationsListComponent,
-    DiagnosisDialogComponent
+    DiagnosisDialogComponent,
+    LogOutDialogComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

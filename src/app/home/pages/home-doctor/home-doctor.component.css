@@ -2,99 +2,69 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+  background-image: url('src/assets/img/home-doctor-back.png'); /* Cambia 'ruta_de_la_imagen.jpg' a la URL de tu imagen de fondo */
+  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el elemento */
+  background-position: center; /* Centra la imagen horizontal y verticalmente */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+
 }
 .contents {
+  display: flex;
+  flex-direction: row;
   width: 100%;
   height: 100%;
   margin-left: 48px;
   margin-right: 48px;
 }
-.sidenav {
-  height: 100%;
+
+.text{
+  width:400px;
+  margin-top: 50px;
+
 }
 
-
-li{
-  list-style: none;
-}
-h1 {
-  margin: 0;
-  font-size: 30px;
-  font-weight: 500;
-}
-h1,h3 {
-
-  font-family: 'IBM Plex Sans', "Helvetica Neue", sans-serif;
+.text h1{
+  font-size: 70px;
 }
 
-img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  margin-top: 5px;
-  border-radius: 30px;
+.text h2{
+  font-weight: 800;
+  font-size: 25px;
 }
 
-mat-icon {
-  cursor: pointer;
-  font-size: 28px;
-  width: 40px;
-  height: 28px;
+.download-buttons{
+  display: flex;
+  flex-direction: column;
 }
 
-.patients-infos {
+.download-button-android img{
+  width:193px;
+  height: 75px;
+
+}
+.download-button-ios img{
+  width:194px;
+  height: 61px
+}
+
+.img{
   display: flex;
   flex-direction: row;
-  align-content: center;
-  align-items: center;
+  margin-top: 50px;
 }
 
-.patient-info{
-  margin-left: 4vw;
-  margin-right: 4vw;
-  background-color: #FFFFFF;
-  border-radius: 24px;
-  border: 1px solid #007AF0;
-  width: 500px;
+img{
+  width:350px;
+  height:500px;
+}
+.image-1{
+  margin-top: 90px;
 }
 
-.patient-info_title{
-  border-top-right-radius: 24px;
-  border-top-left-radius: 24px ;
-  color: white;
-  padding-left: 25px;
-  padding-top: 10px;
+.image-3{
+  margin-top: 90px;
 }
 
-.patient-info_title h1{
-  color: #AB00E7;
-}
 
-.patient-info_body{
-  display: flex;
-  justify-content: space-between;
-  padding-right: 30px;
-}
 
-.date {
-  display: flex;
-  flex-direction: row;
-}
 
-.my-patients {
-  margin: 4vw;
-  background-color: #FFFFFF;
-  border-radius: 24px;
-  border: 1px solid #007AF0;
-  width: auto;
-  padding: 10px;
-}
-
-.patient_name {
-  margin-top: 10px;
-}
-
-.my-patients_title h1{
-  color: #AB00E7;
-  margin-bottom: 10px;
-}

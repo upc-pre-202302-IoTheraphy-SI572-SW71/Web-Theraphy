@@ -23,7 +23,7 @@
   <!-- Log Out en la parte inferior -->
   <mat-nav-list>
   <div class="logout-container">
-    <mat-list-item class="sidenav-item logout" routerLinkActive="false" [routerLink]="['/']" (click)="logout()">
+    <mat-list-item class="sidenav-item logout" routerLinkActive="false" (click)="openLogoutConfirmationDialog()">
       <mat-icon color="primary"  matTooltipPosition="right">logout</mat-icon>
       <span mat-line class="sidenav-item-text" *ngIf="isExpanded">Log Out</span>
     </mat-list-item>
@@ -34,9 +34,9 @@
 
   <div class="profile-card">
     <div>
-      <div class="card-title">
-        <img src="https://avatars.githubusercontent.com/u/89089619?v=4" alt="Italian Trulli">
-        <p *ngIf="isExpanded">Dr. Crishtian Gómez</p>
+      <div class="card-title" *ngIf="patient$ | async as patient">
+        <img src="{{patient.photoUrl}}" alt="Profile Photo">
+        <p *ngIf="isExpanded">{{patient.user.firstname}} {{patient.user.lastname}}</p>
       </div>
     </div>
 

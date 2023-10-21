@@ -18,7 +18,7 @@
       <div class="form" *ngIf="physiotherapist$ | async as physiotherapist">
         <img src="{{physiotherapist.photoUrl}}" alt="Profile Photo">
         <h2> Dr. {{physiotherapist.user.firstname}} {{physiotherapist.user.lastname}}</h2>
-        <h3> {{physiotherapist.specialization}}</h3><br>
+        <h3> <strong>Specialization:</strong> {{physiotherapist.specialization}}</h3><br>
         <h3> How was your experience with {{physiotherapist.user.firstname}}? </h3>
 
         <div class="review-stars">

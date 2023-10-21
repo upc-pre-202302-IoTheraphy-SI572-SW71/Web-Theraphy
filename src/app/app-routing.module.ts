@@ -18,10 +18,13 @@ import {ConsultationDetailsComponent} from "./consultations/pages/consultation-d
 import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
 import {HomePatientComponent} from "./home/pages/home-patient/home-patient.component";
 import {ConsultationsListComponent} from "./consultations/pages/consultations-list/consultations-list.component";
+import {PageNotFoundComponent} from "./shared/components/page-not-found/page-not-found.component";
+import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'home-patient' , component: HomePatientComponent},
+  {path: 'home-doctor' , component: HomeDoctorComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'auth-registration', component: SignupComponent},
   {path: 'registration-patient', component: PatientRegisterComponent},
@@ -33,8 +36,8 @@ const routes: Routes = [
   {path: 'consultation-details/physiotherapist/:id', component: ConsultationDetailsComponent},
   {path: 'add-review/:id', component: AddReviewComponent},
   {path: 'my-theraphy', component: MyTheraphyComponent},
-  {path: 'my-consultations-list', component: ConsultationsListComponent}
-
+  {path: 'my-consultations-list', component: ConsultationsListComponent},
+  { path: '**', component: PageNotFoundComponent }
 
 ];
 

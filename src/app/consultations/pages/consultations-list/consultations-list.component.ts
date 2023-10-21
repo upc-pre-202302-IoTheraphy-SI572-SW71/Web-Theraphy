@@ -7,6 +7,7 @@ import {ConsultationService} from "../../services/consultation.service";
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import {DiagnosisDialogComponent} from "../../../shared/components/diagnosis-dialog/diagnosis-dialog.component";
+import {PatientService} from "../../../security/services/patient.service";
 
 
 @Component({
@@ -21,20 +22,31 @@ export class ConsultationsListComponent {
   originals: Consultation[]=[];
   upcomingButtonActive: boolean;
   pastButtonActive: boolean;
+  patientLoggedId: number = 0
 
-  constructor(private consultationService: ConsultationService, private router: Router,private dialog: MatDialog) {
+  constructor(private consultationService: ConsultationService, private patientService: PatientService, private router: Router,private dialog: MatDialog) {
     this.upcomingButtonActive=false;
     this.pastButtonActive=false
   }
 
   ngOnInit(): void {
-    this.getAllMyConsultations()
+
+    this.patientService.getPatientLogged().subscribe((response: any)=>{
+
+      this.patientLoggedId=response.id
+      this.getAllMyConsultations(this.patientLoggedId)
+    })
+
   }
 
-  getAllMyConsultations(){
-    this.consultationService.getByPatientId(1).subscribe((response: any) =>{
+  getAllMyConsultations(patientId:number){
+    this.consultationService.getByPatientId(patientId).subscribe((response: any) =>{
       this.consultations = response.content;
       this.originals = response.content;
+
+      // Invertir la lista manualmente
+      this.consultations = this.consultations.slice().reverse();
+      this.originals = this.originals.slice().reverse();
     })
   }
 
