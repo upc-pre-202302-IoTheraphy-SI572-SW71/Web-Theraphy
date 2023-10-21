@@ -42,6 +42,8 @@ import {ToastrModule} from "ngx-toastr";
 import { NgxStripeModule } from 'ngx-stripe';
 import {MatDialogModule} from "@angular/material/dialog";
 import { PaymentComponent } from './payment/pages/payment/payment.component';
+import { ConsultationsListComponent } from './consultations/pages/consultations-list/consultations-list.component';
+import { DiagnosisDialogComponent } from './shared/components/diagnosis-dialog/diagnosis-dialog.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { PaymentComponent } from './payment/pages/payment/payment.component';
     SidenavComponent,
     MyTheraphyComponent,
     HomePatientComponent,
-    PaymentComponent
+    PaymentComponent,
+    ConsultationsListComponent,
+    DiagnosisDialogComponent
   ],
   imports: [
     BrowserModule,

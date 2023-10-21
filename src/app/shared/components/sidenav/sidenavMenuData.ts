@@ -14,7 +14,7 @@ export const sidenavMenuData = [
     label: 'Physiotherapists'
   },
   {
-    routeLink: '/physiotherapist-list',    icon: 'calendar_today',
+    routeLink: '/my-consultations-list',    icon: 'calendar_today',
     label: 'My Consultations'
   },
   {
