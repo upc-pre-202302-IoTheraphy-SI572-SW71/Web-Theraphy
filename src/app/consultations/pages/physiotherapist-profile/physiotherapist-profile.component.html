@@ -154,7 +154,7 @@
 
       <div class="jobs">
 
-        <div [ngClass]="{ 'jobs-border': 1<jobs$.length}" *ngFor="let job of jobs$">
+        <div [ngClass]="{ 'jobs-border': 1<jobs$.length && i <jobs$.length-1}" *ngFor="let job of jobs$; let i = index">
           <h2>{{job.position}}</h2>
           <h4><strong class="attribute">Organization:</strong> {{job.organization}}</h4>
         </div>
@@ -172,7 +172,7 @@
       <div style="width: 100%" *ngIf=" 0 < certifications$.length">
       <div class="jobs">
 
-        <div [ngClass]="{ 'jobs-border': 1<certifications$.length}" *ngFor="let certification of certifications$">
+        <div [ngClass]="{ 'jobs-border': 1<certifications$.length && i <certifications$.length-1}" *ngFor="let certification of certifications$; let i = index">
           <h3><strong class="attribute">Year:</strong> {{certification.year }}</h3>
           <h2>{{certification.title}}</h2>
           <h4><strong class="attribute">School:</strong> {{certification.school}}</h4>
