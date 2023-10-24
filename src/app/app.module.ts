@@ -34,7 +34,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatLegacyTooltipModule} from "@angular/material/legacy-tooltip";
 import {MyTheraphyComponent} from "./therapy/pages/my-theraphy/my-theraphy.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatLineModule, MatNativeDateModule} from "@angular/material/core";
 import {HomePatientComponent} from "./home/pages/home-patient/home-patient.component";
 
 import {MatSliderModule} from "@angular/material/slider";
@@ -98,6 +98,7 @@ import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.componen
     ToastrModule.forRoot(),
     NgxStripeModule.forRoot('pk_test_51O2RELCjW3JsFKOWismIZke5hD6PoJ5u2jaOx19m1AbSYgyw9pA3GLxl0Yb83MK0G3IVCiUp0UIzM2TOwMws1u2O00WNxCfi4U'),
     MatDialogModule,
+    MatLineModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
