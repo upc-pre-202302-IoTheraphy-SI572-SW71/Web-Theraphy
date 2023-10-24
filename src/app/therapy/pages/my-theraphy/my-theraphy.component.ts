@@ -110,7 +110,7 @@ export class MyTheraphyComponent {
                     this.isAppointment = true;
                     this.Done = this.appointment.done;
 
-                    this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour) || this.Done;
+                  this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour, this.appointment.date) || this.Done;
 
                 },
                 (error) => {
@@ -168,7 +168,7 @@ export class MyTheraphyComponent {
                     this.isAppointment = true;
                     this.Done = this.appointment.done;
 
-                    this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour) || this.Done;
+                  this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour, this.appointment.date) || this.Done;
 
                 },
                 (error) => {
@@ -225,7 +225,7 @@ export class MyTheraphyComponent {
                     this.isAppointment = true;
                     this.Done = this.appointment.done;
 
-                    this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour) || this.Done;
+                  this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour, this.appointment.date) || this.Done;
 
                 },
                 (error) => {
@@ -333,7 +333,7 @@ export class MyTheraphyComponent {
                          this.isAppointment = true;
                          this.Done = this.appointment.done;
 
-                         this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour) || this.Done;
+                         this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour, this.appointment.date) || this.Done;
 
                      },
                  (error) => {
@@ -352,14 +352,15 @@ export class MyTheraphyComponent {
 
   }
 
-  isCurrentTimeGreaterThan(targetTime: string): boolean {
+  isCurrentTimeGreaterThan(targetTime: string, targetDate: string): boolean {
     const currentTime = new Date();
     const [targetHour, targetMinute] = targetTime.split(':').map(Number);
 
     console.log("aqui" + targetHour)
 
     if (
-      currentTime.getHours() >= targetHour)
+      currentTime.getHours() >= targetHour && this.isCurrentDateGreaterThan(targetDate)
+    )
      {
        console.log("aqui" + currentTime.getHours())
 
@@ -368,4 +369,21 @@ export class MyTheraphyComponent {
 
     return false;
   }
+
+  isCurrentDateGreaterThan(targetDate: string): boolean {
+    const currentDate = new Date();
+    const [targetYear, targetMonth, targetDay] = targetDate.split('-').map(Number);
+
+    if (
+      currentDate.getFullYear() > targetYear ||
+      (currentDate.getFullYear() === targetYear &&
+        (currentDate.getMonth() > targetMonth - 1 ||
+          (currentDate.getMonth() === targetMonth - 1 && currentDate.getDate() >= targetDay)))
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
 }
