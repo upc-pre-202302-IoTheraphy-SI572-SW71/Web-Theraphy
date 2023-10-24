@@ -38,6 +38,7 @@ export class MyTheraphyComponent {
   currentDate!: Date;
   initialDate!: Date;
 
+  noTherapy: boolean = false;
   currentTherapy!: Therapy;
 
   treatment!: Treatment;
@@ -49,7 +50,7 @@ export class MyTheraphyComponent {
 
   toDo: boolean = true;
   inProcess: boolean = false;
-  Done: boolean = false;
+  Done: boolean = true;
 
   constructor(private therapyService: TherapyService, private treatmentService: TreatmentService,
               private appointmentService: AppointmentService,private sanitizer: DomSanitizer ,private router: Router) {
@@ -273,83 +274,93 @@ export class MyTheraphyComponent {
     //   console.log(therapy.therapyName)
     // )
 
+    console.log("awafasdf");
+
     //
-    this.therapyService.getActiveTherapyByPatientId().subscribe(
+      this.therapyService.getActiveTherapyByPatientId().subscribe(
+        (value) => {
 
-         (value) => {
-
-           this.currentTherapy = value;
-
-           this.initialDate = new Date(this.currentTherapy.startAt);
-           this.currentDate = new Date(this.currentTherapy.startAt); // Inicializa la propiedad con la fecha actual
-
-           this.initialDate.setDate(this.initialDate.getDate() +1);
-           this.currentDate.setDate(this.currentDate.getDate() + 1);
-
-           console.log(this.initialDate);
-           console.log(this.currentDate);
+          if (value == null) {
+            this.noTherapy = true
+          } else {
+            this.currentTherapy = value;
+            this.noTherapy = false;
 
 
-           let initialDate = new Date(this.currentTherapy.startAt);
-           let finishDate = new Date(this.currentTherapy.finishAt);
+            this.initialDate = new Date(this.currentTherapy.startAt);
+            this.currentDate = new Date(this.currentTherapy.startAt); // Inicializa la propiedad con la fecha actual
 
-           let timeDifference = finishDate.getTime() - initialDate.getTime();
+            this.initialDate.setDate(this.initialDate.getDate() + 1);
+            this.currentDate.setDate(this.currentDate.getDate() + 1);
 
-           let daysDifference = timeDifference / (1000 * 3600 * 24) + 1;
-
-           console.log("La diferencia en días es: " + daysDifference);
-
-           this.days = Array.from({ length: daysDifference }, (_, i) => `DAY ${i + 1}`)
+            console.log(this.initialDate);
+            console.log(this.currentDate);
 
 
-           const year = this.currentDate.getFullYear();
-           const month = this.currentDate.getMonth() + 1; // Meses en JavaScript se cuentan desde 0
-           const day = this.currentDate.getDate();
+            let initialDate = new Date(this.currentTherapy.startAt);
+            let finishDate = new Date(this.currentTherapy.finishAt);
 
-           // Asegurarse de que el mes y el día tengan dos dígitos
-           const formattedMonth = month < 10 ? `0${month}` : `${month}`;
-           const formattedDay = day < 10 ? `0${day}` : `${day}`;
+            let timeDifference = finishDate.getTime() - initialDate.getTime();
 
-           const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
-           console.log(formattedDate);
-           //leer treatment
-           if (formattedDate != null) {
-             this.treatmentService.getTreatmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
-                 (value) => {
-                   this.treatment = value;
-                   this.isTreatment = true;
-                   this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
-                 },
-                 (error) => {
-                   console.error('Error al obtener el tratamiento:', error);
-                   this.isTreatment = false;
-                 }
-             );
+            let daysDifference = timeDifference / (1000 * 3600 * 24) + 1;
 
-             if(!this.isTreatment){
-                 this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
-                     (value) => {
-                         this.appointment = value;
-                         this.isAppointment = true;
-                         this.Done = this.appointment.done;
+            console.log("La diferencia en días es: " + daysDifference);
 
-                         this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour, this.appointment.date) || this.Done;
-
-                     },
-                 (error) => {
-                     console.error('Error al obtener la cita:', error);
-                     this.isAppointment = false;
-                 }
-                 );
-             }
-
-           }
+            this.days = Array.from({length: daysDifference}, (_, i) => `DAY ${i + 1}`)
 
 
-         }
+            const year = this.currentDate.getFullYear();
+            const month = this.currentDate.getMonth() + 1; // Meses en JavaScript se cuentan desde 0
+            const day = this.currentDate.getDate();
 
-     );
+            // Asegurarse de que el mes y el día tengan dos dígitos
+            const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+            const formattedDay = day < 10 ? `0${day}` : `${day}`;
 
+            const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+            console.log(formattedDate);
+            //leer treatment
+            if (formattedDate != null) {
+              this.treatmentService.getTreatmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+                (value) => {
+                  this.treatment = value;
+                  this.isTreatment = true;
+                  this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
+                },
+                (error) => {
+                  console.error('Error al obtener el tratamiento:', error);
+                  this.isTreatment = false;
+                }
+              );
+
+              if (!this.isTreatment) {
+                this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
+                  (value) => {
+                    this.appointment = value;
+                    this.isAppointment = true;
+                    this.Done = this.appointment.done;
+
+                    this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour, this.appointment.date) || this.Done;
+
+                  },
+                  (error) => {
+                    console.error('Error al obtener la cita:', error);
+                    this.isAppointment = false;
+                  }
+                );
+              }
+
+            }
+
+
+          }
+        },
+        (error) => {
+          // Hubo un error al buscar la terapia.
+          console.error("Error al buscar la terapia:", error);
+          this.noTherapy = true;
+        }
+      );
   }
 
   isCurrentTimeGreaterThan(targetTime: string, targetDate: string): boolean {
