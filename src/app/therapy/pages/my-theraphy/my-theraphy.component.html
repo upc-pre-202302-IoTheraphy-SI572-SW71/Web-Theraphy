@@ -122,7 +122,7 @@
 
                   <!-- Botón de diagnóstico -->
                   <div class="diagnosis-button">
-                    <button mat-raised-button color="primary" [disabled]="!Done">Diagnosis</button>
+                    <button mat-raised-button color="primary" (click)="openDiagnosisDialog()" [disabled]="!Done">Diagnosis</button>
                   </div>
 
 
@@ -131,11 +131,7 @@
 
               </div>
 
-
             </div>
-
-
-
 
           </mat-card>
         </ng-container>

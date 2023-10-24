@@ -10,6 +10,8 @@ import {DatePipe} from "@angular/common";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {AppointmentService} from "../../services/appointment.service";
 import {Appointment} from "../../model/appointment";
+import {DiagnosisDialogComponent} from "../../../shared/components/diagnosis-dialog/diagnosis-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-my-theraphy',
@@ -53,7 +55,8 @@ export class MyTheraphyComponent {
   Done: boolean = true;
 
   constructor(private therapyService: TherapyService, private treatmentService: TreatmentService,
-              private appointmentService: AppointmentService,private sanitizer: DomSanitizer ,private router: Router) {
+              private appointmentService: AppointmentService,private sanitizer: DomSanitizer ,
+              private router: Router, private dialog: MatDialog) {
   }
 
   // Otras funciones de tu componente
@@ -395,6 +398,18 @@ export class MyTheraphyComponent {
     }
 
     return false;
+  }
+
+  openDiagnosisDialog() {
+    this.dialog.open(DiagnosisDialogComponent, {
+      data: {
+        topic: this.appointment.topic,
+        date: this.appointment.date,
+        hour: this.appointment.hour,
+        physiotherapist_full_name: this.currentTherapy.physiotherapist.user.firstname+ " "+this.currentTherapy.physiotherapist.user.lastname,
+        diagnosis: this.appointment.diagnosis,
+      },
+    });
   }
 
 }
