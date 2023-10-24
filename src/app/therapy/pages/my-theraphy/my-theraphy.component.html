@@ -91,9 +91,9 @@
                   </mat-card-subtitle>
                   <mat-card-subtitle style="margin-left: 20px">
 
-                      <li>To do</li>
-                      <li>In process</li>
-                      <li>Finished</li>
+                    <li [ngClass]="{'green-text': toDo, 'red-text': !toDo}">To do</li>
+                    <li [ngClass]="{'green-text': inProcess, 'red-text': !inProcess}">In process</li>
+                    <li [ngClass]="{'green-text': Done, 'red-text': !Done}">Finished</li>
 
                   </mat-card-subtitle>
                 </div>

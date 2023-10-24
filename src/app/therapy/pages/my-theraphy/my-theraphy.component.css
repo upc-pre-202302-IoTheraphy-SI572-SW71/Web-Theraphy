@@ -254,6 +254,17 @@
 
   }
 
+  /* Clase para texto verde */
+  .green-text {
+    color: green;
+  }
+
+  /* Clase para texto rojo */
+  .red-text {
+    color: red;
+  }
+
+
 
   @media (max-width: 1600px) {
 

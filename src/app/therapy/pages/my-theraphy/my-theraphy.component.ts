@@ -46,6 +46,11 @@ export class MyTheraphyComponent {
   isTreatment: boolean = false;
   isAppointment: boolean = false;
 
+
+  toDo: boolean = true;
+  inProcess: boolean = false;
+  Done: boolean = false;
+
   constructor(private therapyService: TherapyService, private treatmentService: TreatmentService,
               private appointmentService: AppointmentService,private sanitizer: DomSanitizer ,private router: Router) {
   }
@@ -103,6 +108,10 @@ export class MyTheraphyComponent {
                 (value) => {
                     this.appointment = value;
                     this.isAppointment = true;
+                    this.Done = this.appointment.done;
+
+                    this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour) || this.Done;
+
                 },
                 (error) => {
                     console.error('Error al obtener la cita:', error);
@@ -157,6 +166,10 @@ export class MyTheraphyComponent {
                 (value) => {
                     this.appointment = value;
                     this.isAppointment = true;
+                    this.Done = this.appointment.done;
+
+                    this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour) || this.Done;
+
                 },
                 (error) => {
                     console.error('Error al obtener la cita:', error);
@@ -210,6 +223,10 @@ export class MyTheraphyComponent {
                 (value) => {
                     this.appointment = value;
                     this.isAppointment = true;
+                    this.Done = this.appointment.done;
+
+                    this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour) || this.Done;
+
                 },
                 (error) => {
                     console.error('Error al obtener la cita:', error);
@@ -314,6 +331,10 @@ export class MyTheraphyComponent {
                      (value) => {
                          this.appointment = value;
                          this.isAppointment = true;
+                         this.Done = this.appointment.done;
+
+                         this.inProcess = this.isCurrentTimeGreaterThan(this.appointment.hour) || this.Done;
+
                      },
                  (error) => {
                      console.error('Error al obtener la cita:', error);
@@ -329,8 +350,22 @@ export class MyTheraphyComponent {
 
      );
 
+  }
 
+  isCurrentTimeGreaterThan(targetTime: string): boolean {
+    const currentTime = new Date();
+    const [targetHour, targetMinute] = targetTime.split(':').map(Number);
 
+    console.log("aqui" + targetHour)
 
+    if (
+      currentTime.getHours() >= targetHour)
+     {
+       console.log("aqui" + currentTime.getHours())
+
+       return true;
+    }
+
+    return false;
   }
 }
