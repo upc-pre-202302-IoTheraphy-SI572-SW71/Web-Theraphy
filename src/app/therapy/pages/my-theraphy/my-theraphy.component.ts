@@ -239,7 +239,7 @@ export class MyTheraphyComponent {
     } else {
       this.maxVisibleDays = 10; // Cambia de nuevo a 10 días visibles en pantallas más grandes
     }
-      if (window.innerWidth <= 1200) {
+      if (window.innerWidth <= 1300) {
         this.showMessageAppointment = false;
       } else {
           this.showMessageAppointment = true;

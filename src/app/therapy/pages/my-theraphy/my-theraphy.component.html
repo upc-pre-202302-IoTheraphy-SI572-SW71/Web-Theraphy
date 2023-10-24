@@ -49,8 +49,8 @@
             <img [src]="appointment.therapy.physiotherapist.photoUrl" alt="Physiotherapist Image">
           </div>
 
-          <div class="appointment-text" style=" width: auto">
-
+          <div class="appointment-text" style=" width: 70%">
+            <div class="only-text">
             <mat-card-title><span class="appointment-title">You have a medical appointment!</span></mat-card-title>
             <div class="subtitles-appointments">
               <div class="left-text">
@@ -68,7 +68,6 @@
                 </span></mat-card-subtitle>
               </div>
 
-
               <div class="right-text" *ngIf="showMessageAppointment">
                 <mat-card-subtitle><span> <strong> Patient: </strong> {{appointment.therapy.patient.user.firstname
                 + " " + appointment.therapy.patient.user.lastname
@@ -83,12 +82,40 @@
                   {{appointment.therapy.patient.location}}
                 </span></mat-card-subtitle>
               </div>
+
+              <div class="right-part" *ngIf="showMessageAppointment">
+                <!-- Lista de estado de la cita con viñetas -->
+                <div class="appointment-status">
+                  <mat-card-subtitle>
+                    <span> <strong> Status: </strong></span>
+                  </mat-card-subtitle>
+                  <mat-card-subtitle style="margin-left: 20px">
+
+                      <li>To do</li>
+                      <li>In process</li>
+                      <li>Finished</li>
+
+                  </mat-card-subtitle>
+                </div>
+
+
+              </div>
+
+              <!-- Botón de diagnóstico -->
+              <div class="diagnosis-button">
+                <button mat-raised-button color="primary">Diagnosis</button>
+              </div>
+
             </div>
 
 
+            </div>
 
 
           </div>
+
+
+
 
         </mat-card>
       </ng-container>

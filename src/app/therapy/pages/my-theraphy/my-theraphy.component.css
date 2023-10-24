@@ -214,20 +214,46 @@
     color: #014DBF;
   }
 
-  .appointment-text {
-    width: 100%;
+
+
+  .right-part {
+    width: 120px;
+  }
+  .spacer {
+    width: 18vw;
   }
 
   .subtitles-appointments {
     display: flex;
-    flex-direction: row;
     padding-top: 20px;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .right-text {
-    margin-left: 200px;
+  }
+
+  .diagnosis-button {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    height: 100%;
+    align-items: center;
+    align-content: center;
+    margin-top: 3%;/* Asegura que el contenedor tenga una altura para que funcione la alineación vertical */
+  }
+
+
+  .appointment-text {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .only-text {
+    width: 100%;
 
   }
+
 
   @media (max-width: 1600px) {
 
@@ -264,4 +290,15 @@
 
   }
 
+  @media (max-width: 1100px) {
 
+    .subtitles-appointments {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+
+    .diagnosis-button {
+      margin-top: 20px;
+      margin-right: 50px;
+    }
+  }
