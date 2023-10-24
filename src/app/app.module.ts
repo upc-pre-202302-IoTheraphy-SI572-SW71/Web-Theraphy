@@ -47,6 +47,7 @@ import { DiagnosisDialogComponent } from './shared/components/diagnosis-dialog/d
 import { LogOutDialogComponent } from './shared/components/log-out-dialog/log-out-dialog.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.component";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.componen
     ConsultationsListComponent,
     DiagnosisDialogComponent,
     LogOutDialogComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+
   ],
   imports: [
     BrowserModule,

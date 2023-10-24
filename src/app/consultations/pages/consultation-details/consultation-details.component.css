@@ -198,28 +198,7 @@ img {
   margin-right: 10px;
 }
 
-.button-custom {
-  display: flex;
-  justify-content: center;
-
-}
-
-.button {
-  margin-top: 20px;
-  height: 50px;
-  width: 25%;
-  font-size: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Sombra con un poco de opacidad */
-  transition: all 0.3s ease; /* Animación de transición suave */
-}
-
-.button:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Sombra más visible cuando el mouse se acerca */
-  transform: scale(1.05); /* Escala ligeramente el botón para dar la impresión de un efecto de elevación */
-}
-
 app-payment{
-  width: 50%;
+  width: 100%;
 }
 
