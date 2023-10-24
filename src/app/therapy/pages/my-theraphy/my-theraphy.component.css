@@ -147,6 +147,10 @@
     margin-bottom: 30px;
   }
 
+  .appointment-title {
+    color: #014DBF;
+  }
+
 
 
 
@@ -167,10 +171,19 @@
       height: 400px;
       border-radius: 20px 20px 0px 0px;
     }
+
   }
 
 
   .rest_day {
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    width: 90%;
+    align-items: center; /* Alineación verticalmente */
+  }
+
+  .appointment-card {
     display: flex;
     flex-direction: row;
     border-radius: 20px;
@@ -201,6 +214,58 @@
     color: #014DBF;
   }
 
+
+
+  .right-part {
+    width: 120px;
+  }
+  .spacer {
+    width: 18vw;
+  }
+
+  .subtitles-appointments {
+    display: flex;
+    padding-top: 20px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .right-text {
+  }
+
+  .diagnosis-button {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    height: 100%;
+    align-items: center;
+    align-content: center;
+    margin-top: 3%;/* Asegura que el contenedor tenga una altura para que funcione la alineación vertical */
+  }
+
+
+  .appointment-text {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .only-text {
+    width: 100%;
+
+  }
+
+  /* Clase para texto verde */
+  .green-text {
+    color: green;
+  }
+
+  /* Clase para texto rojo */
+  .red-text {
+    color: #999999;
+  }
+
+
+
   @media (max-width: 1600px) {
 
 
@@ -209,7 +274,6 @@
       min-width: 900px;
     }
 
-
   }
 
   @media (max-width: 1100px) {
@@ -217,8 +281,17 @@
       flex-direction: column;
     }
 
+    .appointment-card {
+      flex-direction: column;
+    }
+
+    .appointment-text {
+      margin-left: 60px;
+    }
+
     .free-text {
       padding-left: 20px;
+      padding-right: 20px;
     }
 
     .video-card video {
@@ -229,3 +302,15 @@
 
   }
 
+  @media (max-width: 1100px) {
+
+    .subtitles-appointments {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+
+    .diagnosis-button {
+      margin-top: 20px;
+      margin-right: 50px;
+    }
+  }
