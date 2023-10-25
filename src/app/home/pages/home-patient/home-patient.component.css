@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+  background-color: #F5F5F8;
 }
 .contents {
   width: 100%;
@@ -45,9 +46,26 @@
 .card-consultation {
   border-radius: 20px;
   padding: 12px;
+  background-color: #FFFFFF;
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.10);
-
 }
+
+.card-no-consultation {
+  border-radius: 20px;
+  padding: 12px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.card-no-consultation img {
+  width: 60px;
+  height: auto;
+}
+
 .profile-card {
   display: flex;
   flex-flow: row wrap;
@@ -118,7 +136,7 @@
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.10);
   display: grid;
   gap: 14px;
-
+  background-color: #FFFFFF;
 }
 
 .detail-appointment {
@@ -144,8 +162,9 @@
   max-width: 284px;
 }
 
-mat-slider {
-  width: 100%;
+.progress-theraphy {
+  margin-top: 40px;
+  margin-bottom: 50px;
 }
 
 .progress-theraphy .title {
@@ -159,6 +178,17 @@ mat-slider {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
+
+.recent-no-diagnosis {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .card-diagnosis {

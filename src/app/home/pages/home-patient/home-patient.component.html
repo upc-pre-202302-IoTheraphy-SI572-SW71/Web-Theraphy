@@ -11,9 +11,9 @@
     </div>
 
     <div class="flex-container">
-      <div class="consultations">
+      <div class="consultations" >
         <h3>Consultation</h3>
-        <div class="card-consultation" >
+        <div class="card-consultation" *ngIf="lastConsultation">
           <div class="profile-card">
             <img src="{{lastConsultation!.physiotherapist.photoUrl}}" alt="Italian Trulli">
             <div class="description">
@@ -38,6 +38,11 @@
             </div>
           </div>
         </div>
+        <div class="card-no-consultation" *ngIf="!lastConsultation">
+          <p>You don't have consultation yet</p>
+          <img src="assets/img/sad.png">
+        </div>
+
       </div>
 
       <div class="upcoming-appointments">
@@ -66,19 +71,11 @@
 
     <div class="progress-theraphy">
     <div class="title">
-      <h3 id="example-name-label" class="example-name-label">Value</h3>
-      <h3 class="example-value-label">{{slider.value}}</h3>
+      <h3 id="example-name-label" class="example-name-label">Theraphy Progress</h3>
+      <h3 class="example-value-label">{{valueProgress}}%</h3>
     </div>
-    <mat-slider
-      class="example-margin red-slider"
-      [disabled]="disabled"
-      [max]="max"
-      [min]="min"
-      [step]="step"
-      [discrete]="thumbLabel"
-      [showTickMarks]="showTicks">
-      <input matSliderThumb [(ngModel)]="value" #slider>
-    </mat-slider>
+      <mat-progress-bar mode="determinate" value="{{valueProgress}}" #slider></mat-progress-bar>
+
     </div>
 
     <div class="recent-diagnosis" *ngIf="lastDiagnosis$ | async as diagnosis">
@@ -89,6 +86,9 @@
       <div class="card-diagnosis">
         <p>{{diagnosis.diagnosis}}</p>
       </div>
+    </div>
+    <div class="recent-no-diagnosis card-diagnosis" *ngIf="!(lastDiagnosis$ | async)">
+      <p>You don't have diagnoses yet</p>
     </div>
     <!--<app-header></app-header>
     <div><div class="patients-infos">

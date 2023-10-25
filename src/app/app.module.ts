@@ -44,6 +44,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { PaymentComponent } from './payment/pages/payment/payment.component';
 import { ConsultationsListComponent } from './consultations/pages/consultations-list/consultations-list.component';
 import { DiagnosisDialogComponent } from './shared/components/diagnosis-dialog/diagnosis-dialog.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -92,6 +93,7 @@ import { DiagnosisDialogComponent } from './shared/components/diagnosis-dialog/d
     ToastrModule.forRoot(),
     NgxStripeModule.forRoot('pk_test_51O2RELCjW3JsFKOWismIZke5hD6PoJ5u2jaOx19m1AbSYgyw9pA3GLxl0Yb83MK0G3IVCiUp0UIzM2TOwMws1u2O00WNxCfi4U'),
     MatDialogModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import {MedicalHistory} from "../../health-record-expertise/model/medical-histor
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Therapy} from "../model/therapy";
 import {catchError, Observable, retry} from "rxjs";
+import {Treatment} from "../model/treatment";
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,6 @@ export class TherapyService extends BaseService<Therapy> {
         retry(2),
         catchError(this.handleError),  );
   }
+
 
 }

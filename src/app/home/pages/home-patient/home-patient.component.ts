@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
+import {Observable, take} from "rxjs";
 import {Patient} from "../../../security/model/patient";
 import {PatientService} from "../../../security/services/patient.service";
 import {Consultation} from "../../../consultations/model/Consultation";
@@ -9,6 +9,12 @@ import {DiagnosisService} from "../../services/diagnosis.service";
 import {Review} from "../../../social/model/review";
 import {Appointment} from "../../../therapy/model/appointment";
 import {AppointmentService} from "../../../therapy/services/appointment.service";
+import {Therapy} from "../../../therapy/model/therapy";
+import {TreatmentService} from "../../../therapy/services/treatment.service";
+import {Treatment} from "../../../therapy/model/treatment";
+import {Physiotherapist} from "../../../security/model/physiotherapist";
+import {TherapyService} from "../../../therapy/services/therapy.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
   @Component({
@@ -17,21 +23,23 @@ import {AppointmentService} from "../../../therapy/services/appointment.service"
     styleUrls: ['./home-patient.component.css']
   })
   export class HomePatientComponent implements OnInit {
-    disabled = false;
-    max = 100;
-    min = 0;
-    showTicks = false;
-    step = 1;
-    thumbLabel = true;
-    value = 18;
+
     patientLoggedId: number = 0
     patient$: Observable<Patient> | undefined
     consultations: Consultation[]=[];
     lastConsultation!: Consultation | undefined
     lastDiagnosis$: Observable<Diagnosis> | undefined
     appointments: Appointment[]=[];
-    /*firstAppointment!: Appointment | undefined*/
     firstThreeAppointments$: Appointment []=[]
+
+    treatments: Treatment[]=[];
+    valueProgress: string = "";
+    numberOfTreatments: number = 0;
+    treatmentsViewed: number = 0;
+    therapyActiveId: number = 0
+    therapy$: Observable<Therapy> | undefined
+
+
 
 
    /* physiotherapists: Physiotherapist[]=[];
@@ -40,12 +48,14 @@ import {AppointmentService} from "../../../therapy/services/appointment.service"
     appointments: Appointments[]=[];
     currentUser: number;
   */
-    constructor(private patientService: PatientService, private consultationService: ConsultationService, private diagnosisService: DiagnosisService, private appointmentService: AppointmentService) {
+    constructor(private route: ActivatedRoute, private navigator:Router, private patientService: PatientService, private consultationService: ConsultationService, private diagnosisService: DiagnosisService, private appointmentService: AppointmentService, private treatmentService: TreatmentService, private therapyService: TherapyService) {
 
     }
 
     ngOnInit(): void {
       this.patient$= this.patientService.getPatientLogged();
+      this.therapy$ = this.therapyService.getActiveTherapyByPatientId();
+
 
 
       this.patientService.getPatientLogged().subscribe((response: any)=>{
@@ -55,6 +65,13 @@ import {AppointmentService} from "../../../therapy/services/appointment.service"
         this.getFirstThreeAppointments(this.patientLoggedId)
 
         this.getLastConsultation(this.patientLoggedId)
+
+      })
+
+      this.therapyService.getActiveTherapyByPatientId().subscribe((response:any)=>{
+        this.therapyActiveId = response.id;
+        console.log('valor de therapyID', this.therapyActiveId)
+        this.getAllTreatments(this.therapyActiveId);
       })
 
       this.lastDiagnosis$ = this.diagnosisService.getLastDiagnosis();
@@ -62,11 +79,22 @@ import {AppointmentService} from "../../../therapy/services/appointment.service"
 
 
 
+      /*this.route.params.pipe( take(1)).subscribe((params) => {
+        const id = params['id'];
+        this.therapy$! = this.therapyService.getTheraphByPatientId();console.log('El valor de percentaje es:', this.therapy$);
 
-      /*this.getAllPhysiotherapists();
-      this.getAllTreatments();
-      this.getAllMyTreatments();
-      this.getAllAppointments();*/
+        this.treatmentService.getAllTreatmentsByTherapyId(id).subscribe((response:any)=>{
+          this.treatments=response.content;
+          this.numberOfTreatments = this.treatments.length
+        })
+
+
+      });*/
+
+
+
+
+
     }
 
     getLastConsultation(patientId: number){
@@ -74,7 +102,7 @@ import {AppointmentService} from "../../../therapy/services/appointment.service"
         this.consultations = response.content;
 
         if(this.consultations.length > 0) {
-          this.lastConsultation = this.consultations.pop();
+          this.lastConsultation = this.consultations.filter(consultation => consultation.done === false).pop();
         }
       })
     }
@@ -83,14 +111,30 @@ import {AppointmentService} from "../../../therapy/services/appointment.service"
       this.appointmentService.getUpcomingAppointments(patientId).subscribe((response:any)=>{
         this.appointments = response.content;
 
-        if(this.appointments.length > 0) {
+        /*if(this.appointments.length > 0) {
           this.firstThreeAppointments$ = this.appointments.splice(0,3);
           // this.firstAppointment = this.appointments.pop();
-        }
+        }*/
+        this.firstThreeAppointments$ = this.appointments
+          .filter(appointment => !appointment.done)
+          .slice(0, 3);
 
 
       })
     }
+
+    getAllTreatments(therapyId: number){
+      this.treatmentService.getAllTreatmentsByTherapyId(therapyId).subscribe((response:any)=> {
+        this.treatments = response.content;
+        this.numberOfTreatments = this.treatments.length;
+
+        this.treatmentsViewed = this.treatments.filter(treatment => treatment.viewed === true).length;
+
+        this.valueProgress = ((this.treatmentsViewed/this.numberOfTreatments)*100).toFixed(1);
+
+      })
+    }
+
 
     /*getLastDiagnosis(patientId: number){
       this.consultationService.getByPatientId(patientId).subscribe((response: any) => {
