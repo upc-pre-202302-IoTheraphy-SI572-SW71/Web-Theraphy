@@ -129,3 +129,10 @@ img {
 
 
 
+/* Estilos para el elemento "Home" */
+.home-link {
+  /* Aplica estilos específicos para el elemento "Home" aquí, por ejemplo: */
+  font-weight: bold;
+  color: #0069D0; /* Cambia el color deseado */
+  background-color: transparent; /* O cualquier otro estilo deseado */
+}
