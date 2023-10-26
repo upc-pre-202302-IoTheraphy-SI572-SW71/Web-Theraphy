@@ -315,7 +315,19 @@
   }
 
   .ended_buttons button {
-    width: 300px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Sombra con un poco de opacidad */
+    transition: all 0.5s ease;
+  }
+
+
+  .ended_buttons button  {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Sombra más visible cuando el mouse se acerca */
+    transform: scale(1.05); /* Escala ligeramente el botón para dar la impresión de un efecto de elevación */
   }
 
   @media (max-width: 1600px) {
@@ -360,8 +372,16 @@
       margin-right: 50px;
     }
 
+
+  }
+
+  @media (max-width: 800px) {
     .ended_buttons {
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      width: 100%;
     }
 
 
@@ -382,7 +402,9 @@
     }
 
     .ended_buttons button {
-      width: 200px;
+      width: 80%;
+      height: 40px;
+      margin-top: 0px;
     }
 
     .ended_message {
@@ -391,9 +413,18 @@
 
     .ended_buttons {
       gap: 15px;
+
     }
     .ended_image {
       gap: 50px;
+    }
+
+    .home-button button {
+      font-size: 15px;
+    }
+
+    .review-button button {
+      font-size: 15px;
     }
   }
 
