@@ -48,6 +48,7 @@ import { LogOutDialogComponent } from './shared/components/log-out-dialog/log-ou
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.component";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -102,6 +103,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatDialogModule,
     MatSnackBarModule,
     MatLineModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
