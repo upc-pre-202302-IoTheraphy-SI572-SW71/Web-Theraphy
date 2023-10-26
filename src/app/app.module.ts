@@ -47,6 +47,7 @@ import { DiagnosisDialogComponent } from './shared/components/diagnosis-dialog/d
 import { LogOutDialogComponent } from './shared/components/log-out-dialog/log-out-dialog.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.component";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.componen
     ConsultationsListComponent,
     DiagnosisDialogComponent,
     LogOutDialogComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -98,6 +100,7 @@ import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.componen
     ToastrModule.forRoot(),
     NgxStripeModule.forRoot('pk_test_51O2RELCjW3JsFKOWismIZke5hD6PoJ5u2jaOx19m1AbSYgyw9pA3GLxl0Yb83MK0G3IVCiUp0UIzM2TOwMws1u2O00WNxCfi4U'),
     MatDialogModule,
+    MatSnackBarModule,
     MatLineModule,
   ],
   providers: [],
