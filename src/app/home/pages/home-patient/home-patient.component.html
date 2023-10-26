@@ -12,7 +12,7 @@
 
     <div class="flex-container">
       <div class="consultations" >
-        <h3>Consultation</h3>
+        <h3>Upcoming Consultation</h3>
         <div class="card-consultation" *ngIf="lastConsultation">
           <div class="profile-card">
             <img src="{{lastConsultation!.physiotherapist.photoUrl}}" alt="Italian Trulli">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="card-no-consultation" *ngIf="!lastConsultation">
-          <p>You don't have consultation yet</p>
+          <p>You don't have upcoming consultation</p>
           <img src="assets/img/sad.png">
         </div>
 
@@ -77,10 +77,11 @@
       <mat-progress-bar mode="determinate" value="{{valueProgress}}" #slider></mat-progress-bar>
 
     </div>
-
+    <div class="consultations" >
+      <h3>Recent Diagnosis</h3>
     <div class="recent-diagnosis" *ngIf="lastDiagnosis$ | async as diagnosis">
       <div class="title">
-        <h3>Recent Diagnosis</h3>
+
         <h3>{{diagnosis.date}}</h3>
       </div>
       <div class="card-diagnosis">
@@ -90,6 +91,8 @@
     <div class="recent-no-diagnosis card-diagnosis" *ngIf="!(lastDiagnosis$ | async)">
       <p>You don't have diagnoses yet</p>
     </div>
+    </div>
+
     <!--<app-header></app-header>
     <div><div class="patients-infos">
 
