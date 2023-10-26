@@ -10,6 +10,7 @@
 
     <mat-nav-list class="sidenav-menu">
       <div class="block" *ngFor="let data of sidenavData">
+        <!-- class="sidenav-item home-link"  [routerLink]="['/data.routeLink']"!-->
         <mat-list-item class="sidenav-item" routerLinkActive="active-link" [routerLink]="[data.routeLink]">
           <mat-icon color="primary" matTooltipPosition="right">{{data.icon}}</mat-icon>
           <span mat-line class="sidenav-item-text" *ngIf="isExpanded">{{ data.label }}</span>
