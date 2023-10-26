@@ -46,7 +46,41 @@
         <h2>{{this.currentDate.getTime() | date: 'yyyy/MM/dd'}}</h2>
       </div>
 
-      <ng-container *ngIf="isTreatment; else appointmentView">
+
+
+      <ng-container  *ngIf="isGreater; else endedTherapy">
+
+        <div class="ended_message">
+          <div class="ended-text" style="float: left;">
+            <h2 style="color: #014DBF">Your therapy has ended!</h2>
+          </div>
+          <div class="ended_image" style="float: right;">
+            <img class="image_physio_ended" mat-card-md-image [src]="currentTherapy.physiotherapist.photoUrl"  alt="Rest Day Image">
+            <div class="ended_image_text">
+              <h3>Dr. {{currentTherapy.physiotherapist.user.firstname + " " +
+              currentTherapy.physiotherapist.user.lastname
+                }}</h3>
+              <p>{{currentTherapy.physiotherapist.specialization}}</p>
+            </div>
+          </div>
+          <div class="ended_buttons">
+            <div class="home-button">
+              <button mat-raised-button color="primary">Back Home</button>
+            </div>
+            <div class="review-button">
+              <button mat-raised-button color="primary">Add Review</button>
+            </div>
+          </div>
+          <!-- Añadimos este elemento para limpiar los flotadores -->
+        </div>
+
+
+      </ng-container>
+
+
+      <ng-template #endedTherapy class="ended" >
+        <ng-container  *ngIf="isTreatment; else appointmentView">
+
         <mat-card class="video-card">
           <div style="position: relative;">
             <video width="100%" controls style="border-radius: 20px;">
@@ -59,7 +93,12 @@
             <p mat-card-subtitle>{{ treatment.description }}</p>
           </mat-card-content>
         </mat-card>
-      </ng-container>
+        </ng-container>
+
+      </ng-template>
+
+
+
 
       <ng-template #appointmentView class="appointment">
         <ng-container *ngIf="isAppointment; else noTreatmentMessage">
@@ -150,8 +189,9 @@
           <!-- Añadimos este elemento para limpiar los flotadores -->
         </mat-card>
       </ng-template>
-    </div>
 
+
+    </div>
   </ng-template>
 </div>
 

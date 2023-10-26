@@ -48,7 +48,7 @@ export class MyTheraphyComponent {
 
   isTreatment: boolean = false;
   isAppointment: boolean = false;
-
+  isGreater: boolean = false;
 
   toDo: boolean = true;
   inProcess: boolean = false;
@@ -278,7 +278,6 @@ export class MyTheraphyComponent {
     // )
 
     console.log("awafasdf");
-
     //
       this.therapyService.getActiveTherapyByPatientId().subscribe(
         (value) => {
@@ -288,7 +287,7 @@ export class MyTheraphyComponent {
           } else {
             this.currentTherapy = value;
             this.noTherapy = false;
-
+            this.isGreater = this.isCurrentDateGreaterThan(value.finishAt);
 
             this.initialDate = new Date(this.currentTherapy.startAt);
             this.currentDate = new Date(this.currentTherapy.startAt); // Inicializa la propiedad con la fecha actual

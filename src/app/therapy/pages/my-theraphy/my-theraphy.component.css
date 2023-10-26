@@ -266,6 +266,58 @@
 
 
 
+  .ended_message {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 100%;
+    align-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #F5F5F8;
+  }
+
+  .ended_image {
+    display: flex;
+    justify-content: space-around;
+    gap: 100px;
+  }
+
+  .ended_buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin: 50px;
+  }
+
+  .ended-text h2{
+    width: auto;
+    font-size: 48px;
+  }
+
+  .ended_image_text {
+    align-items: center;
+    align-self: center;
+  }
+
+  .ended_image_text h3 {
+    width: auto;
+    font-size: 32px;
+  }
+
+  .ended_image_text p {
+    width: auto;
+    font-size: 24px;
+  }
+
+  .image_physio_ended {
+    border-radius: 20px;
+  }
+
+  .ended_buttons button {
+    width: 300px;
+  }
+
   @media (max-width: 1600px) {
 
 
@@ -298,12 +350,6 @@
       width: 100%;
       min-width: 300px;
     }
-
-
-  }
-
-  @media (max-width: 1100px) {
-
     .subtitles-appointments {
       flex-direction: column;
       margin-bottom: 30px;
@@ -313,4 +359,42 @@
       margin-top: 20px;
       margin-right: 50px;
     }
+
+    .ended_buttons {
+      flex-direction: column;
+    }
+
+
+    .ended_image_text  h3{
+      font-size: 20px;
+    }
+
+    .ended_image_text  p{
+      font-size: 15px;
+    }
+
+    .ended_message h2 {
+      font-size: 25px;
+    }
+
+    .ended_image img {
+      width: 100px;
+    }
+
+    .ended_buttons button {
+      width: 200px;
+    }
+
+    .ended_message {
+      width: 90%;
+    }
+
+    .ended_buttons {
+      gap: 15px;
+    }
+    .ended_image {
+      gap: 50px;
+    }
   }
+
+
