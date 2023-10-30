@@ -49,6 +49,7 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.component";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { PatientProfileComponent } from './profile/pages/patient-profile/patient-profile.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     DiagnosisDialogComponent,
     LogOutDialogComponent,
     PageNotFoundComponent,
+    PatientProfileComponent,
 
   ],
   imports: [

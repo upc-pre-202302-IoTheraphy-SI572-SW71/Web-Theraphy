@@ -20,6 +20,7 @@ import {HomePatientComponent} from "./home/pages/home-patient/home-patient.compo
 import {ConsultationsListComponent} from "./consultations/pages/consultations-list/consultations-list.component";
 import {PageNotFoundComponent} from "./shared/components/page-not-found/page-not-found.component";
 import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.component";
+import {PatientProfileComponent} from "./profile/pages/patient-profile/patient-profile.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'add-review/:id', component: AddReviewComponent},
   {path: 'my-theraphy', component: MyTheraphyComponent},
   {path: 'my-consultations-list', component: ConsultationsListComponent},
+  {path: 'profile-patient', component: PatientProfileComponent},
   { path: '**', component: PageNotFoundComponent }
 
 ];
