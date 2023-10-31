@@ -51,6 +51,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { PatientProfileComponent } from './profile/pages/patient-profile/patient-profile.component';
 import { MedicalHistoryFormComponent } from './profile/pages/medical-history-form/medical-history-form.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 
 @NgModule({
@@ -107,7 +109,9 @@ import { MedicalHistoryFormComponent } from './profile/pages/medical-history-for
     MatDialogModule,
     MatSnackBarModule,
     MatLineModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    provideFirebaseApp(() => initializeApp({"projectId":"theraphy-71e99","appId":"1:994229341685:web:10a64ae6e032129914e4bc","storageBucket":"theraphy-71e99.appspot.com","apiKey":"AIzaSyDcFbK3XBzFQ5CofTNWtUgO_7XSn_RPa7g","authDomain":"theraphy-71e99.firebaseapp.com","messagingSenderId":"994229341685","measurementId":"G-8CW4K0RL3P"})),
+    provideStorage(() => getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent]
