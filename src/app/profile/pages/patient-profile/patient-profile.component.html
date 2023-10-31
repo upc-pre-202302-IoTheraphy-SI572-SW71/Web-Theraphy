@@ -14,7 +14,10 @@
     </div>
 
     <div class="flex-container">
-      <img src="{{patient.photoUrl}}" alt="Profile Photo">
+      <label for="fileInput" class="image-upload-button">
+        <button (click)="openFileInput()"><img src="{{patient.photoUrl}}" alt="Profile Photo"></button>
+      </label>
+      <input type="file" id="fileInput" (change)="uploadImage($event)" style="display: none">
       <div class="description">
         <h3>{{patient.user.firstname}} {{patient.user.lastname}}</h3>
         <p> <mat-icon>face</mat-icon>{{patient.age}}</p>

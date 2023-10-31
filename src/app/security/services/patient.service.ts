@@ -46,4 +46,27 @@ export class PatientService extends BaseService<Patient>{
       catchError(this.handleError)
     );
   }
+
+  updateProfilePhoto(patientId: number, photoUrl: string) {
+    const updateProfilePhotoUrl = `${this.basePath}/${patientId}`;
+    const jwtToken = localStorage.getItem('jwtToken');
+
+    if (!jwtToken) {
+      throw new Error('Token JWT no encontrado en el localStorage.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${jwtToken}`
+    });
+
+    // Llama a la función PATCH para actualizar la foto de perfil con la URL de la imagen subida
+    this.http.patch(updateProfilePhotoUrl, { photoUrl: photoUrl }, { headers })
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+      .subscribe(() => {
+        console.log('Foto de perfil actualizada con éxito');
+      });
+  }
+
 }
