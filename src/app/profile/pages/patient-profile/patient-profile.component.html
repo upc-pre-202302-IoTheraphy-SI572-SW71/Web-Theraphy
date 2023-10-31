@@ -24,66 +24,78 @@
       </div>
     </div>
 
-    <div class="medical-history" >
-      <h2 class="section-title">Medical History</h2>
-      <div class="medical-description">
-        <div class="Gender">
-          <p>Gender</p>
-          <p>{{ (medicalHistory | async)?.gender }}</p>
+    <h2 class="section-title">Medical History</h2>
+    <div *ngIf="medicalHistory">
+      <div class="medical-history-container">
+        <div class="medical-description">
+          <div class="Gender">
+            <p>Gender</p>
+            <p>{{this.medicalHistory.gender}}</p>
+          </div>
+          <div class="Size">
+            <p>Size</p>
+            <p>{{this.medicalHistory.size}}</p>
+          </div>
+          <div class="Weight">
+            <p>Weight</p>
+            <p>{{this.medicalHistory.weight}}</p>
+          </div>
+          <div class="Birthday-place">
+            <p>Birthday place</p>
+            <p>{{this.medicalHistory.birthplace}}</p>
+          </div>
         </div>
-        <div class="Size">
-          <p>Size</p>
+      </div>
+
+      <div class="medical-history">
+        <h2 class="section-title">Hereditary History</h2>
+        <div class="medical-description">
+          <p>
+            {{this.medicalHistory.hereditaryHistory}}
+          </p>
         </div>
-        <div class="Weight">
-          <p>Weight</p>
+      </div>
+
+      <div class="medical-history">
+        <h2 class="section-title">Non-pathological history</h2>
+        <div class="medical-description">
+          <p>
+            {{this.medicalHistory.nonPathologicalHistory}}
+          </p>
         </div>
-        <div class="Birthday-place">
-          <p>Birthday place</p>
+      </div>
+
+      <div class="medical-history">
+        <h2 class="section-title">Pathological history</h2>
+        <div class="medical-description">
+          <p>
+            {{this.medicalHistory.pathologicalHistory}}
+          </p>
         </div>
       </div>
     </div>
-
-    <div class="hereditary-history">
-      <h2 class="section-title">Hereditary History</h2>
-      <div class="medical-description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Tristique quis sollicitudin eu adipiscing tellus mi.
-          Dolor lobortis ut cras eget neque nunc in pulvinar. Sit dignissim ipsum viverra cursus arcu
-          lectus.
-        </p>
+    <div *ngIf="!medicalHistory">
+      <div class="no-medicalHistory-card">
+        <p>Does not have a Medical History. Do you want to create one?</p>
+        <button mat-raised-button color="primary" (click)="openMedicalHistoryDialog()">
+          Add Medical History
+        </button>
       </div>
     </div>
 
-    <div class="non-pathological-history">
-      <h2 class="section-title">Non-pathological history</h2>
-      <div class="medical-description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Tristique quis sollicitudin eu adipiscing tellus mi.
-          Dolor lobortis ut cras eget neque nunc in pulvinar. Sit dignissim ipsum viverra cursus arcu
-          lectus.
-        </p>
-      </div>
-    </div>
 
-    <div class="pathological-history">
-      <h2 class="section-title">Pathological history</h2>
-      <div class="medical-description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Tristique quis sollicitudin eu adipiscing tellus mi.
-          Dolor lobortis ut cras eget neque nunc in pulvinar. Sit dignissim ipsum viverra cursus arcu
-          lectus.
-        </p>
+    <div class="consultations" >
+      <h2>Recent Diagnosis</h2>
+      <div class="recent-diagnosis" *ngIf="lastDiagnosis$ | async as diagnosis">
+        <div class="title">
+          <h3>{{diagnosis.date}}</h3>
+        </div>
+        <div class="card-diagnosis">
+          <p>{{diagnosis.diagnosis}}</p>
+        </div>
       </div>
-    </div>
-
-    <div class="recent-diagnosis">
-      <h2 class="section-title">Recent Diagnosis</h2>
-      <div class="medical-description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Tristique quis sollicitudin eu adipiscing tellus mi.
-          Dolor lobortis ut cras eget neque nunc in pulvinar. Sit dignissim ipsum viverra cursus arcu
-          lectus.
-        </p>
+      <div class="recent-no-diagnosis card-diagnosis" *ngIf="!(lastDiagnosis$ | async)">
+        <p>You don't have diagnoses yet</p>
       </div>
     </div>
     <br>

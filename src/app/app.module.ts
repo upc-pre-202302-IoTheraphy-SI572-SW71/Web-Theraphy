@@ -50,6 +50,7 @@ import {HomeDoctorComponent} from "./home/pages/home-doctor/home-doctor.componen
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { PatientProfileComponent } from './profile/pages/patient-profile/patient-profile.component';
+import { MedicalHistoryFormComponent } from './profile/pages/medical-history-form/medical-history-form.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { PatientProfileComponent } from './profile/pages/patient-profile/patient
     LogOutDialogComponent,
     PageNotFoundComponent,
     PatientProfileComponent,
+    MedicalHistoryFormComponent,
 
   ],
   imports: [
