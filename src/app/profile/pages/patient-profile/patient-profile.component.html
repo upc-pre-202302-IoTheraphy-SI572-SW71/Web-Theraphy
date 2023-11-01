@@ -3,7 +3,7 @@
     <app-sidenav></app-sidenav>
 
   </div>
-  <div class="contents" *ngIf="patient$ | async as patient">
+  <div class="contents">
     <div class="profile-header">
       <div class="profile-header_left">
         <svg (click)="goBack()" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 40 40" fill="none">
@@ -15,7 +15,9 @@
 
     <div class="flex-container">
       <label for="fileInput" class="image-upload-button">
-        <button (click)="openFileInput()"><img src="{{patient.photoUrl}}" alt="Profile Photo"></button>
+        <div class="profile-photo-container">
+          <button (click)="openFileInput()"><img src="{{patient.photoUrl}}" alt="Edit"></button>
+        </div>
       </label>
       <input type="file" id="fileInput" (change)="uploadImage($event)" style="display: none">
       <div class="description">

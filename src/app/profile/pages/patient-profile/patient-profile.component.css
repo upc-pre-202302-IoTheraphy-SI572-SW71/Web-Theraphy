@@ -21,8 +21,25 @@
   flex-direction: row;
   gap: 10px;
 }
+.profile-photo-container img {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
 
+.profile-photo-container button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
+.profile-photo-container button{
+  height: 200px;
+  width: 200px;
+}
+.description {
+  margin-left: 200px; /* Puedes ajustar este valor según tu preferencia */
+}
 .profile-header{
   display: flex;
   justify-content: space-between;
@@ -61,7 +78,7 @@
 
 .flex-container img {
   height: 200px;
-  width: 200px;
+  width: 220px;
   border-radius: 10px;
   margin-right: 140px; /* Añade un margen a la derecha de la imagen */
 }
@@ -73,7 +90,6 @@
   align-items: center;
 }
 .flex-container .description p mat-icon {
-  margin-right: 10px;
   color: #014DBF;
 }
 .flex-container::after {

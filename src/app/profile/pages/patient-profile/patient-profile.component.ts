@@ -18,7 +18,7 @@ import {Storage, ref, uploadBytes, listAll, getDownloadURL, getStorage} from '@a
 })
 export class PatientProfileComponent {
   patientLoggedId = 0;
-  patient$: Observable<Patient> | undefined
+  patient!: Patient
   medicalHistory!: MedicalHistory
   lastDiagnosis$: Observable<Diagnosis> | undefined
   images: string
@@ -28,7 +28,9 @@ export class PatientProfileComponent {
   }
 
   ngOnInit(): void {
-    this.patient$ = this.patientService.getPatientLogged();
+    this.patientService.getPatientLogged().subscribe((response: any) => {
+      this.patient = response;
+    });
     this.lastDiagnosis$ = this.diagnosisService.getLastDiagnosis();
     this.getPatient();
 
@@ -73,23 +75,23 @@ export class PatientProfileComponent {
   uploadImage($event: any) {
     const file = $event.target.files[0];
     console.log(file);
-    const storage = getStorage(); // Asegúrate de inicializar Firebase Storage correctamente
+    const storage = getStorage();
     const imgRef = ref(storage, `images/${file.name}`);
+    this.patientService.getPatientLogged().subscribe(async (patient: Patient) => {
+      const patientId = patient.id;
 
-    this.patientService.getPatientLogged().subscribe((patient: Patient) => {
-      const patientId = patient.id; // Obtén el ID del paciente actual
-      uploadBytes(imgRef, file)
-        .then(async (snapshot) => {
-          console.log('Imagen subida con éxito');
-          const photoUrl = await getDownloadURL(imgRef); // Obtenemos la URL de la imagen subida
-          this.patientService.updateProfilePhoto(patientId, photoUrl);
-
-        })
-        .catch((error) => {
-          console.error('Error al subir la imagen', error);
-        });
+      try {
+        await uploadBytes(imgRef, file);
+        console.log('Imagen subida con éxito');
+        const photoUrl = await getDownloadURL(imgRef);
+        this.patientService.updateProfilePhoto(patientId, photoUrl);
+        location.reload();
+      } catch (error) {
+        console.error('Error al subir la imagen', error);
+      }
     });
   }
+
   goBack() {
     window.history.back();
   }

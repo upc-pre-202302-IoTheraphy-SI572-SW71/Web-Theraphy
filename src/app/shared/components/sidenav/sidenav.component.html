@@ -33,15 +33,16 @@
 
   <mat-divider class="black-divider"></mat-divider>
 
-  <div class="profile-card">
-    <div>
-      <div class="card-title" *ngIf="patient$ | async as patient">
-        <img src="{{patient.photoUrl}}" alt="Profile Photo">
-        <p *ngIf="isExpanded">{{patient.user.firstname}} {{patient.user.lastname}}</p>
+    <div class="profile-card">
+      <div>
+        <div class="card-title" *ngIf="patient$ | async as patient">
+          <a [routerLink]="['/profile-patient']">
+            <img src="{{patient.photoUrl}}" alt="Profile Photo">
+          </a>
+          <p *ngIf="isExpanded">{{patient.user.firstname}} {{patient.user.lastname}}</p>
+        </div>
       </div>
     </div>
-
-  </div>
   </div>
 
 </mat-sidenav>
