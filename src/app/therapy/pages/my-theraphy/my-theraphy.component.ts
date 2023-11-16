@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
 import {PhysiotherapistService} from "../../../security/services/physiotherapist.service";
 import {Router} from "@angular/router";
 import {TherapyService} from "../../services/therapy.service";
@@ -19,6 +19,8 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./my-theraphy.component.css']
 })
 export class MyTheraphyComponent {
+  @ViewChild('myVideo') myVideo!: ElementRef;
+
   days!: string[];
   currentIndex: number = 0;
   maxVisibleDays: number = 10; // Define el número máximo de días visibles
@@ -99,7 +101,9 @@ export class MyTheraphyComponent {
             this.treatment = value;
             this.isTreatment = true;
             this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
-
+            if (this.myVideo && this.myVideo.nativeElement) {
+              this.myVideo.nativeElement.load(); // Recarga el video
+            }
           },
           (error) => {
             console.error('Error al obtener el tratamiento:', error);
@@ -158,7 +162,9 @@ export class MyTheraphyComponent {
             this.treatment = value;
             this.isTreatment = true;
             this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
-
+            if (this.myVideo && this.myVideo.nativeElement) {
+              this.myVideo.nativeElement.load(); // Recarga el video
+            }
           },
           (error) => {
             console.error('Error al obtener el tratamiento:', error);
@@ -214,7 +220,9 @@ export class MyTheraphyComponent {
             this.treatment = value;
             this.isTreatment = true;
             this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
-
+            if (this.myVideo && this.myVideo.nativeElement) {
+              this.myVideo.nativeElement.load(); // Recarga el video
+            }
           },
       (error) => {
         console.error('Error al obtener el tratamiento:', error);
@@ -328,7 +336,10 @@ export class MyTheraphyComponent {
                   this.treatment = value;
                   this.isTreatment = true;
                   this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.treatment.videoUrl);
-                },
+                  if (this.myVideo && this.myVideo.nativeElement) {
+                    this.myVideo.nativeElement.load(); // Recarga el video
+                  }
+                  },
                 (error) => {
                   console.error('Error al obtener el tratamiento:', error);
                   this.isTreatment = false;
