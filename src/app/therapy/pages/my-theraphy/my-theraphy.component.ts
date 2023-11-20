@@ -95,6 +95,8 @@ export class MyTheraphyComponent {
     const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
     console.log(formattedDate);
     //leer treatment
+
+
     if (formattedDate != null) {
       this.treatmentService.getTreatmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
           (value) => {
@@ -111,7 +113,7 @@ export class MyTheraphyComponent {
           }
       );
 
-        if(!this.isTreatment){
+
             this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
                 (value) => {
                     this.appointment = value;
@@ -126,7 +128,7 @@ export class MyTheraphyComponent {
                     this.isAppointment = false;
                 }
             );
-        }
+
     }
 
   }
@@ -156,6 +158,7 @@ export class MyTheraphyComponent {
     const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
     console.log(formattedDate);
     //leer treatment
+
     if (formattedDate != null) {
       this.treatmentService.getTreatmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
           (value) => {
@@ -171,7 +174,7 @@ export class MyTheraphyComponent {
             this.isTreatment = false;
           }
       );
-        if(!this.isTreatment){
+
             this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
                 (value) => {
                     this.appointment = value;
@@ -186,7 +189,7 @@ export class MyTheraphyComponent {
                     this.isAppointment = false;
                 }
             );
-        }
+
     }
 
   }
@@ -230,7 +233,7 @@ export class MyTheraphyComponent {
       }
       );
 
-        if(!this.isTreatment){
+
             this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
                 (value) => {
                     this.appointment = value;
@@ -245,7 +248,7 @@ export class MyTheraphyComponent {
                     this.isAppointment = false;
                 }
             );
-        }
+
     }
 
   }
@@ -346,7 +349,7 @@ export class MyTheraphyComponent {
                 }
               );
 
-              if (!this.isTreatment) {
+
                 this.appointmentService.getAppointmentByDateAndTherapyId(this.currentTherapy.id, formattedDate).subscribe(
                   (value) => {
                     this.appointment = value;
@@ -361,7 +364,7 @@ export class MyTheraphyComponent {
                     this.isAppointment = false;
                   }
                 );
-              }
+
 
             }
 

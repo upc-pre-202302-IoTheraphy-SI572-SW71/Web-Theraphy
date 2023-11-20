@@ -83,7 +83,7 @@
 
         <mat-card class="video-card">
           <div style="position: relative;">
-            <video width="100%" controls style="border-radius: 20px;" #myVideo>
+            <video width="100%" controls style="border-radius: 20px; max-height: 500px" #myVideo>
               <source [src]="videoUrl" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -104,7 +104,7 @@
         <ng-container *ngIf="isAppointment; else noTreatmentMessage">
           <mat-card class="appointment-card">
             <div class="free-image" style="float: right;">
-              <img [src]="appointment.therapy.physiotherapist.photoUrl" alt="Physiotherapist Image">
+              <img class="image_phy" [src]="appointment.therapy.physiotherapist.photoUrl" alt="Physiotherapist Image">
             </div>
 
             <div class="appointment-text" style=" width: 70%">

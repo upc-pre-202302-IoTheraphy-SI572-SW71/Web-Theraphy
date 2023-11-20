@@ -7,7 +7,7 @@ import {catchError, Observable, retry, throwError} from "rxjs";
 })
 export class BaseService<T> {
   // Resource Endpoint
-  protected basePath='https://api-iotheraphy-production.up.railway.app/api/v1/'
+  protected basePath='http://localhost:8080/api/v1'
 
 
   // Common options
