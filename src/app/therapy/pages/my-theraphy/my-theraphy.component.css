@@ -210,6 +210,11 @@
     padding: 20px; /* Espacio entre la imagen y el borde del mat-card */
   }
 
+  .image_phy {
+    border-radius: 20px;
+    max-width: 250px;
+    margin: 20px;
+  }
   .free-text h2 {
     color: #014DBF;
   }

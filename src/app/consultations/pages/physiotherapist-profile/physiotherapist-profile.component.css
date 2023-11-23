@@ -344,8 +344,8 @@ width: 100%;
 .jobs{
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 
   align-self: stretch;
   border-top: 1px solid #014DBF;
