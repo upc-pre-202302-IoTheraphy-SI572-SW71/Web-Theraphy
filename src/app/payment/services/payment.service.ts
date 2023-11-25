@@ -9,7 +9,7 @@ import {Payment} from "../model/payment";
 })
 export class PaymentService{
 
-  stripeUrl='https://api-iotheraphy-production-909e.up.railway.app/api/v1/payments'
+  stripeUrl='https://api-iotheraphy-production-97a8.up.railway.app/api/v1/payments'
 
 
   // Common options
